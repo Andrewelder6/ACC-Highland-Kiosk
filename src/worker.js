@@ -1,4 +1,4 @@
-const BUILD='2026-10-04.2238';
+const BUILD='2026-10-04.2250';
 const FEED='https://data.texas.gov/download/rmk2-acnw/application%2Foctet-stream';
 const targets=[{key:'7n',stop:'1264',route:'7'},{key:'10s',stop:'3532',route:'10'},{key:'7s',stop:'5603',route:'7'}];
 function varint(b,p){let n=0,s=0;while(p.i<b.length){let x=b[p.i++];n+=(x&127)*2**s;if(!(x&128))return n;s+=7}return n}
@@ -27,7 +27,7 @@ function highResMls(url){
     if(p<0)return url;
     let tail=u.pathname.slice(p+marker.length);
     tail=tail.replace(/^(?:[^/]*\/)*(?=mls-atx-prd\/)/,'');
-    u.pathname=marker+'w_2400,q_auto:best,f_auto/'+tail;
+    u.pathname=marker+'w_3000,q_auto:best,f_auto/'+tail;
     return u.href;
   }catch(e){return url}
 }
@@ -50,23 +50,58 @@ async function fcDailyImage(headers){
     .filter(u=>/through-the-lens/i.test(u));
   albums=[...new Set(albums)].slice(0,40);
   if(!albums.length)return null;
-  const album=albums[dayIndex()%albums.length];
+
+  const d=dayIndex();
+  const album=albums[d%albums.length];
   const ar=await fetch(album,{headers});
   if(!ar.ok)return null;
   const ah=await ar.text();
-  let imageUrl=ogFromHtml(ah,album);
-  if(!imageUrl){
-    const imgs=[...ah.matchAll(/https:\/\/images\.mlssoccer\.com\/image\/private\/[^"'\s<]+/ig)].map(m=>m[0].replace(/&amp;/g,'&'));
-    imageUrl=[...new Set(imgs)][dayIndex()%Math.max(1,imgs.length)]||null;
+
+  // Prefer actual gallery image assets over og:image. og:image is often a small social-card crop.
+  let imgs=[...ah.matchAll(/https:\/\/images\.mlssoccer\.com\/image\/private\/[^"'\s<)]+/ig)]
+    .map(m=>m[0].replace(/&amp;/g,'&').replace(/\\u0026/g,'&'));
+  imgs=[...new Set(imgs)]
+    .filter(x=>/mls-atx-prd/i.test(x))
+    .filter(x=>!/logo|crest|sponsor|icon|avatar/i.test(x));
+
+  if(imgs.length){
+    // Spread selections across the gallery from day to day, then force a Retina-friendly width.
+    return highResMls(imgs[(d*11)%imgs.length]);
   }
-  return imageUrl?highResMls(imageUrl):null;
+
+  const og=ogFromHtml(ah,album);
+  return og?highResMls(og):null;
 }
+
+async function historyDailyImage(headers){
+  // Library of Congress archive search: Austin photographs, pre-2000.
+  const q='https://www.loc.gov/photos/?fo=json&q='+encodeURIComponent('Austin Texas')+'&dates=1800-1999&c=100';
+  const r=await fetch(q,{headers:{...headers,'Accept':'application/json'}});
+  if(!r.ok)return null;
+  const j=await r.json();
+  const items=(j.results||[]).filter(x=>{
+    const title=(x.title||'').toLowerCase();
+    const loc=(x.location||[]).join(' ').toLowerCase();
+    return (title.includes('austin')||loc.includes('austin')) && Array.isArray(x.image_url) && x.image_url.length;
+  });
+  if(!items.length)return null;
+  const item=items[dayIndex()%items.length];
+  const urls=item.image_url||[];
+  // LOC returns multiple derivative sizes; use the largest listed image.
+  return urls[urls.length-1]||urls[0]||null;
+}
+
 async function officialImage(kind,mode){
   const headers={'User-Agent':'Mozilla/5.0'};
   if(kind==='fcDaily'){
     const imageUrl=await fcDailyImage(headers);
     if(!imageUrl)return new Response('image unavailable',{status:404});
-    return await fetchImageResponse(imageUrl,headers,'AustinFC-ThroughTheLens-highres')||new Response('image unavailable',{status:502});
+    return await fetchImageResponse(imageUrl,headers,'AustinFC-ThroughTheLens-retina')||new Response('image unavailable',{status:502});
+  }
+  if(kind==='historyDaily'){
+    const imageUrl=await historyDailyImage(headers);
+    if(!imageUrl)return new Response('image unavailable',{status:404});
+    return await fetchImageResponse(imageUrl,headers,'Library-of-Congress-Austin-archive')||new Response('image unavailable',{status:502});
   }
   let page=imagePages[kind];
   if(kind==='weatherDaily'){
