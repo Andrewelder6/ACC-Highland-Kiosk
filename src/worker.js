@@ -1,4 +1,4 @@
-const BUILD='2026-10-04.2418';
+const BUILD='2026-10-04.2448';
 const FEED='https://data.texas.gov/download/rmk2-acnw/application%2Foctet-stream';
 const targets=[{key:'7n',stop:'1264',route:'7'},{key:'10s',stop:'3532',route:'10'},{key:'7s',stop:'5603',route:'7'}];
 function varint(b,p){let n=0,s=0;while(p.i<b.length){let x=b[p.i++];n+=(x&127)*2**s;if(!(x&128))return n;s+=7}return n}
@@ -210,4 +210,4 @@ async function officialImage(kind,mode){
   return await fetchImageResponse(highResMls(imageUrl),headers,kind)||new Response('image unavailable',{status:502});
 }
 
-export default{async fetch(req,env){let u=new URL(req.url);if(u.pathname==='/api/version')return Response.json({build:BUILD},{headers:{'Cache-Control':'no-store'}});if(u.pathname==='/api/official-image')return officialImage(u.searchParams.get('kind'),u.searchParams.get('mode')||'clear');if(u.pathname==='/api/buses'){try{let r=await fetch(FEED,{cf:{cacheTtl:0}});if(!r.ok)throw Error('feed '+r.status);let routes=decode(await r.arrayBuffer());return Response.json({updatedAt:Date.now(),routes},{headers:{'Cache-Control':'no-store'}})}catch(e){return Response.json({updatedAt:Date.now(),routes:{'7n':[],'10s':[],'7s':[]},error:String(e)},{status:503})}}return env.ASSETS.fetch(req)}}
+export default{async fetch(req,env){let u=new URL(req.url);if(u.pathname==='/api/version')return Response.json({build:BUILD},{headers:{'Cache-Control':'no-store'}});if(u.pathname==='/api/official-image')return officialImage(u.searchParams.get('kind'),u.searchParams.get('mode')||'clear');if(u.pathname==='/api/buses'){try{let r=await fetch(FEED,{cf:{cacheTtl:0}});if(!r.ok)throw Error('feed '+r.status);let routes=decode(await r.arrayBuffer());return Response.json({updatedAt:Date.now(),routes},{headers:{'Cache-Control':'no-store'}})}catch(e){return Response.json({updatedAt:Date.now(),routes:{'7n':[],'10s':[],'7s':[]},error:String(e)},{status:503})}}let asset=await env.ASSETS.fetch(req);if(u.pathname==='/'||u.pathname==='/index.html'){let hd=new Headers(asset.headers);hd.set('Cache-Control','no-store, max-age=0');return new Response(asset.body,{status:asset.status,headers:hd})}return asset}}
