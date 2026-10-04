@@ -93,11 +93,16 @@
 .accMast h1{font-size:34px;line-height:1;margin:0;font-weight:780;letter-spacing:-.035em}
 .accMastNote{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#77828b}
 .accMain{display:grid;grid-template-columns:.92fr 1.08fr;gap:42px;min-height:0}
-.accFeature{align-self:center;max-width:470px}
-.featureEyebrow{font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#c6aed8;margin-bottom:11px}
-.accFeature h2{font-size:36px;line-height:1.02;letter-spacing:-.035em;margin:0 0 14px;color:#fff}
-.accFeature p{font-size:16px;line-height:1.45;color:#c7c1ca;margin:0}
-.featureSchedule{margin-top:19px;display:grid;gap:8px;padding-left:15px;border-left:3px solid #744791}
+.accFeature{align-self:stretch;max-width:500px;display:grid;grid-template-rows:minmax(170px,1fr) auto;gap:15px;min-height:0}
+.accCampusPhoto{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.13);background:#111;box-shadow:0 20px 44px rgba(0,0,0,.22)}
+.accCampusPhoto img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center;image-rendering:auto}
+.accCampusPhoto:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,9,12,.48),transparent 48%)}
+.accCampusPhoto span{position:absolute;left:14px;bottom:11px;z-index:2;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78);text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.accFeatureCopy{padding-right:8px}
+.featureEyebrow{font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#c6aed8;margin-bottom:9px}
+.accFeature h2{font-size:31px;line-height:1.03;letter-spacing:-.03em;margin:0 0 10px;color:#fff}
+.accFeature p{font-size:14px;line-height:1.4;color:#c7c1ca;margin:0}
+.featureSchedule{margin-top:13px;display:grid;gap:6px;padding-left:13px;border-left:3px solid #744791}
 .featureSchedule div{font-size:14px;color:#eee8f0}
 .featureSchedule b{font-weight:850;color:#fff}
 .austinPanel{align-self:stretch;min-height:0;background:transparent;border:0;padding:0;overflow:hidden}
@@ -155,7 +160,8 @@
   .accWrap{padding:22px 34px 24px;gap:16px}
   .accMast h1{font-size:32px}
   .accMain{grid-template-columns:.9fr 1.1fr;gap:36px}
-  .accFeature h2{font-size:34px}
+  .accFeature h2{font-size:30px}
+  .accFeature{grid-template-rows:minmax(165px,1fr) auto}
   .aEvent{padding:9px 0}
   .holidayList{gap:14px}
   .historyCopy{padding:24px 30px 24px 34px}
@@ -192,7 +198,7 @@
 <section class="screen fc" data-name="AUSTIN FC">
   <div class="fcWrap">
     <div class="fcPhoto">
-      <img id="fcDailyPhoto" src="/api/official-image?kind=fcDaily&v=20261004-3" alt="Recent Austin FC match photography">
+      <img id="fcDailyPhoto" src="/api/official-image?kind=fcDaily&v=20261004-5" alt="Recent Austin FC match photography">
       <div class="fcPhotoLabel"><b>Through the Lens · recent match gallery</b><span>Official Austin FC game photography · different every day.</span></div>
     </div>
     <div class="fcData">
@@ -213,12 +219,18 @@
     </header>
     <div class="accMain">
       <article class="accFeature">
-        <div class="featureEyebrow">At Highland · October 20</div>
-        <h2>Campus Sustainability Month</h2>
-        <p>A couple of easy things to catch between work and class.</p>
-        <div class="featureSchedule">
-          <div><b>10:30–12:30</b> · Solar snow cones</div>
-          <div><b>Noon–12:30</b> · Green Building Tour</div>
+        <div class="accCampusPhoto">
+          <img src="/api/official-image?kind=accHighland&v=20261004-1" alt="ACC Highland campus">
+          <span>ACC Highland · official campus photography</span>
+        </div>
+        <div class="accFeatureCopy">
+          <div class="featureEyebrow">At Highland · October 20</div>
+          <h2>Campus Sustainability Month</h2>
+          <p>A couple of easy things to catch between work and class.</p>
+          <div class="featureSchedule">
+            <div><b>10:30–12:30</b> · Solar snow cones</div>
+            <div><b>Noon–12:30</b> · Green Building Tour</div>
+          </div>
         </div>
       </article>
       <section class="austinPanel">
@@ -253,7 +265,7 @@
 </section><footer class="nav" id="nav"></footer></main>
 <script>
 const TZ='America/Chicago', screens=[...document.querySelectorAll('.screen')],nav=document.getElementById('nav');let idx=0;
-function tickHeroClock(){let d=new Date();heroClock.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d);heroClockDate.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'long',month:'long',day:'numeric'}).format(d)}tickHeroClock();setInterval(tickHeroClock,1000);function refreshDailyPhotos(){let d=Math.floor(Date.now()/86400000);let fc=document.getElementById('fcDailyPhoto');if(fc)fc.src='/api/official-image?kind=fcDaily&d='+d+'&v=4';let hp=document.getElementById('historyPhoto');if(hp)hp.src='/api/official-image?kind=historyDaily&d='+d+'&v=2'}refreshDailyPhotos();setInterval(refreshDailyPhotos,3600000);
+function tickHeroClock(){let d=new Date();heroClock.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d);heroClockDate.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'long',month:'long',day:'numeric'}).format(d)}tickHeroClock();setInterval(tickHeroClock,1000);function refreshDailyPhotos(){let d=Math.floor(Date.now()/86400000);let fc=document.getElementById('fcDailyPhoto');if(fc)fc.src='/api/official-image?kind=fcDaily&d='+d+'&v=5';let hp=document.getElementById('historyPhoto');if(hp)hp.src='/api/official-image?kind=historyDaily&d='+d+'&v=2'}refreshDailyPhotos();setInterval(refreshDailyPhotos,3600000);
 function show(i){idx=(i+screens.length)%screens.length;screens.forEach((s,n)=>s.classList.toggle('active',n===idx));nav.innerHTML=screens.map((s,n)=>'<span class="'+(n===idx?'on':'')+'"><i class="dot"></i>'+s.dataset.name+'</span>').join('');}show(0);setInterval(()=>show(idx+1),75000);
 let x0=0;document.addEventListener('touchstart',e=>x0=e.touches[0].clientX);document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>70)show(idx+(dx<0?1:-1))});
 const wx={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Foggy',48:'Foggy',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',80:'Rain showers',81:'Rain showers',82:'Heavy showers',95:'Thunderstorms'};
