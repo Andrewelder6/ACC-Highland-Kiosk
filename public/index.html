@@ -105,17 +105,17 @@
 .featureSchedule{margin-top:13px;display:grid;gap:6px;padding-left:13px;border-left:3px solid #744791}
 .featureSchedule div{font-size:14px;color:#eee8f0}
 .featureSchedule b{font-weight:850;color:#fff}
-.austinPanel{align-self:stretch;min-height:0;background:transparent;border:0;padding:0;overflow:hidden}
+.austinPanel{align-self:stretch;min-height:0;position:relative;background:#111 center/cover no-repeat;border:1px solid rgba(255,255,255,.11);padding:16px 18px 14px;overflow:hidden;box-shadow:0 18px 42px rgba(0,0,0,.22)}.austinPanel:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,13,.68),rgba(7,10,13,.82) 48%,rgba(7,10,13,.92));z-index:0}.austinPanel>*{position:relative;z-index:1}
 .austinHead{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.13);margin-bottom:0}
-.austinHead h3{margin:0;font-size:20px;letter-spacing:-.02em;color:#fff}
+.austinHead h3{margin:0;font-size:23px;letter-spacing:-.025em;color:#fff}
 .austinHead span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#7f8991}
 .austinEvents{display:grid}
-.aEvent{display:grid;grid-template-columns:86px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.09)}
-.aDate{font-size:10px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:#c7add8}
-.aName{font-size:17px;font-weight:820;line-height:1.08;color:#f5f2f6}
-.aWhere{font-size:10px;color:#8f9aa2;margin-top:4px;text-transform:uppercase;letter-spacing:.07em}.aLineup{font-size:10px;line-height:1.3;color:#c8b8d3;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.aLineup b{color:#9b83ad;font-weight:800}
+.aEvent{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.aDate{font-size:11px;font-weight:900;letter-spacing:.10em;text-transform:uppercase;color:#d6bce7}
+.aName{font-size:20px;font-weight:840;line-height:1.06;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.38)}
+.aWhere{font-size:11px;color:#b4bdc4;margin-top:5px;text-transform:uppercase;letter-spacing:.07em}.aLineup{font-size:11px;line-height:1.32;color:#ddcde8;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.aLineup b{color:#b99dca;font-weight:850}
 .aSrc{display:none}
-.austinSource{padding-top:8px;font-size:8px;letter-spacing:.10em;text-transform:uppercase;color:#666f77}
+.austinSource{padding-top:9px;font-size:8px;letter-spacing:.10em;text-transform:uppercase;color:#a4abb0}
 .breakRail{display:grid;grid-template-columns:145px 1fr;gap:18px;align-items:stretch;padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}
 .breakLabel{display:flex;flex-direction:column;justify-content:center}
 .breakLabel b{font-size:13px;color:#fff}
@@ -162,7 +162,10 @@
   .accMain{grid-template-columns:.9fr 1.1fr;gap:36px}
   .accFeature h2{font-size:30px}
   .accFeature{grid-template-rows:minmax(165px,1fr) auto}
-  .aEvent{padding:9px 0}
+  .aEvent{padding:11px 0}
+  .aName{font-size:19px}
+  .aDate{font-size:11px}
+  .aWhere,.aLineup{font-size:10.5px}
   .holidayList{gap:14px}
   .historyCopy{padding:24px 30px 24px 34px}
   .historyTitle{font-size:48px}
@@ -220,7 +223,7 @@
     <div class="accMain">
       <article class="accFeature">
         <div class="accCampusPhoto">
-          <img src="/api/official-image?kind=accHighland&v=20261004-1" alt="ACC Highland campus">
+          <img id="accCampusPhoto" src="/api/official-image?kind=accCampusDaily&v=20261004-2" alt="ACC Highland campus life">
           <span>ACC Highland · official campus photography</span>
         </div>
         <div class="accFeatureCopy">
@@ -233,7 +236,7 @@
           </div>
         </div>
       </article>
-      <section class="austinPanel">
+      <section class="austinPanel" id="austinPanel">
         <div class="austinHead"><h3>Around town</h3><span>Austin picks</span></div>
         <div class="austinEvents" id="austinEvents"></div>
         <div class="austinSource">Visit Austin + local venue calendars</div>
@@ -265,7 +268,7 @@
 </section><footer class="nav" id="nav"></footer></main>
 <script>
 const TZ='America/Chicago', screens=[...document.querySelectorAll('.screen')],nav=document.getElementById('nav');let idx=0;
-function tickHeroClock(){let d=new Date();heroClock.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d);heroClockDate.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'long',month:'long',day:'numeric'}).format(d)}tickHeroClock();setInterval(tickHeroClock,1000);function refreshDailyPhotos(){let d=Math.floor(Date.now()/86400000);let fc=document.getElementById('fcDailyPhoto');if(fc)fc.src='/api/official-image?kind=fcDaily&d='+d+'&v=5';let hp=document.getElementById('historyPhoto');if(hp)hp.src='/api/official-image?kind=historyDaily&d='+d+'&v=2'}refreshDailyPhotos();setInterval(refreshDailyPhotos,3600000);
+function tickHeroClock(){let d=new Date();heroClock.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d);heroClockDate.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'long',month:'long',day:'numeric'}).format(d)}tickHeroClock();setInterval(tickHeroClock,1000);function refreshDailyPhotos(){let d=Math.floor(Date.now()/86400000);let fc=document.getElementById('fcDailyPhoto');if(fc)fc.src='/api/official-image?kind=fcDaily&d='+d+'&v=5';let hp=document.getElementById('historyPhoto');if(hp)hp.src='/api/official-image?kind=historyDaily&d='+d+'&v=2';let ac=document.getElementById('accCampusPhoto');if(ac)ac.src='/api/official-image?kind=accCampusDaily&d='+d+'&v=3';let ap=document.getElementById('austinPanel');if(ap)ap.style.backgroundImage="url('/api/official-image?kind=austinCityDaily&d="+d+"&v=2')"}refreshDailyPhotos();setInterval(refreshDailyPhotos,3600000);
 function show(i){idx=(i+screens.length)%screens.length;screens.forEach((s,n)=>s.classList.toggle('active',n===idx));nav.innerHTML=screens.map((s,n)=>'<span class="'+(n===idx?'on':'')+'"><i class="dot"></i>'+s.dataset.name+'</span>').join('');}show(0);setInterval(()=>show(idx+1),75000);
 let x0=0;document.addEventListener('touchstart',e=>x0=e.touches[0].clientX);document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>70)show(idx+(dx<0?1:-1))});
 const wx={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Foggy',48:'Foggy',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',80:'Rain showers',81:'Rain showers',82:'Heavy showers',95:'Thunderstorms'};
