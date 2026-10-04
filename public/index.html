@@ -59,31 +59,33 @@
 .status{font-size:9px;letter-spacing:.1em;color:#6f7a84;margin-top:3px;text-align:right}
 .fc{background:#050706;color:#fff}
 .fc:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#060806,#0a100c 58%,#07150b)}
-.fcWrap{position:relative;height:100%;padding:26px 34px 30px;display:grid;grid-template-columns:1.12fr .88fr;gap:26px;z-index:2}
-.fcPhoto{position:relative;min-width:0;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 50px rgba(0,0,0,.35)}
-.fcPhoto img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;filter:saturate(.96) contrast(1.02) brightness(.9);image-rendering:auto}
-.fcPhoto:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.74),transparent 48%),linear-gradient(90deg,transparent 62%,rgba(0,0,0,.28))}
-.fcPhotoLabel{position:absolute;left:20px;bottom:18px;right:20px;z-index:2}
-.fcPhotoLabel b{display:block;font-size:12px;letter-spacing:.17em;text-transform:uppercase;color:#a7efbc}
-.fcPhotoLabel span{display:block;margin-top:5px;font-size:18px;font-weight:800;line-height:1.1}
-.fcData{display:flex;flex-direction:column;justify-content:space-between;padding:6px 0 2px}
-.fcWord{padding:0;text-shadow:none}
-.fcWord .listos{font-size:13px;font-weight:950;letter-spacing:.22em;text-transform:uppercase;color:#8ce9aa}
-.fcWord .verdeWord{font-size:72px;font-weight:950;line-height:.8;letter-spacing:-.055em;text-transform:uppercase;margin:10px 0}
-.fcWord .motto{font-size:15px;font-weight:750;max-width:340px;color:#cbd3ce}
-.fcMatch{width:100%;background:rgba(10,15,11,.82);border-top:1px solid rgba(255,255,255,.15);border-left:7px solid var(--verde);padding:20px 22px 18px;backdrop-filter:blur(8px)}
-.fcLabel{font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#9eeab7}
-.fcOpponent{font-size:38px;font-weight:950;line-height:1;margin:7px 0 8px}
-.fcMeta{font-size:18px;font-weight:800}
-.fcVenue{font-size:12px;color:#cbd4ce;margin-top:5px;text-transform:uppercase;letter-spacing:.12em}
-.fcLast{margin-top:18px;padding-top:12px;border-top:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;align-items:center}
-.fcLast b{font-size:30px}
-.fcLast span{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:#c4cbc6}
-.fcStory{margin-top:14px;padding:14px 16px 13px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10)}
-.fcStoryLabel{font-size:9px;font-weight:900;letter-spacing:.17em;text-transform:uppercase;color:#8ce9aa}
-.fcStory h3{font-size:17px;line-height:1.1;margin:6px 0 5px}
-.fcStory p{font-size:11px;line-height:1.4;color:#b9c3bd;margin:0}
-.fcStorySource{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#6f7b74;margin-top:7px}
+.fcWrap{position:relative;height:100%;padding:24px 32px 28px;display:grid;grid-template-columns:minmax(0,.96fr) minmax(420px,1.04fr);gap:24px;z-index:2}
+.fcPhoto{position:relative;min-width:0;min-height:0;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 50px rgba(0,0,0,.35)}
+.fcPhoto img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;filter:saturate(.98) contrast(1.02) brightness(.92);image-rendering:auto}
+.fcPhoto:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.70),transparent 46%),linear-gradient(90deg,transparent 68%,rgba(0,0,0,.18))}
+.fcPhotoLabel{position:absolute;left:20px;bottom:17px;right:20px;z-index:2}
+.fcPhotoLabel b{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#a7efbc}
+.fcPhotoLabel span{display:block;margin-top:5px;font-size:16px;font-weight:780;line-height:1.15}
+.fcData{min-width:0;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:14px}
+.fcWord{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;padding:1px 0 2px}
+.fcWord .listos{font-size:11px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#8ce9aa}
+.fcWord .verdeWord{font-size:clamp(34px,4.1vw,54px);font-weight:950;line-height:.86;letter-spacing:-.05em;text-transform:uppercase;margin:5px 0 0}
+.fcWord .motto{font-size:12px;line-height:1.35;font-weight:700;max-width:210px;color:#9ea9a2;text-align:right}
+.fcMatch{min-height:0;background:rgba(10,15,11,.86);border:1px solid rgba(255,255,255,.11);border-left:7px solid var(--verde);padding:18px 20px 17px;display:grid;grid-template-rows:auto auto 1fr auto;backdrop-filter:blur(8px)}
+.fcLabel{font-size:10px;font-weight:900;letter-spacing:.17em;text-transform:uppercase;color:#9eeab7}
+.fcOpponent{font-size:clamp(32px,4vw,46px);font-weight:950;line-height:.96;margin:7px 0 7px;letter-spacing:-.035em}
+.fcMeta{font-size:clamp(17px,1.8vw,22px);font-weight:850;line-height:1.1}
+.fcVenue{font-size:11px;color:#cbd4ce;margin-top:6px;text-transform:uppercase;letter-spacing:.11em}
+.fcLast{margin-top:16px;padding-top:13px;border-top:1px solid rgba(255,255,255,.18);display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end}
+.fcLastText{min-width:0}
+.fcLast span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#9eaaa2}
+.fcLast strong{display:block;font-size:clamp(19px,2.1vw,25px);line-height:1.05;margin-top:5px;color:#fff}
+.fcLast b{font-size:clamp(38px,4.7vw,54px);line-height:.82;letter-spacing:-.06em}
+.fcStory{padding:14px 16px 13px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10)}
+.fcStoryLabel{font-size:9px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#8ce9aa}
+.fcStory h3{font-size:clamp(18px,1.8vw,22px);line-height:1.08;margin:6px 0 6px}
+.fcStory p{font-size:13px;line-height:1.38;color:#c3ccc6;margin:0}
+.fcStorySource{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#718078;margin-top:7px}
 .acc{background:#0d1015 url('/api/official-image?kind=acc&v=20261004-4') center/cover no-repeat;color:#f4f1f5}
 .acc:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,14,.96) 0%,rgba(12,11,16,.91) 48%,rgba(9,11,15,.80) 100%),linear-gradient(180deg,rgba(7,9,12,.10),rgba(7,9,12,.62))}
 .accWrap{position:relative;height:100%;padding:24px 38px 26px;display:grid;grid-template-rows:auto 1fr auto;gap:18px}
@@ -153,10 +155,17 @@
   .departure{grid-template-columns:124px 1fr 176px;gap:16px}
   .dest{font-size:24px}
   .eta{font-size:46px}
-  .fcWrap{padding:22px 30px 26px;grid-template-columns:1.15fr .85fr;gap:22px}
-  .fcWord .verdeWord{font-size:68px}
-  .fcMatch{padding:18px 20px 16px}
-  .fcOpponent{font-size:34px}
+  .fcWrap{padding:20px 28px 24px;grid-template-columns:minmax(0,.94fr) minmax(430px,1.06fr);gap:20px}
+  .fcData{gap:12px}
+  .fcWord .verdeWord{font-size:42px}
+  .fcWord .motto{font-size:11px;max-width:190px}
+  .fcMatch{padding:16px 18px 15px}
+  .fcOpponent{font-size:38px}
+  .fcMeta{font-size:18px}
+  .fcLast b{font-size:44px}
+  .fcStory{padding:12px 14px 11px}
+  .fcStory h3{font-size:19px}
+  .fcStory p{font-size:12px}
   .accWrap{padding:22px 34px 24px;gap:16px}
   .accMast h1{font-size:32px}
   .accMain{grid-template-columns:.9fr 1.1fr;gap:36px}
@@ -202,14 +211,23 @@
   <div class="fcWrap">
     <div class="fcPhoto">
       <img id="fcDailyPhoto" src="/api/official-image?kind=fcDaily&v=20261004-5" alt="Recent Austin FC match photography">
-      <div class="fcPhotoLabel"><b>Through the Lens · recent match gallery</b><span>Official Austin FC game photography · different every day.</span></div>
+      <div class="fcPhotoLabel"><b>Through the Lens · recent match gallery</b><span>Official Austin FC match photography · refreshed daily</span></div>
     </div>
     <div class="fcData">
-      <div class="fcWord"><div class="listos">Austin FC · Verde Listos</div><div class="verdeWord">VERDE<br>LISTOS</div><div class="motto">The club looks better when the people who make it loud are in the picture.</div></div>
-      <div>
-  <div class="fcMatch"><div class="fcLabel">Next match</div><div class="fcOpponent">Nashville SC</div><div class="fcMeta">SAT · OCT 10 · 7:30 PM</div><div class="fcVenue">Home · Q2 Stadium</div><div class="fcLast"><span>Last match · San Diego FC</span><b>3–3</b></div></div>
-  <div class="fcStory"><div class="fcStoryLabel">Top team story this week</div><h3>Historic three-goal comeback at Q2</h3><p>Austin FC erased a 3–0 deficit to draw San Diego 3–3 — the first time in club history the team came back from three goals down to earn a result.</p><div class="fcStorySource">Austin FC · Sept. 27, 2026</div></div>
-</div>
+      <div class="fcWord">
+        <div><div class="listos">Austin FC · Verde Listos</div><div class="verdeWord">VERDE LISTOS</div></div>
+        <div class="motto">Match information first. Club story second.</div>
+      </div>
+      <div class="fcMatch">
+        <div class="fcLabel">Next match</div>
+        <div class="fcOpponent">Nashville SC</div>
+        <div><div class="fcMeta">SAT · OCT 10 · 7:30 PM</div><div class="fcVenue">Home · Q2 Stadium</div></div>
+        <div class="fcLast">
+          <div class="fcLastText"><span>Last match</span><strong>vs. San Diego FC</strong></div>
+          <b>3–3</b>
+        </div>
+      </div>
+      <div class="fcStory"><div class="fcStoryLabel">Top team story this week</div><h3>Historic three-goal comeback at Q2</h3><p>Austin FC erased a 3–0 deficit to draw San Diego 3–3 — the first time in club history the team came back from three goals down to earn a result.</p><div class="fcStorySource">Austin FC · Sept. 27, 2026</div></div>
     </div>
   </div>
   <div class="photoCredit">Austin FC · official Through the Lens photography</div>
