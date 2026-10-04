@@ -1,4 +1,4 @@
-const BUILD='2026-10-04.2345';
+const BUILD='2026-10-04.2405';
 const FEED='https://data.texas.gov/download/rmk2-acnw/application%2Foctet-stream';
 const targets=[{key:'7n',stop:'1264',route:'7'},{key:'10s',stop:'3532',route:'10'},{key:'7s',stop:'5603',route:'7'}];
 function varint(b,p){let n=0,s=0;while(p.i<b.length){let x=b[p.i++];n+=(x&127)*2**s;if(!(x&128))return n;s+=7}return n}
@@ -114,6 +114,12 @@ async function austinCityDailyImage(headers){
   const r=await fetch(page,{headers});
   if(!r.ok)return null;
   const html=await r.text();
+  // Prefer an actual photographic page asset rather than a logo/social-card graphic.
+  let imgs=[...html.matchAll(/https?:\/\/[^"'\s<]+\.(?:jpe?g|png|webp)(?:\?[^"'\s<]*)?/ig)]
+    .map(m=>m[0].replace(/&amp;/g,'&'))
+    .filter(u=>!/logo|icon|favicon|avatar|sprite|badge|map/i.test(u));
+  imgs=[...new Set(imgs)];
+  if(imgs.length)return imgs[(dayIndex()*7)%imgs.length];
   return ogFromHtml(html,page);
 }
 
