@@ -48,7 +48,7 @@
 .busRouteChips b{width:42px;height:42px;border-radius:8px;display:grid;place-items:center;background:#2d1c39;border:1px solid #725587;color:#fff;font-size:21px}
 .busLive{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8f9aa4}
 .busLive:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#70c88e;margin-right:8px}
-.departure{display:grid;grid-template-columns:92px 1fr 188px;align-items:center;gap:18px;border-bottom:1px solid #27313a}
+.departure{display:grid;grid-template-columns:132px 1fr 188px;align-items:center;gap:18px;border-bottom:1px solid #27313a}.tripIdentity{display:flex;align-items:center;gap:12px}.tripIcon{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:#1c232b;border:1px solid #34414c;color:#d7c4e4;flex:0 0 38px}.tripIcon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .departure:last-child{border-bottom:0}
 .routeBadge{font-weight:900;font-size:12px;letter-spacing:.08em;color:#cbb7d8}
 .routeBadge b{display:block;font-size:42px;line-height:.9;color:#fff;margin-bottom:5px}
@@ -105,7 +105,7 @@
   .suntime{font-size:29px}
   .busGrid{padding:22px 28px}
   .busShell{width:min(860px,94vw);height:min(500px,90%);padding:18px 22px 8px}
-  .departure{grid-template-columns:84px 1fr 176px;gap:16px}
+  .departure{grid-template-columns:124px 1fr 176px;gap:16px}
   .dest{font-size:24px}
   .eta{font-size:46px}
   .fcWrap{padding:22px 30px 26px;grid-template-columns:1.15fr .85fr;gap:22px}
@@ -138,9 +138,9 @@
         </div>
         <div class="busLive">Realtime · Austin</div>
       </div>
-      <div class="departure"><div class="routeBadge"><b>7</b>NORTH</div><div class="dest">Highland<small>From 45th & Duval area</small></div><div><div class="eta" id="b7n">—</div><div class="next" id="n7n"></div><div class="status" id="s7n"></div></div></div>
-      <div class="departure"><div class="routeBadge"><b>10</b>SOUTH</div><div class="dest">Lake<small>From home</small></div><div><div class="eta" id="b10s">—</div><div class="next" id="n10s"></div><div class="status" id="s10s"></div></div></div>
-      <div class="departure"><div class="routeBadge"><b>7</b>SOUTH</div><div class="dest">Home<small>From ACC Highland</small></div><div><div class="eta" id="b7s">—</div><div class="next" id="n7s"></div><div class="status" id="s7s"></div></div></div>
+      <div class="departure"><div class="tripIdentity"><div class="tripIcon" title="Work / school"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V8l6-3 6 3v12M9 11h2M13 11h2M9 15h2M13 15h2M11 20v-3h2v3"/></svg></div><div class="routeBadge"><b>7</b>NORTH</div></div><div class="dest">Highland<small>Work / school · from 45th & Duval area</small></div><div><div class="eta" id="b7n">—</div><div class="next" id="n7n"></div><div class="status" id="s7n"></div></div></div>
+      <div class="departure"><div class="tripIdentity"><div class="tripIcon" title="Walk / run / explore downtown"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13" cy="5" r="2"/><path d="M10 21l2-6-3-2 2-5 3 2 2 3h3M12 15l4 3 1 3M6 11l3-3"/></svg></div><div class="routeBadge"><b>10</b>SOUTH</div></div><div class="dest">Lake<small>Walk / run / explore downtown · from home</small></div><div><div class="eta" id="b10s">—</div><div class="next" id="n10s"></div><div class="status" id="s10s"></div></div></div>
+      <div class="departure"><div class="tripIdentity"><div class="tripIcon" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7M5 10v10h14V10M9 20v-6h6v6"/></svg></div><div class="routeBadge"><b>7</b>SOUTH</div></div><div class="dest">Home<small>Apartment / home · from ACC Highland</small></div><div><div class="eta" id="b7s">—</div><div class="next" id="n7s"></div><div class="status" id="s7s"></div></div></div>
     </div>
   </div>
 </section>
