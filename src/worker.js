@@ -64,40 +64,88 @@ async function fcDailyImage(headers){
   const og=await pageOgImage(album,headers);
   return og?highResMls(og):null;
 }
+
+const WEATHER_PAGES=[
+  'https://www.austintexas.gov/parks/locations/ann-and-roy-butler-hike-and-bike-trail-and-boardwalk-lady-bird-lake',
+  'https://www.austintexas.gov/parks/locations/lady-bird-lake',
+  'https://www.austintexas.gov/parks/locations/zilker-metropolitan-park',
+  'https://www.austintexas.gov/parks/locations/barton-springs-pool',
+  'https://www.austintexas.gov/parks/locations/auditorium-shores-at-town-lake-metropolitan-park'
+];
+const dayIndex=()=>Math.floor(Date.now()/86400000);
+function ogFromHtml(html,page){
+  const m=html.match(/<meta[^>]+(?:property|name)=["']og:image["'][^>]+content=["']([^"']+)/i)||html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+(?:property|name)=["']og:image["']/i);
+  return m?new URL(m[1].replace(/&amp;/g,'&'),page).href:null;
+}
+function highResMls(url){
+  try{
+    const u=new URL(url);
+    if(!u.hostname.includes('images.mlssoccer.com'))return url;
+    const marker='/image/private/';
+    const p=u.pathname.indexOf(marker);
+    if(p<0)return url;
+    let tail=u.pathname.slice(p+marker.length);
+    tail=tail.replace(/^(?:[^/]*\/)*(?=mls-atx-prd\/)/,'');
+    u.pathname=marker+'w_2400,q_auto:best,f_auto/'+tail;
+    return u.href;
+  }catch(e){return url}
+}
+async function fetchImageResponse(imageUrl,headers,label){
+  const ir=await fetch(imageUrl,{headers});
+  if(!ir.ok)return null;
+  const hd=new Headers(ir.headers);
+  hd.set('Cache-Control','public, max-age=21600');
+  if(label)hd.set('X-Kiosk-Image-Source',label);
+  hd.delete('set-cookie');
+  return new Response(ir.body,{status:200,headers:hd});
+}
+async function fcDailyImage(headers){
+  const listing=imagePages.fc;
+  const lr=await fetch(listing,{headers});
+  if(!lr.ok)return null;
+  const html=await lr.text();
+  let albums=[...html.matchAll(/href=["']([^"']*\/albums\/[^"']+)["']/ig)]
+    .map(m=>new URL(m[1],listing).href)
+    .filter(u=>/through-the-lens/i.test(u));
+  albums=[...new Set(albums)].slice(0,40);
+  if(!albums.length)return null;
+  const album=albums[dayIndex()%albums.length];
+  const ar=await fetch(album,{headers});
+  if(!ar.ok)return null;
+  const ah=await ar.text();
+  let imageUrl=ogFromHtml(ah,album);
+  if(!imageUrl){
+    const imgs=[...ah.matchAll(/https:\/\/images\.mlssoccer\.com\/image\/private\/[^"'\s<]+/ig)].map(m=>m[0].replace(/&amp;/g,'&'));
+    imageUrl=[...new Set(imgs)][dayIndex()%Math.max(1,imgs.length)]||null;
+  }
+  return imageUrl?highResMls(imageUrl):null;
+}
 async function officialImage(kind,mode){
-  let page=imagePages[kind];
   const headers={'User-Agent':'Mozilla/5.0'};
   if(kind==='fcDaily'){
     const imageUrl=await fcDailyImage(headers);
     if(!imageUrl)return new Response('image unavailable',{status:404});
-    const ir=await fetch(imageUrl,{headers});
-    if(!ir.ok)return new Response('image unavailable',{status:502});
-    const hd=new Headers(ir.headers);hd.set('Cache-Control','public, max-age=21600');hd.set('X-Kiosk-Image-Source','AustinFC-live-gallery');hd.delete('set-cookie');
-    return new Response(ir.body,{status:200,headers:hd});
+    return await fetchImageResponse(imageUrl,headers,'AustinFC-ThroughTheLens-highres')||new Response('image unavailable',{status:502});
   }
+  let page=imagePages[kind];
   if(kind==='weatherDaily'){
-    const pool=weatherPools[mode]||weatherPools.clear;
-    page=pool[dayIndex()%pool.length];
+    const offset={clear:0,cloudy:1,rain:2,storm:3,fog:4}[mode]??0;
+    page=WEATHER_PAGES[(dayIndex()+offset)%WEATHER_PAGES.length];
   }
   if(!page)return new Response('unknown image',{status:404});
   if(kind==='fc'){
-    let listing=await fetch(page,{headers}),html=await listing.text();
+    const listing=await fetch(page,{headers});
+    const html=await listing.text();
     let albums=[...html.matchAll(/href=["']([^"']*\/albums\/[^"']+)["']/ig)].map(m=>new URL(m[1],page).href);
-    albums=[...new Set(albums)].slice(0,8);
-    if(albums.length){
-      let pick=albums[Math.floor(Date.now()/86400000)%albums.length];
-      let ar=await fetch(pick,{headers}),ah=await ar.text();
-      let am=ah.match(/<meta[^>]+(?:property|name)=["']og:image["'][^>]+content=["']([^"']+)/i)||ah.match(/<meta[^>]+content=["']([^"']+)["'][^>]+(?:property|name)=["']og:image["']/i);
-      if(am)page=pick;
-    }
+    albums=[...new Set(albums)].slice(0,16);
+    if(albums.length)page=albums[dayIndex()%albums.length];
   }
-  let r=await fetch(page,{headers}),html=await r.text();
-  let m=html.match(/<meta[^>]+(?:property|name)=["']og:image["'][^>]+content=["']([^"']+)/i)||html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+(?:property|name)=["']og:image["']/i);
-  if(!m)return new Response('image unavailable',{status:404});
-  let imageUrl=new URL(m[1],page).href;
-  let ir=await fetch(imageUrl,{headers});
-  if(!ir.ok)return new Response('image unavailable',{status:502});
-  let hd=new Headers(ir.headers);hd.set('Cache-Control','public, max-age=21600');hd.delete('set-cookie');
-  return new Response(ir.body,{status:200,headers:hd})
+  const r=await fetch(page,{headers});
+  if(!r.ok)return new Response('image unavailable',{status:502});
+  const html=await r.text();
+  const imageUrl=ogFromHtml(html,page);
+  if(!imageUrl)return new Response('image unavailable',{status:404});
+  return await fetchImageResponse(highResMls(imageUrl),headers,kind)||new Response('image unavailable',{status:502});
 }
+
 export default{async fetch(req,env){let u=new URL(req.url);if(u.pathname==='/api/official-image')return officialImage(u.searchParams.get('kind'),u.searchParams.get('mode')||'clear');if(u.pathname==='/api/buses'){try{let r=await fetch(FEED,{cf:{cacheTtl:0}});if(!r.ok)throw Error('feed '+r.status);let routes=decode(await r.arrayBuffer());return Response.json({updatedAt:Date.now(),routes},{headers:{'Cache-Control':'no-store'}})}catch(e){return Response.json({updatedAt:Date.now(),routes:{'7n':[],'10s':[],'7s':[]},error:String(e)},{status:503})}}return env.ASSETS.fetch(req)}}
