@@ -9,6 +9,25 @@ async function officialImage(kind){
   let page=imagePages[kind];
   if(!page)return new Response('unknown image',{status:404});
   const headers={'User-Agent':'Mozilla/5.0'};
+  if(kind==='fcSupporters'){
+    const candidates=[
+      'https://images.mlssoccer.com/image/private/w_2200,q_auto:best,f_auto/mls-atx-prd/rbpe5qik2ggxfvjldnuq.jpg',
+      'https://images.mlssoccer.com/image/private/w_1800,q_auto:best,f_auto/mls-atx-prd/rbpe5qik2ggxfvjldnuq.jpg',
+      'https://images.mlssoccer.com/image/private/t_editorial_landscape_8_desktop_mobile/f_auto/mls-atx-prd/rbpe5qik2ggxfvjldnuq.jpg'
+    ];
+    for(const imageUrl of candidates){
+      try{
+        const ir=await fetch(imageUrl,{headers});
+        if(ir.ok){
+          const hd=new Headers(ir.headers);
+          hd.set('Cache-Control','public, max-age=21600');
+          hd.set('X-Kiosk-Image-Source','AustinFC-highres');
+          hd.delete('set-cookie');
+          return new Response(ir.body,{status:200,headers:hd});
+        }
+      }catch(e){}
+    }
+  }
   if(kind==='fc'){
     let listing=await fetch(page,{headers}),html=await listing.text();
     let albums=[...html.matchAll(/href=["']([^"']*\/albums\/[^"']+)["']/ig)].map(m=>new URL(m[1],page).href);
