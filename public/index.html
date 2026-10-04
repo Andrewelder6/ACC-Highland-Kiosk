@@ -106,7 +106,7 @@
 .featureSchedule div{font-size:14px;color:#eee8f0}
 .featureSchedule b{font-weight:850;color:#fff}
 .austinPanel{align-self:stretch;min-height:0;position:relative;background:#111 center/cover no-repeat;border:1px solid rgba(255,255,255,.11);padding:16px 18px 14px;overflow:hidden;box-shadow:0 18px 42px rgba(0,0,0,.22)}.austinPanel:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,13,.68),rgba(7,10,13,.82) 48%,rgba(7,10,13,.92));z-index:0}.austinPanel>*{position:relative;z-index:1}
-.austinHead{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.13);margin-bottom:0}
+.austinHead{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:0}.austinHeadTitle{display:flex;align-items:center;gap:10px}.austinMark{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#d8c5e4}.austinMark svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .austinHead h3{margin:0;font-size:23px;letter-spacing:-.025em;color:#fff}
 .austinHead span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#7f8991}
 .austinEvents{display:grid}
@@ -116,19 +116,19 @@
 .aWhere{font-size:11px;color:#b4bdc4;margin-top:5px;text-transform:uppercase;letter-spacing:.07em}.aLineup{font-size:11px;line-height:1.32;color:#ddcde8;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.aLineup b{color:#b99dca;font-weight:850}
 .aSrc{display:none}
 .austinSource{padding-top:9px;font-size:8px;letter-spacing:.10em;text-transform:uppercase;color:#a4abb0}
-.breakRail{display:grid;grid-template-columns:145px 1fr;gap:18px;align-items:stretch;padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}
+.breakRail{display:grid;grid-template-columns:175px 1fr;gap:22px;align-items:center;padding-top:16px;border-top:1px solid rgba(255,255,255,.16)}
 .breakLabel{display:flex;flex-direction:column;justify-content:center}
-.breakLabel b{font-size:13px;color:#fff}
-.breakLabel span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#7e8992;margin-top:4px}
-.holidayList{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;overflow:visible}
-.holiday{display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center;padding:0 0 0 14px;border-left:1px solid rgba(255,255,255,.11)}
+.breakLabel b{font-size:19px;line-height:1;color:#fff;letter-spacing:-.02em}
+.breakLabel span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9aa4ac;margin-top:6px}
+.holidayList{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;overflow:visible}
+.holiday{display:grid;grid-template-columns:40px 1fr auto;gap:11px;align-items:center;padding:2px 0 2px 18px;border-left:1px solid rgba(255,255,255,.13)}
 .holiday:first-child{border-left:0;padding-left:0}
-.hicon{font-size:22px;text-align:center}
-.hname{font-size:14px;font-weight:850;line-height:1.1}
-.hoff{font-size:9px;color:#89939b;margin-top:4px;line-height:1.25}
+.hicon{font-size:28px;text-align:center}
+.hname{font-size:17px;font-weight:850;line-height:1.08}
+.hoff{font-size:10px;color:#a0a9b0;margin-top:5px;line-height:1.25}
 .hcount{text-align:right;white-space:nowrap}
-.hcount b{display:block;font-size:18px;color:#cfb6df;letter-spacing:-.025em}
-.hcount span{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:#78838c}
+.hcount b{display:block;font-size:24px;color:#dcc5ea;letter-spacing:-.035em}
+.hcount span{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#89949d}
 .photoCredit.dark{color:rgba(230,230,235,.38)}
 @media(max-width:900px){.top{padding:0 24px}.weatherWrap,.fcWrap,.accWrap{padding-left:28px;padding-right:28px}.temp{font-size:112px}.busGrid{grid-template-columns:170px 1fr}.routeStack b{width:60px;height:60px;font-size:33px}.departure{grid-template-columns:125px 1fr 175px}.dest{font-size:25px}.eta{font-size:48px}.fcWord .verdeWord{font-size:68px}}
 
@@ -180,7 +180,7 @@
     </div>
     <div class="wxForecast"><div class="timeline" id="hours"></div><div class="days" id="days"></div></div>
   </div>
-  <div class="photoCredit">Austin Parks & Recreation · Lady Bird Lake</div>
+  <div class="photoCredit">Live Austin weather-cam imagery · FOX 7 / WMVision · local Austin fallback</div>
 </section>
 <section class="screen bus" data-name="BUS">
   <div class="busGrid">
@@ -237,7 +237,7 @@
         </div>
       </article>
       <section class="austinPanel" id="austinPanel">
-        <div class="austinHead"><h3>Around town</h3><span>Austin picks</span></div>
+        <div class="austinHead"><div class="austinHeadTitle"><span class="austinMark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M4 29h32M7 29v-6h5v6m3 0V17h5v12m3 0V21h5v8m3 0V12h4v17"/><path d="M12 17h8m11-5h4M18 12c2-4 6-4 8 0"/></svg></span><h3>Around town</h3></div><span>Austin, TX · picks</span></div>
         <div class="austinEvents" id="austinEvents"></div>
         <div class="austinSource">Visit Austin + local venue calendars</div>
       </section>
@@ -261,19 +261,19 @@
       <div class="historyDetail" id="historyDetail"></div>
       <div class="historySource" id="historySource"></div>
     </div>
-    <div class="historyVisual"><img id="historyPhoto" src="/api/official-image?kind=historyDaily&v=20261004-1" alt="Historic Austin archival photograph"><div class="historyArchive">Austin archive image · Library of Congress</div><div class="historyBadge"><div class="historyYear" id="historyYear"></div><div class="historyPlace" id="historyPlace"></div></div></div>
+    <div class="historyVisual"><img id="historyPhoto" src="/api/official-image?kind=historyDaily&v=20261004-1" alt="Historic Austin archival photograph"><div class="historyArchive">Austin archive image · Austin History Center / UNT</div><div class="historyBadge"><div class="historyYear" id="historyYear"></div><div class="historyPlace" id="historyPlace"></div></div></div>
   </div>
   <div class="historyFoot">One Austin story a day · fact pool refreshed monthly</div>
 </section>
 </section><footer class="nav" id="nav"></footer></main>
 <script>
 const TZ='America/Chicago', screens=[...document.querySelectorAll('.screen')],nav=document.getElementById('nav');let idx=0;
-function tickHeroClock(){let d=new Date();heroClock.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d);heroClockDate.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'long',month:'long',day:'numeric'}).format(d)}tickHeroClock();setInterval(tickHeroClock,1000);function refreshDailyPhotos(){let d=Math.floor(Date.now()/86400000);let fc=document.getElementById('fcDailyPhoto');if(fc)fc.src='/api/official-image?kind=fcDaily&d='+d+'&v=5';let hp=document.getElementById('historyPhoto');if(hp)hp.src='/api/official-image?kind=historyDaily&d='+d+'&v=2';let ac=document.getElementById('accCampusPhoto');if(ac)ac.src='/api/official-image?kind=accCampusDaily&d='+d+'&v=3';let ap=document.getElementById('austinPanel');if(ap)ap.style.backgroundImage="url('/api/official-image?kind=austinCityDaily&d="+d+"&v=2')"}refreshDailyPhotos();setInterval(refreshDailyPhotos,3600000);
+function tickHeroClock(){let d=new Date();heroClock.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d);heroClockDate.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'long',month:'long',day:'numeric'}).format(d)}tickHeroClock();setInterval(tickHeroClock,1000);function refreshDailyPhotos(){let d=Math.floor(Date.now()/86400000);let fc=document.getElementById('fcDailyPhoto');if(fc)fc.src='/api/official-image?kind=fcDaily&d='+d+'&v=5';let hp=document.getElementById('historyPhoto');if(hp)hp.src='/api/official-image?kind=historyDaily&d='+d+'&v=3';let ac=document.getElementById('accCampusPhoto');if(ac)ac.src='/api/official-image?kind=accCampusDaily&d='+d+'&v=3';let ap=document.getElementById('austinPanel');if(ap)ap.style.backgroundImage="url('/api/official-image?kind=austinCityDaily&d="+d+"&v=2')"}refreshDailyPhotos();setInterval(refreshDailyPhotos,3600000);
 function show(i){idx=(i+screens.length)%screens.length;screens.forEach((s,n)=>s.classList.toggle('active',n===idx));nav.innerHTML=screens.map((s,n)=>'<span class="'+(n===idx?'on':'')+'"><i class="dot"></i>'+s.dataset.name+'</span>').join('');}show(0);setInterval(()=>show(idx+1),75000);
 let x0=0;document.addEventListener('touchstart',e=>x0=e.touches[0].clientX);document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>70)show(idx+(dx<0?1:-1))});
 const wx={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Foggy',48:'Foggy',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',80:'Rain showers',81:'Rain showers',82:'Heavy showers',95:'Thunderstorms'};
 function fmtSun(v){return new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit'}).format(new Date(v))}
-async function weather(){try{let u='https://api.open-meteo.com/v1/forecast?latitude=30.2672&longitude=-97.7431&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m&hourly=temperature_2m,precipitation_probability,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FChicago&forecast_days=7';let j=await(await fetch(u)).json(),c=j.current;let mode=(c.weather_code===45||c.weather_code===48)?'fog':(c.weather_code>=95?'storm':((c.weather_code>=51&&c.weather_code<=82)?'rain':(c.weather_code>=2?'cloudy':'clear')));let ws=document.querySelector('.weather');ws.classList.remove('wx-clear','wx-cloudy','wx-rain','wx-storm','wx-fog');ws.classList.add('wx-'+mode);ws.style.backgroundImage="url('/api/official-image?kind=weatherDaily&mode="+mode+"&d="+Math.floor(Date.now()/86400000)+"')";temp.textContent=Math.round(c.temperature_2m)+'°';cond.textContent=wx[c.weather_code]||'Current conditions';facts.textContent='Feels '+Math.round(c.apparent_temperature)+'° · Humidity '+c.relative_humidity_2m+'% · Wind '+Math.round(c.wind_speed_10m)+' mph';sunrise.textContent=fmtSun(j.daily.sunrise[0]);sunset.textContent=fmtSun(j.daily.sunset[0]);let now=Date.now(),pts=[];for(let i=0;i<j.hourly.time.length&&pts.length<5;i++){let t=new Date(j.hourly.time[i]);if(t.getTime()>=now-3600000&&(pts.length===0||t.getHours()%4===0))pts.push(i)}hours.innerHTML=pts.map(i=>'<div class="hour"><span>'+new Intl.DateTimeFormat('en-US',{hour:'numeric'}).format(new Date(j.hourly.time[i]))+'</span><strong>'+Math.round(j.hourly.temperature_2m[i])+'°</strong><em>'+j.hourly.precipitation_probability[i]+'% rain</em></div>').join('');let max=Math.max(...pts.map(i=>j.hourly.precipitation_probability[i]));raincall.textContent=max>=40?'Rain chance peaks near '+max+'% today':'';days.innerHTML=j.daily.time.slice(0,5).map((d,i)=>'<div class="day"><span>'+new Intl.DateTimeFormat('en-US',{weekday:'short',timeZone:TZ}).format(new Date(d+'T12:00:00'))+'</span><strong>'+Math.round(j.daily.temperature_2m_max[i])+'°</strong><small>'+Math.round(j.daily.temperature_2m_min[i])+'° · '+j.daily.precipitation_probability_max[i]+'%</small></div>').join('')}catch(e){cond.textContent='Weather temporarily unavailable'}}weather();setInterval(weather,600000);
+async function weather(){try{let u='https://api.open-meteo.com/v1/forecast?latitude=30.2672&longitude=-97.7431&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m&hourly=temperature_2m,precipitation_probability,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FChicago&forecast_days=7';let j=await(await fetch(u)).json(),c=j.current;let mode=(c.weather_code===45||c.weather_code===48)?'fog':(c.weather_code>=95?'storm':((c.weather_code>=51&&c.weather_code<=82)?'rain':(c.weather_code>=2?'cloudy':'clear')));let ws=document.querySelector('.weather');ws.classList.remove('wx-clear','wx-cloudy','wx-rain','wx-storm','wx-fog');ws.classList.add('wx-'+mode);ws.style.backgroundImage="url('/api/official-image?kind=weatherCam&t="+Math.floor(Date.now()/180000)+"'),url('/api/official-image?kind=weatherDaily&mode="+mode+"&d="+Math.floor(Date.now()/86400000)+"')";temp.textContent=Math.round(c.temperature_2m)+'°';cond.textContent=wx[c.weather_code]||'Current conditions';facts.textContent='Feels '+Math.round(c.apparent_temperature)+'° · Humidity '+c.relative_humidity_2m+'% · Wind '+Math.round(c.wind_speed_10m)+' mph';sunrise.textContent=fmtSun(j.daily.sunrise[0]);sunset.textContent=fmtSun(j.daily.sunset[0]);let now=Date.now(),pts=[];for(let i=0;i<j.hourly.time.length&&pts.length<5;i++){let t=new Date(j.hourly.time[i]);if(t.getTime()>=now-3600000&&(pts.length===0||t.getHours()%4===0))pts.push(i)}hours.innerHTML=pts.map(i=>'<div class="hour"><span>'+new Intl.DateTimeFormat('en-US',{hour:'numeric'}).format(new Date(j.hourly.time[i]))+'</span><strong>'+Math.round(j.hourly.temperature_2m[i])+'°</strong><em>'+j.hourly.precipitation_probability[i]+'% rain</em></div>').join('');let max=Math.max(...pts.map(i=>j.hourly.precipitation_probability[i]));raincall.textContent=max>=40?'Rain chance peaks near '+max+'% today':'';days.innerHTML=j.daily.time.slice(0,5).map((d,i)=>'<div class="day"><span>'+new Intl.DateTimeFormat('en-US',{weekday:'short',timeZone:TZ}).format(new Date(d+'T12:00:00'))+'</span><strong>'+Math.round(j.daily.temperature_2m_max[i])+'°</strong><small>'+Math.round(j.daily.temperature_2m_min[i])+'° · '+j.daily.precipitation_probability_max[i]+'%</small></div>').join('')}catch(e){cond.textContent='Weather temporarily unavailable'}}weather();setInterval(weather,600000);
 let busData=null;function mins(t){return Math.max(0,Math.ceil((t*1000-Date.now())/60000))}function renderBus(key,a,b,c){let arr=busData?.routes?.[key]||[];if(!arr.length){document.getElementById(a).textContent='—';document.getElementById(b).textContent='Realtime unavailable';document.getElementById(c).textContent='CapMetro feed has no current prediction';return}let m=arr.map(mins).filter(v=>v>=0);document.getElementById(a).textContent=(m[0]===0?'DUE':m[0]+' MIN');document.getElementById(b).textContent=m.length>1?'Next: '+m.slice(1,3).map(v=>v===0?'Due':v+' min').join(' · '):'No later prediction';document.getElementById(c).textContent='Realtime · updated '+Math.max(0,Math.round((Date.now()-busData.updatedAt)/1000))+' sec ago'}
 async function buses(){try{let r=await fetch('/api/buses',{cache:'no-store'});if(!r.ok)throw 0;busData=await r.json()}catch(e){busData=null}renderBus('7n','b7n','n7n','s7n');renderBus('10s','b10s','n10s','s10s');renderBus('7s','b7s','n7s','s7s')}buses();setInterval(buses,25000);setInterval(()=>{renderBus('7n','b7n','n7n','s7n');renderBus('10s','b10s','n10s','s10s');renderBus('7s','b7s','n7s','s7s')},1000);
 
