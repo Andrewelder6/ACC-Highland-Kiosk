@@ -1,4 +1,4 @@
-const BUILD='2026-10-04.2328';
+const BUILD='2026-10-04.2345';
 const FEED='https://data.texas.gov/download/rmk2-acnw/application%2Foctet-stream';
 const targets=[{key:'7n',stop:'1264',route:'7'},{key:'10s',stop:'3532',route:'10'},{key:'7s',stop:'5603',route:'7'}];
 function varint(b,p){let n=0,s=0;while(p.i<b.length){let x=b[p.i++];n+=(x&127)*2**s;if(!(x&128))return n;s+=7}return n}
@@ -117,22 +117,39 @@ async function austinCityDailyImage(headers){
   return ogFromHtml(html,page);
 }
 
+const AUSTIN_HISTORY_ARKS=[
+  'metapth125125', // Congress Avenue, c. 1868
+  'metapth124043', // Driskill Hotel, 1888
+  'metapth124420', // Barton Springs, 1937
+  'metapth125219', // Moonlight Tower, 1930s
+  'metapth19409',  // Moonlight tower / UT view, 1954
+  'metapth856999', // Driskill front desk, 1952
+  'metapth124427', // Barton Springs bathhouse, 1947
+  'metapth124687'  // Barton Springs, 1939
+];
 async function historyDailyImage(headers){
-  // Library of Congress archive search: Austin photographs, pre-2000.
-  const q='https://www.loc.gov/photos/?fo=json&q='+encodeURIComponent('Austin Texas')+'&dates=1800-1999&c=100';
-  const r=await fetch(q,{headers:{...headers,'Accept':'application/json'}});
+  const ark=AUSTIN_HISTORY_ARKS[dayIndex()%AUSTIN_HISTORY_ARKS.length];
+  // UNT's IIIF endpoint serves the archival master image directly and is far more reliable
+  // than the previous Library of Congress search JSON for this kiosk use.
+  const imageUrl='https://texashistory.unt.edu/iiif/ark:/67531/'+ark+'/m1/1/full/max/0/default.jpg';
+  const test=await fetch(imageUrl,{headers});
+  if(!test.ok)return null;
+  return imageUrl;
+}
+
+const AUSTIN_WEATHER_CAM_UIDS=[
+  '2939d836b533ffb122d7a9fa3f196e71', // Standard Insurance Tower
+  '6dc32d9a0735478a37d6eb85de56b54d', // Hyatt Regency Austin
+  'a0cc74fe637214c44ef6823c82fc0214'  // Hyatt Regency Austin alternate
+];
+async function weatherCamImage(headers){
+  const uid=AUSTIN_WEATHER_CAM_UIDS[dayIndex()%AUSTIN_WEATHER_CAM_UIDS.length];
+  const imageUrl='https://api.wetmet.net/widgets/image/frame.php?uid='+uid+'&type=image&format=image.jpg';
+  const r=await fetch(imageUrl,{headers});
   if(!r.ok)return null;
-  const j=await r.json();
-  const items=(j.results||[]).filter(x=>{
-    const title=(x.title||'').toLowerCase();
-    const loc=(x.location||[]).join(' ').toLowerCase();
-    return (title.includes('austin')||loc.includes('austin')) && Array.isArray(x.image_url) && x.image_url.length;
-  });
-  if(!items.length)return null;
-  const item=items[dayIndex()%items.length];
-  const urls=item.image_url||[];
-  // LOC returns multiple derivative sizes; use the largest listed image.
-  return urls[urls.length-1]||urls[0]||null;
+  const ct=(r.headers.get('content-type')||'').toLowerCase();
+  if(!ct.startsWith('image/'))return null;
+  return {url:imageUrl,response:r};
 }
 
 async function officialImage(kind,mode){
@@ -145,7 +162,13 @@ async function officialImage(kind,mode){
   if(kind==='historyDaily'){
     const imageUrl=await historyDailyImage(headers);
     if(!imageUrl)return new Response('image unavailable',{status:404});
-    return await fetchImageResponse(imageUrl,headers,'Library-of-Congress-Austin-archive')||new Response('image unavailable',{status:502});
+    return await fetchImageResponse(imageUrl,headers,'Austin-History-Center-UNT-IIIF')||new Response('image unavailable',{status:502});
+  }
+  if(kind==='weatherCam'){
+    const cam=await weatherCamImage(headers);
+    if(!cam)return new Response('image unavailable',{status:404});
+    const hd=new Headers(cam.response.headers);hd.set('Cache-Control','public, max-age=180');hd.set('X-Kiosk-Image-Source','FOX7-WMVision-Austin-weather-cam');hd.delete('set-cookie');
+    return new Response(cam.response.body,{status:200,headers:hd});
   }
   if(kind==='accHighland'){
     return await fetchImageResponse(ACC_HIGHLAND_HERO,headers,'ACC-Highland-official-original')||new Response('image unavailable',{status:502});
