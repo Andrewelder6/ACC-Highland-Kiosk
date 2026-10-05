@@ -639,6 +639,42 @@ html,body{background:#02070b!important}
 .mkWeather{position:relative!important;z-index:2!important}
 .mkWeatherNow{position:relative!important;z-index:3!important}
 .mkForecast{position:relative!important;z-index:3!important}
+</style><style id="exact-binary-bus-lock">
+.bus .mkBusScene{
+  position:relative!important;
+  background:#06131b url('/assets/bus-exact.jpg?v=1') center center/cover no-repeat!important;
+  image-rendering:auto!important;
+  overflow:hidden!important;
+}
+.bus .frogRide{display:none!important}
+.bus .mkBusCard{
+  position:absolute!important;
+  left:50%!important;
+  top:19%!important;
+  transform:translateX(-50%)!important;
+  width:min(540px,48vw)!important;
+  min-width:430px!important;
+  height:248px!important;
+  padding:10px 14px!important;
+  background:rgba(4,15,22,.97)!important;
+  border:1px solid rgba(236,173,91,.55)!important;
+  border-radius:18px!important;
+  box-shadow:0 16px 34px rgba(0,0,0,.34)!important;
+  backdrop-filter:none!important;
+}
+.bus .mkBusHeader{display:none!important}
+.bus .mkBusRows{height:205px!important;display:grid!important;grid-template-rows:repeat(3,1fr)!important}
+.bus .mkBusRow{padding:10px 0!important}
+.bus .mkBusDest b{font-size:21px!important}
+.bus .mkBusDest span{font-size:10px!important;letter-spacing:.08em!important}
+.bus .mkBusRow strong{font-size:25px!important}
+.bus .mkBusRow small,.bus .mkBusRow em{font-size:9px!important}
+.bus .mkRealtime{font-size:9px!important;margin-top:4px!important}
+@media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
+  .bus .mkBusCard{width:500px!important;min-width:0!important;height:236px!important;top:18%!important}
+  .bus .mkBusDest b{font-size:19px!important}
+  .bus .mkBusRow strong{font-size:23px!important}
+}
 </style></head><body><main class="app"><section class="stage">
 <section class="screen weather active" data-name="WEATHER">
   <div class="mkWeather">
