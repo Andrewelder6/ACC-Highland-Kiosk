@@ -344,9 +344,7 @@ html,body{background:#02070b!important}
     </div>
     <div class="refEventGrid" id="austinEvents"></div>
     <div class="refDaysOff"><div class="mkDaysTitle">Next days off</div><div class="holidayList" id="holidayList"></div></div>
-    <img id="accCampusPhoto" class="srOnly" src="/api/official-image?kind=accCampusDaily&v=20261004-2" alt="">
-    <img id="austinTownPhoto" class="srOnly" src="/api/official-image?kind=austinCityDaily&v=20261004-3" alt="">
-  </div>
+</div>
 </section>
 <section class="screen history" data-name="AUSTIN HISTORY">
   <div class="refHistory">
@@ -379,20 +377,27 @@ html,body{background:#02070b!important}
   <div class="mkFc">
     <header class="mkFcMast"><div><span>AUSTIN</span><h1>Austin <b>FC</b></h1><p>OUR CITY &nbsp; · &nbsp; OUR CLUB &nbsp; · &nbsp; VERDE TOGETHER</p></div><div class="mkFcMoon">VERDE LISTOS</div></header>
     <div class="mkFcGrid">
-      <div class="mkFcHero"><img id="fcDailyPhoto" src="/api/official-image?kind=fcDaily&v=20261004-5" alt="Recent Austin FC match photography"><div class="mkFcPhotoTag">Q2 STADIUM · AUSTIN</div></div>
+      <div class="mkFcHero"><img id="fcDailyPhoto" src="/api/official-image?kind=fcDaily&slot=0&v=6" alt="Recent Austin FC match photography"><div class="mkFcPhotoTag">Q2 STADIUM · AUSTIN</div></div>
       <div class="mkFcMatches">
         <div class="mkMatchCard"><div class="mkMatchLabel">▣ NEXT MATCH</div><div class="mkVersus"><div class="mkClub"><i>ATX</i><b>AUSTIN FC</b></div><span>VS</span><div class="mkClub away"><i>NSH</i><b>NASHVILLE SC</b></div></div><div class="mkMatchMeta">SAT · OCT 10 · 7:30 PM &nbsp; ● &nbsp; HOME · Q2 STADIUM</div></div>
         <div class="mkLastCard"><div><div class="mkMatchLabel">◉ LAST MATCH</div><small>vs San Diego FC</small></div><strong>3–3</strong></div>
       </div>
-      <div class="mkFcLens"><div class="mkLensImage"><img src="/api/official-image?kind=fcDaily&v=20261004-6" alt=""></div><div><b>Through the Lens</b><span>Official match photography</span></div></div>
-      <div class="mkFcStory"><div class="mkMatchLabel">▣ TOP TEAM STORY THIS WEEK</div><div class="mkStoryBody"><div class="mkStoryThumb"><img src="/api/official-image?kind=fcDaily&v=20261004-7" alt=""></div><div><h2>Historic three-goal comeback at Q2</h2><p>Austin FC rallied from 3–0 down to draw San Diego 3–3 — the club’s first comeback from three goals down to earn a result.</p><span>Austin FC · Sept. 27, 2026</span></div></div></div>
+      <div class="mkFcLens"><div class="mkLensImage"><img id="fcLensPhoto" src="/api/official-image?kind=fcDaily&slot=1&v=6" alt="Recent Austin FC match photography"></div><div><b>Through the Lens</b><span>Official match photography</span></div></div>
+      <div class="mkFcStory"><div class="mkMatchLabel">▣ TOP TEAM STORY THIS WEEK</div><div class="mkStoryBody"><div class="mkStoryThumb"><img id="fcStoryPhoto" src="/api/official-image?kind=fcDaily&slot=2&v=6" alt="Austin FC team story photography"></div><div><h2>Historic three-goal comeback at Q2</h2><p>Austin FC rallied from 3–0 down to draw San Diego 3–3 — the club’s first comeback from three goals down to earn a result.</p><span>Austin FC · Sept. 27, 2026</span></div></div></div>
     </div>
   </div>
 </section>
 </section><footer class="nav" id="nav"></footer></main>
 <script>
 const TZ='America/Chicago', screens=[...document.querySelectorAll('.screen')],nav=document.getElementById('nav');let idx=0;
-function tickHeroClock(){let d=new Date(),t=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d),dt=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'short',month:'short',day:'numeric'}).format(d);heroClock.textContent=t;heroClockDate.textContent=dt;let n=document.getElementById('navClock');if(n)n.innerHTML='<b>'+t+'</b><span>'+dt+'</span>'}tickHeroClock();setInterval(tickHeroClock,1000);function refreshDailyPhotos(){let d=Math.floor(Date.now()/86400000);let fc=document.getElementById('fcDailyPhoto');if(fc)fc.src='/api/official-image?kind=fcDaily&d='+d+'&v=5';let ac=document.getElementById('accCampusPhoto');if(ac)ac.src='/api/official-image?kind=accCampusDaily&d='+d+'&v=3';let at=document.getElementById('austinTownPhoto');if(at)at.src='/api/official-image?kind=austinCityDaily&d='+d+'&v=3'}refreshDailyPhotos();setInterval(refreshDailyPhotos,3600000);
+function tickHeroClock(){let d=new Date(),t=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d),dt=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'short',month:'short',day:'numeric'}).format(d);heroClock.textContent=t;heroClockDate.textContent=dt;let n=document.getElementById('navClock');if(n)n.innerHTML='<b>'+t+'</b><span>'+dt+'</span>'}tickHeroClock();setInterval(tickHeroClock,1000);function refreshDailyPhotos(){
+  const d=new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  [['fcDailyPhoto',0],['fcLensPhoto',1],['fcStoryPhoto',2]].forEach(([id,slot])=>{
+    const img=document.getElementById(id);
+    if(img)img.src='/api/official-image?kind=fcDaily&slot='+slot+'&d='+encodeURIComponent(d)+'&v=6';
+  });
+}
+refreshDailyPhotos();setInterval(refreshDailyPhotos,3600000);
 const navIcons={'WEATHER':'☁','BUS':'▣',"WHAT'S HAPPENING":'▦','AUSTIN HISTORY':'▥','AUSTIN FC':'⬢'};function show(i){idx=(i+screens.length)%screens.length;screens.forEach((s,n)=>s.classList.toggle('active',n===idx));nav.innerHTML='<div class="navItems">'+screens.map((s,n)=>'<span class="'+(n===idx?'on':'')+'">'+(navIcons[s.dataset.name]||'•')+' <b>'+s.dataset.name+'</b></span>').join('')+'</div><div class="navClock" id="navClock"></div>';tickHeroClock();}show(0);setInterval(()=>show(idx+1),75000);
 let x0=0;document.addEventListener('touchstart',e=>x0=e.touches[0].clientX);document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>70)show(idx+(dx<0?1:-1))});
 const wx={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Foggy',48:'Foggy',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',80:'Rain showers',81:'Rain showers',82:'Heavy showers',95:'Thunderstorms'};
