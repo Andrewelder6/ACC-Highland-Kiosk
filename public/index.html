@@ -611,6 +611,34 @@ html,body{background:#02070b!important}
 .mkWeather{z-index:2!important}
 .mkWeatherNow{position:relative!important;z-index:3!important}
 .mkForecastBlock:last-child{background:rgba(3,15,21,.95)!important}
+</style><style id="exact-binary-art-lock">
+/* Use the real approved raster artwork uploaded from the reference mockup. */
+.weather{
+  background:#06131b url('/assets/weather-exact.jpg?v=1') center center/cover no-repeat!important;
+  image-rendering:auto!important;
+}
+.weather:before{
+  background:
+    linear-gradient(180deg,rgba(2,9,14,.02),rgba(2,9,14,.03) 64%,rgba(2,9,14,.18))!important;
+}
+.weather:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  width:auto!important;height:auto!important;
+  z-index:1!important;
+  background:
+    linear-gradient(90deg,
+      rgba(3,12,18,.96) 0%,
+      rgba(3,12,18,.90) 16%,
+      rgba(3,12,18,.70) 23%,
+      rgba(3,12,18,.30) 32%,
+      rgba(3,12,18,0) 43%)!important;
+  pointer-events:none!important;
+}
+.mkWeather{position:relative!important;z-index:2!important}
+.mkWeatherNow{position:relative!important;z-index:3!important}
+.mkForecast{position:relative!important;z-index:3!important}
 </style></head><body><main class="app"><section class="stage">
 <section class="screen weather active" data-name="WEATHER">
   <div class="mkWeather">
