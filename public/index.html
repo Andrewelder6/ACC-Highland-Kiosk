@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="theme-color" content="#0d1218"><title>ACC Highland Kiosk</title><!-- visual refresh 2026-10-04 -->
-<style>
+
+<style id="legacy-functional-base">
 :root{--ink:#f4f1ea;--mut:#a7b0b8;--purple:#4D1979;--purple2:#b9a0cb;--verde:#00b140;--paper:#ece7dc;--black:#070908}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0a0e12;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app{height:100%;display:grid;grid-template-rows:1fr 58px;padding-top:env(safe-area-inset-top)}.top{display:none}.brand{font-size:17px;font-weight:900;letter-spacing:.13em}.brand b{color:var(--purple2)}.muted{color:#6f7982}.clock{text-align:right}.time{font-size:31px;font-weight:850;line-height:1}.date{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#97a0a8;margin-top:6px}.stage{position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.06)}.screen{position:absolute;inset:0;opacity:0;pointer-events:none;transform:translateX(18px);transition:.45s ease}.screen.active{opacity:1;pointer-events:auto;transform:none}.nav{display:flex;align-items:center;justify-content:center;gap:32px;background:#080b0e;border-top:1px solid rgba(255,255,255,.08);font-size:11px;font-weight:800;letter-spacing:.15em;color:#56606a}.nav span.on{color:#fff}.nav span:before{content:"";width:5px;height:5px;border-radius:50%;display:inline-block;margin-right:8px;background:#58616a}.nav span.on:before{background:var(--purple2)}
 .weather{background:#111820 center/cover no-repeat;isolation:isolate}
@@ -137,423 +138,37 @@
 
 /* Austin history */
 .history{background:#0b0d10;color:#f3eee6;overflow:hidden}.history:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 76% 25%,rgba(117,69,128,.18),transparent 30%),linear-gradient(135deg,#141016,#090b0e 60%)}.historyWrap{position:relative;height:100%;display:grid;grid-template-columns:1.14fr .86fr;z-index:1}.historyCopy{padding:29px 34px 27px 38px;display:flex;flex-direction:column;min-width:0}.historyKicker{font-size:12px;letter-spacing:.17em;text-transform:uppercase;color:#cbb4d8;font-weight:850}.historyTitle{font-family:Georgia,"Times New Roman",serif;font-size:49px;line-height:.96;letter-spacing:-.032em;margin:12px 0 15px;max-width:720px}.historyBody{font-size:22px;line-height:1.38;color:#d5d0cc;max-width:720px;font-weight:520}.historyRule{height:1px;background:#3b3340;margin:18px 0 14px}.historyDetailLabel{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#b29cbb;font-weight:900}.historyDetail{font-size:18px;line-height:1.4;color:#f0ebe7;margin-top:8px;max-width:720px}.historySource{margin-top:auto;padding-top:15px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#88818b;border-top:1px solid #2c2930}.historyVisual{position:relative;margin:26px 30px 30px 0;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#111;box-shadow:0 24px 54px rgba(0,0,0,.28)}.historyVisual img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) sepia(.12) contrast(1.06) brightness(.82)}.historyVisual:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,10,.84),transparent 52%),linear-gradient(90deg,rgba(10,8,12,.18),transparent 48%)}.historyBadge{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;padding-top:14px;border-top:1px solid rgba(255,255,255,.24)}.historyYear{font-size:54px;font-weight:900;letter-spacing:-.055em;line-height:.9}.historyPlace{margin-top:8px;font-size:12px;line-height:1.25;text-transform:uppercase;letter-spacing:.13em;color:#d5c8d9;max-width:300px}.historyArchive{position:absolute;top:18px;left:18px;z-index:2;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#eee7ef;background:rgba(8,8,10,.68);padding:7px 9px;border:1px solid rgba(255,255,255,.16)}.historyFoot{position:absolute;right:22px;bottom:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#706a73}@media(max-width:900px){.historyCopy{padding:25px 26px 24px 30px}.historyTitle{font-size:42px}.historyBody{font-size:20px}.historyDetail{font-size:17px}.historyVisual{margin:20px 22px 24px 0}.historyYear{font-size:48px}}
-</style>
-<style id="ipad-tuning">
-@media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
-  .app{grid-template-rows:1fr 54px}
-  .stage{border-top:0}
-  .nav{gap:28px;font-size:10px;letter-spacing:.13em}
-  .weatherWrap{padding:22px 38px 16px;gap:12px}
-  .weatherHero{grid-template-columns:1.18fr .82fr;gap:26px}
-  .weatherLead{grid-template-columns:1.2fr .8fr;gap:22px}
-  .heroClock{font-size:158px}
-  .temp{font-size:108px}
-  .condition{font-size:31px}
-  .sunPanel{padding:18px 20px 15px}
-  .wxForecast{grid-template-columns:1.2fr .8fr;gap:10px}
-  .forecastBlock{padding:9px 10px 8px}
-  .hour strong{font-size:22px}
-  .day strong{font-size:18px}
-  .suntime{font-size:29px}
-  .busGrid{padding:22px 28px}
-  .busShell{width:min(860px,94vw);height:min(500px,90%);padding:18px 22px 8px}
-  .departure{grid-template-columns:124px 1fr 176px;gap:16px}
-  .dest{font-size:24px}
-  .eta{font-size:46px}
-  .fcWrap{padding:20px 28px 24px;grid-template-columns:minmax(0,.94fr) minmax(430px,1.06fr);gap:20px}
-  .fcData{gap:12px}
-  .fcWord .verdeWord{font-size:42px}
-  .fcWord .motto{font-size:11px;max-width:190px}
-  .fcMatch{padding:16px 18px 15px}
-  .fcOpponent{font-size:38px}
-  .fcMeta{font-size:18px}
-  .fcLast b{font-size:44px}
-  .fcStory{padding:12px 14px 11px}
-  .fcStory h3{font-size:19px}
-  .fcStory p{font-size:12px}
-  .accWrap{padding:22px 34px 24px;gap:16px}
-  .accMast h1{font-size:32px}
-  .accMain{grid-template-columns:.9fr 1.1fr;gap:36px}
-  .accFeature h2{font-size:30px}
-  .accFeature{grid-template-rows:minmax(165px,1fr) auto}
-  .aEvent{padding:11px 0}
-  .aName{font-size:19px}
-  .aDate{font-size:11px}
-  .aWhere,.aLineup{font-size:10.5px}
-  .holidayList{gap:14px}
-  .historyCopy{padding:25px 30px 24px 34px}
-  .historyTitle{font-size:45px}
-  .historyBody{font-size:21px;line-height:1.36}
-  .historyDetail{font-size:18px;line-height:1.37}
-  .historySource{font-size:10px}
-}
-</style><style id="retro-austin">
-:root{--retro-cream:#f4e8c9;--retro-orange:#f07a3f;--retro-gold:#f3bb63;--retro-navy:#071720;--retro-teal:#5a9e9a;--retro-paper:#efe2c2}
-.nav{background:#06141b;border-top:1px solid rgba(244,232,201,.16);color:#95a1a5}
-.nav span{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:.09em}
-.nav span.on{color:var(--retro-cream)}
-.nav span.on:before{background:var(--retro-orange);box-shadow:0 0 0 4px rgba(240,122,63,.12)}
-.weatherTop .kicker,.weatherCity,.sunTitle,.forecastLabel,.fcLabel,.fcStoryLabel,.featureEyebrow,.historyKicker{color:var(--retro-orange)}
-.weatherTop .kicker,.weatherCity{font-family:Georgia,"Times New Roman",serif;font-weight:700}
-.condition,.suntime,.accMast h1,.accFeature h2,.austinHead h3,.historyTitle,.fcOpponent,.fcStory h3{font-family:Georgia,"Times New Roman",serif}
-.heroClock{color:var(--retro-cream);text-shadow:0 7px 28px rgba(0,0,0,.42)}
-.temp{color:var(--retro-cream);font-family:Georgia,"Times New Roman",serif;font-weight:700}
-.sunPanel,.forecastBlock{background:rgba(5,20,28,.78);border:1px solid rgba(244,232,201,.20);border-radius:18px;box-shadow:0 16px 36px rgba(0,0,0,.22)}
-.sunPanel{border-left:4px solid var(--retro-orange)}
-.forecastBlock{padding:11px 13px 10px}
-.hour strong,.day strong{color:var(--retro-cream);font-family:Georgia,"Times New Roman",serif}
-.photoCredit{color:rgba(244,232,201,.55)}
-.bus{background:#08161e}
-.busGrid{background:
-  linear-gradient(180deg,rgba(2,11,17,.18),rgba(2,10,15,.42)),
-  url('/assets/austin-skyline-night-illustrated.svg?v=20261004-1') center/cover no-repeat}
-.busGrid:after{bottom:43px;background:linear-gradient(90deg,transparent,rgba(240,122,63,.38),transparent)}
-.busShell{background:rgba(4,18,25,.88);border:1px solid rgba(244,232,201,.20);border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.38);backdrop-filter:blur(8px);overflow:hidden}
-.busTop{border-bottom:1px solid rgba(244,232,201,.18)}
-.busTitleBlock b{color:var(--retro-orange);font-family:Georgia,"Times New Roman",serif}
-.busTitleBlock span{color:var(--retro-cream);font-family:Georgia,"Times New Roman",serif;font-size:31px}
-.busRouteChips b:first-child{background:var(--retro-orange);border-color:#f3ad73;color:#071720}
-.busRouteChips b:last-child{background:#5aa8c6;border-color:#90cadf;color:#071720}
-.busRouteChips b{border-radius:50%}
-.busLive{color:#c7d2d3}
-.departure{border-bottom:1px solid rgba(244,232,201,.12)}
-.tripIcon{background:rgba(244,232,201,.07);border-color:rgba(244,232,201,.18);color:var(--retro-gold)}
-.routeBadge{color:#e6cfa8}.routeBadge b{color:var(--retro-cream);font-family:Georgia,"Times New Roman",serif}
-.dest{color:var(--retro-cream);font-family:Georgia,"Times New Roman",serif;font-weight:700}
-.dest small{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#aab7ba}
-.eta{color:var(--retro-gold);font-family:Georgia,"Times New Roman",serif}
-.frogRide{position:absolute;left:-240px;bottom:9px;width:220px;height:82px;z-index:1;opacity:.98;animation:frogBusCruise 17s linear infinite;filter:drop-shadow(0 8px 9px rgba(0,0,0,.42));pointer-events:none}
-.frogRide svg{width:100%;height:100%;display:block}.frogRide .wheel{transform-box:fill-box;transform-origin:center;animation:wheelSpin .85s linear infinite}.frogBusBob{transform-box:fill-box;transform-origin:center;animation:frogBob .65s ease-in-out infinite alternate}
-@keyframes frogBusCruise{0%{transform:translateX(-8vw)}100%{transform:translateX(125vw)}}@keyframes frogBob{to{transform:translateY(-1.4px)}}@media(prefers-reduced-motion:reduce){.frogRide{animation:none;left:auto;right:18px}.frogRide .wheel,.frogBusBob{animation:none}}
-.totoroRide{display:none!important}
-.acc:before{background:linear-gradient(90deg,rgba(5,16,22,.94),rgba(7,18,24,.82) 53%,rgba(7,16,20,.62)),linear-gradient(180deg,rgba(4,13,18,.18),rgba(4,13,18,.52))}
-.accMast{border-bottom:1px solid rgba(244,232,201,.17)}
-.accCampus{color:var(--retro-orange)}
-.accMast h1{color:var(--retro-cream);font-size:38px}
-.accMastNote{color:#9eaaac}
-.accCampusPhoto,.austinPanel{border-color:rgba(244,232,201,.20);border-radius:18px;box-shadow:0 22px 52px rgba(0,0,0,.27)}
-.accCampusPhoto:after{background:linear-gradient(0deg,rgba(5,15,20,.66),transparent 55%)}
-.featureEyebrow{font-family:Georgia,"Times New Roman",serif}
-.accFeature h2{color:var(--retro-cream);font-size:34px}
-.accFeature p{color:#d5d0c5}
-.featureSchedule{border-left-color:var(--retro-orange)}
-.featureSchedule div{color:var(--retro-cream)}
-.austinPanel:before{background:linear-gradient(180deg,rgba(4,13,18,.34),rgba(4,13,18,.70) 38%,rgba(4,13,18,.94))}
-.austinHead{border-bottom-color:rgba(244,232,201,.20)}
-.austinHead h3{color:var(--retro-cream);font-size:26px}
-.austinMark{background:rgba(240,122,63,.18);border-color:rgba(244,232,201,.24);color:var(--retro-gold)}
-.aName{color:var(--retro-cream);font-family:Georgia,"Times New Roman",serif;font-size:21px}
-.aDate{color:var(--retro-orange)}
-.aWhere{color:#c5cdcb}.aLineup{color:#eddcc9}.aLineup b{color:var(--retro-gold)}
-.breakRail{background:rgba(4,16,22,.72);border:1px solid rgba(244,232,201,.15);border-radius:18px;padding:14px 16px}
-.breakLabel b,.hname{color:var(--retro-cream);font-family:Georgia,"Times New Roman",serif}
-.hcount b{color:var(--retro-gold)}
-.history{background:#091720}
-.history:before{background:radial-gradient(circle at 80% 18%,rgba(240,122,63,.18),transparent 26%),linear-gradient(135deg,#091720,#111c20 62%)}
-.historyCopy{margin:22px 0 22px 24px;padding:28px 32px 25px 34px;background:var(--retro-paper);color:#17252a;border-radius:18px 0 0 18px;box-shadow:0 22px 50px rgba(0,0,0,.25)}
-.historyKicker{color:#c9572e}
-.historyTitle{color:#17252a}
-.historyBody{color:#35464a}
-.historyRule{background:#d1b98d}
-.historyDetailLabel{color:#b75a35}
-.historyDetail{color:#24373b}
-.historySource{color:#796f62;border-top-color:#d4c29e}
-.historyVisual{border-color:rgba(244,232,201,.24);border-radius:0 18px 18px 0}
-.historyArchive{background:rgba(8,22,28,.82);color:var(--retro-cream);border-color:rgba(244,232,201,.18)}
-.historyYear{color:var(--retro-cream);font-family:Georgia,"Times New Roman",serif}.historyPlace{color:#ead9be}
-.fc{background:#04110b}
-.fc:before{background:
-  radial-gradient(circle at 88% 16%,rgba(244,184,105,.92) 0 4%,rgba(244,184,105,.20) 4.3%,transparent 8%),
-  radial-gradient(circle at 72% 10%,rgba(255,255,255,.85) 0 .11%,transparent .15%),
-  linear-gradient(135deg,#04110b,#071811 55%,#0b1e18)}
-.fcWrap{grid-template-columns:minmax(0,1.02fr) minmax(430px,.98fr)}
-.fcPhoto{border-color:rgba(244,232,201,.18);border-radius:20px;box-shadow:0 25px 58px rgba(0,0,0,.38)}
-.fcPhoto:after{background:linear-gradient(0deg,rgba(0,0,0,.72),transparent 50%),linear-gradient(90deg,transparent 65%,rgba(0,0,0,.16))}
-.fcPhotoLabel b{color:#4fe27f}.fcPhotoLabel span{color:var(--retro-cream)}
-.fcData{gap:12px}
-.fcWord{padding:2px 2px 3px;border-bottom:1px solid rgba(244,232,201,.15)}
-.fcWord .listos{color:#4fe27f}
-.fcWord .verdeWord{font-family:Georgia,"Times New Roman",serif;color:var(--retro-cream);font-size:48px;line-height:.9}
-.fcWord .verdeWord::first-letter{color:#45d86e}
-.fcWord .motto{color:#a8b6ad}
-.fcMatch,.fcStory{background:rgba(3,20,13,.88);border-color:rgba(244,232,201,.14);border-radius:18px;box-shadow:0 16px 36px rgba(0,0,0,.20)}
-.fcMatch{border-left:5px solid #3edf69}
-.fcLabel,.fcStoryLabel{color:#48e076}
-.fcOpponent{color:var(--retro-cream);font-size:44px}
-.fcMeta{color:#f0e0c4}.fcVenue{color:#9ec9ad}
-.fcLast{border-top-color:rgba(244,232,201,.15)}.fcLast strong{color:var(--retro-cream)}.fcLast b{color:var(--retro-cream);font-family:Georgia,"Times New Roman",serif}
-.fcStory h3{color:var(--retro-cream);font-size:22px}.fcStory p{color:#c7d3cb}
-@media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
- .busShell{height:min(510px,92%)}.frogRide{width:190px;height:72px;bottom:8px}
- .accMast h1{font-size:35px}.accFeature h2{font-size:31px}.aName{font-size:20px}
- .historyCopy{margin:18px 0 18px 20px;padding:25px 28px 23px 30px}.historyTitle{font-size:43px}.historyBody{font-size:20px}
- .fcWord .verdeWord{font-size:43px}.fcOpponent{font-size:40px}.fcStory h3{font-size:20px}
-}
- 
-/* 2026-10-04 art/readability correction */
-.weather{background:#071926 url('/assets/austin-skyline-night-illustrated.svg?v=20261004-1') center/cover no-repeat!important}
-.weather:after{display:none}
-.weather:before{background:linear-gradient(90deg,rgba(3,12,18,.70),rgba(3,12,18,.28) 57%,rgba(3,12,18,.44)),linear-gradient(180deg,rgba(3,12,18,.18),rgba(3,12,18,.22) 52%,rgba(3,12,18,.68))!important}
-.weather.wx-rain:before,.weather.wx-storm:before{background:linear-gradient(90deg,rgba(2,9,15,.78),rgba(5,16,24,.38) 57%,rgba(2,8,14,.50)),linear-gradient(180deg,rgba(4,13,21,.32),rgba(4,13,21,.40) 52%,rgba(2,7,12,.76))!important}
-.weather.wx-fog:before,.weather.wx-cloudy:before{background:linear-gradient(90deg,rgba(10,18,22,.74),rgba(15,26,31,.34) 57%,rgba(8,15,19,.47)),linear-gradient(180deg,rgba(18,26,31,.22),rgba(9,18,23,.30) 52%,rgba(4,10,14,.70))!important}
-.fc:before{background:
- linear-gradient(90deg,rgba(2,13,8,.10),rgba(2,13,8,.42) 55%,rgba(2,13,8,.64)),
- url('/assets/austin-skyline-night-illustrated.svg?v=20261004-1') center/cover no-repeat!important}
-.fcStory{padding:17px 18px 16px}
-.fcStoryLabel{font-size:10px}
-.fcStory h3{font-size:25px!important;line-height:1.08;margin:7px 0 8px}
-.fcStory p{font-size:16px!important;line-height:1.42;color:#d8e1da!important}
-.fcStorySource{font-size:9px;margin-top:9px}
-.history{background:#06151c!important}
-.history:before{background:linear-gradient(135deg,rgba(2,12,17,.96),rgba(7,24,31,.90) 62%,rgba(14,30,33,.86))!important}
-.historyCopy{margin:20px 0 20px 22px!important;padding:28px 32px 26px 34px!important;background:rgba(5,18,24,.92)!important;color:var(--retro-cream)!important;border:1px solid rgba(244,232,201,.16);border-radius:18px 0 0 18px!important;box-shadow:0 22px 50px rgba(0,0,0,.34)!important}
-.historyKicker{color:var(--retro-orange)!important}
-.historyTitle{color:var(--retro-cream)!important}
-.historyBody{color:#d7d7cd!important;font-size:22px!important;line-height:1.4}
-.historyRule{background:rgba(244,232,201,.20)!important}
-.historyDetailLabel{color:var(--retro-gold)!important}
-.historyDetail{color:#f0eadf!important;font-size:19px!important;line-height:1.42}
-.historySource{color:#939d9e!important;border-top-color:rgba(244,232,201,.14)!important}
-.historyVisual{background:#071820!important;border-color:rgba(244,232,201,.18)!important}
-.historyVisual img{filter:none!important;object-fit:cover}
-.historyVisual:after{background:linear-gradient(0deg,rgba(3,13,18,.74),transparent 50%),linear-gradient(90deg,rgba(3,13,18,.10),transparent 50%)}
-@media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
- .fcStory{padding:14px 16px 13px}
- .fcStory h3{font-size:22px!important}
- .fcStory p{font-size:15px!important;line-height:1.38}
- .historyBody{font-size:21px!important}
- .historyDetail{font-size:18px!important}
-}
-</style><style id="approved-austin-nightscape">
-/* Approved illustrated Austin visual direction — skyline/moon/clouds/river/cactus */
-.weather{
- background:#06151f url('/assets/austin-skyline-night-illustrated.svg?v=20261004-1') center/cover no-repeat!important
-}
-.weather:before{
- background:linear-gradient(90deg,rgba(2,11,17,.76) 0%,rgba(2,11,17,.40) 43%,rgba(2,11,17,.16) 70%,rgba(2,11,17,.32) 100%),
- linear-gradient(180deg,rgba(2,10,16,.06),rgba(2,10,16,.10) 50%,rgba(2,10,16,.60))!important
-}
-.weatherTop .kicker{font-size:12px;color:#f3a45f!important}
-.weatherCity{color:#eadfca!important}
-.heroClock{font-family:Georgia,"Times New Roman",serif;color:#f7ead0!important}
-.heroClockDate{color:#eadfca}
-.temp{font-family:Georgia,"Times New Roman",serif;color:#f8e8c9!important}
-.condition{font-family:Georgia,"Times New Roman",serif;color:#f8e8c9;font-size:30px}
-.facts{color:#e5e3db}
-.sunPanel,.forecastBlock{background:rgba(4,17,24,.78)!important;border:1px solid rgba(247,230,199,.24)!important}
-.forecastBlock{border-radius:16px!important}
-.busGrid{
- background:
- linear-gradient(180deg,rgba(2,10,16,.20),rgba(2,10,16,.44)),
- url('/assets/austin-skyline-night-illustrated.svg?v=20261004-1') center/cover no-repeat!important
-}
-.busShell{background:rgba(3,16,23,.89)!important;border-color:rgba(246,226,191,.24)!important}
-.busTitleBlock span{font-family:Georgia,"Times New Roman",serif;font-size:34px!important;color:#f7e8ca!important}
-.busTitleBlock b{color:#f08a4c!important}
-.dest,.eta,.routeBadge b{color:#f7ead0!important}
-.austinPanel{
- background:
- linear-gradient(180deg,rgba(3,13,19,.30),rgba(3,13,19,.70) 42%,rgba(3,13,19,.94)),
- url('/assets/austin-skyline-night-illustrated.svg?v=20261004-1') center/cover no-repeat!important
-}
-.austinTownPhoto{display:none!important}
-.austinPanel:before{background:linear-gradient(180deg,rgba(3,13,19,.12),rgba(3,13,19,.42) 42%,rgba(3,13,19,.76))!important}
-.austinHead h3{font-family:Georgia,"Times New Roman",serif;font-size:28px!important;color:#f7e8ca!important}
-.aName{font-family:Georgia,"Times New Roman",serif;font-size:21px!important;color:#fff3dc!important}
-.breakRail{background:rgba(4,17,24,.78)!important;border-color:rgba(246,226,191,.18)!important}
-.history{
- background:#06151d url('/assets/austin-skyline-night-illustrated.svg?v=20261004-1') center/cover no-repeat!important
-}
-.history:before{
- background:linear-gradient(90deg,rgba(3,13,18,.97) 0%,rgba(3,13,18,.92) 56%,rgba(3,13,18,.34) 100%)!important
-}
-.historyCopy{
- background:rgba(3,15,21,.90)!important;
- border:1px solid rgba(246,226,191,.18)!important;
- color:#f7e8ca!important
-}
-.historyTitle{color:#f7e8ca!important}
-.historyBody{color:#e6e3da!important;font-size:23px!important;line-height:1.4!important}
-.historyDetail{color:#fff4df!important;font-size:20px!important;line-height:1.42!important}
-.historyVisual{border-color:rgba(246,226,191,.20)!important}
-.historyVisual img{filter:none!important;opacity:.95}
-.fc:before{
- background:
- linear-gradient(90deg,rgba(2,13,8,.12),rgba(2,13,8,.40) 54%,rgba(2,13,8,.72)),
- url('/assets/austin-skyline-night-illustrated.svg?v=20261004-1') center/cover no-repeat!important
-}
-.fcWord .verdeWord{
- font-family:Georgia,"Times New Roman",serif!important;
- text-transform:none!important;
- font-size:52px!important;
- letter-spacing:-.045em!important;
- color:#f7e8ca!important
-}
-.fcWord .verdeWord span{color:#39df6a}
-.fcWord .listos{color:#5bef82!important}
-.fcWord .motto{font-family:Georgia,"Times New Roman",serif;color:#f0dfc2!important;font-size:16px!important}
-.fcMatch,.fcStory{background:rgba(2,18,11,.91)!important;border-color:rgba(246,226,191,.16)!important}
-.fcOpponent{font-size:46px!important;color:#f7e8ca!important}
-.fcLast b{font-size:56px!important;color:#f7e8ca!important}
-.fcStory{padding:18px 19px 17px!important}
-.fcStory h3{font-size:26px!important;line-height:1.08!important}
-.fcStory p{font-size:17px!important;line-height:1.43!important;color:#e2e7e1!important}
-.fcStorySource{font-size:10px!important;color:#9caf9f!important}
-@media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
- .heroClock{font-size:150px!important}
- .temp{font-size:105px!important}
- .busTitleBlock span{font-size:31px!important}
- .austinHead h3{font-size:25px!important}
- .historyBody{font-size:21px!important}
- .historyDetail{font-size:18px!important}
- .fcWord .verdeWord{font-size:45px!important}
- .fcOpponent{font-size:41px!important}
- .fcLast b{font-size:48px!important}
- .fcStory h3{font-size:23px!important}
- .fcStory p{font-size:15.5px!important;line-height:1.4!important}
-}
-</style><style id="mockup-match-v4">
+</style><style id="kiosk-layout-core">
 :root{--mk-bg:#06131c;--mk-panel:rgba(3,16,22,.90);--mk-cream:#f7e9c9;--mk-orange:#ef7f43;--mk-gold:#f2b85f;--mk-green:#27d864;--mk-blue:#4fb7da}
 *{box-sizing:border-box}.srOnly{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}
 html,body{background:#02080c}.app{height:100%;display:grid!important;grid-template-rows:42px 1fr!important;padding-top:env(safe-area-inset-top)!important}.stage{grid-row:2!important;position:relative;overflow:hidden;border-top:1px solid rgba(245,226,190,.12)!important}.nav{grid-row:1!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 20px!important;background:#031018!important;border:0!important;border-bottom:1px solid rgba(245,226,190,.16)!important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;letter-spacing:0!important;color:#98a5a8!important;z-index:20}.navItems{display:flex;gap:22px;align-items:center}.navItems span{font-size:9px!important;font-weight:800!important;letter-spacing:.035em!important;white-space:nowrap}.navItems span b{font-weight:800}.navItems span.on{color:var(--mk-cream)!important}.navItems span.on:first-child{color:var(--mk-gold)!important}.navItems span.on:nth-child(2){color:var(--mk-orange)!important}.navItems span.on:nth-child(3){color:var(--mk-orange)!important}.navItems span.on:nth-child(4){color:var(--mk-gold)!important}.navItems span.on:nth-child(5){color:var(--mk-green)!important}.nav span:before{display:none!important}.navClock{margin-left:auto;text-align:right;color:var(--mk-cream);line-height:1}.navClock b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:13px}.navClock span{display:block;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:#a4adae;margin-top:2px}
 .screen{inset:0!important}.screen.active{transform:none!important}
-.weather{background:#07151f url('/assets/weather-rich.svg?v=1') center/cover no-repeat!important}.weather:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,10,16,.22),rgba(2,10,16,.03) 58%,rgba(2,10,16,.16)),linear-gradient(180deg,rgba(2,10,16,.05),rgba(2,10,16,.04) 54%,rgba(2,10,16,.48))!important;z-index:0}.weather:after{display:none!important}.mkWeather{position:relative;z-index:2;height:100%;padding:26px 28px 24px;display:grid;grid-template-rows:auto 1fr auto;gap:14px}.mkKicker{font-size:9px;font-weight:900;letter-spacing:.17em;color:var(--mk-orange);text-transform:uppercase}.mkWeatherMain{display:grid;grid-template-columns:.52fr 1.48fr;align-items:center;min-height:0}.mkWeatherNow{align-self:center}.mkEyebrow{font-family:Georgia,"Times New Roman",serif;font-size:25px;color:var(--mk-cream);margin-bottom:2px}.mkTemp{font-family:Georgia,"Times New Roman",serif;font-size:124px;font-weight:900;line-height:.82;letter-spacing:-.06em;color:var(--mk-cream);text-shadow:0 6px 28px rgba(0,0,0,.35)}.mkCondition{font-family:Georgia,"Times New Roman",serif;font-size:29px;font-weight:700;color:var(--mk-cream);margin-top:12px}.mkFacts{font-size:13px;color:#e6dfd1;margin-top:7px}.mkRain{font-size:11px;color:#f0b568;margin-top:4px}.mkLight{align-self:start;justify-self:end;margin-top:22px;display:grid;grid-template-columns:1fr 46px 1fr;align-items:center;gap:14px;background:rgba(3,16,22,.82);border:1px solid rgba(247,231,201,.20);border-radius:14px;padding:13px 16px;min-width:390px}.mkLight div:last-child{text-align:right}.mkLight span{display:block;font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:#9eaaa9}.mkLight b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:22px;color:var(--mk-cream);margin-top:3px}.mkLight i{text-align:center;color:var(--mk-gold);font-style:normal}.mkForecast{display:grid;grid-template-columns:1.35fr .95fr;gap:10px}.mkForecastBlock{background:rgba(3,16,22,.88);border:1px solid rgba(247,231,201,.18);border-radius:12px;padding:10px 12px 9px;backdrop-filter:blur(4px)}.mkForecastTitle{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--mk-orange);font-weight:900;margin-bottom:6px}.timeline,.days{display:grid!important;grid-template-columns:repeat(5,1fr)!important;gap:2px!important}.hour,.day{padding:3px 2px!important;text-align:center}.hour span,.day span{font-size:8px!important;color:#c9d0cc!important}.hour strong,.day strong{font-family:Georgia,"Times New Roman",serif!important;font-size:20px!important;color:var(--mk-cream)!important;margin:2px 0!important}.hour em,.day small{font-size:7.5px!important;color:#adb8b5!important}
+.weather{background:#07151f url('/assets/weather-exact.jpg?v=3') center/cover no-repeat!important}.weather:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,10,16,.22),rgba(2,10,16,.03) 58%,rgba(2,10,16,.16)),linear-gradient(180deg,rgba(2,10,16,.05),rgba(2,10,16,.04) 54%,rgba(2,10,16,.48))!important;z-index:0}.weather:after{display:none!important}.mkWeather{position:relative;z-index:2;height:100%;padding:26px 28px 24px;display:grid;grid-template-rows:auto 1fr auto;gap:14px}.mkKicker{font-size:9px;font-weight:900;letter-spacing:.17em;color:var(--mk-orange);text-transform:uppercase}.mkWeatherMain{display:grid;grid-template-columns:.52fr 1.48fr;align-items:center;min-height:0}.mkWeatherNow{align-self:center}.mkEyebrow{font-family:Georgia,"Times New Roman",serif;font-size:25px;color:var(--mk-cream);margin-bottom:2px}.mkTemp{font-family:Georgia,"Times New Roman",serif;font-size:124px;font-weight:900;line-height:.82;letter-spacing:-.06em;color:var(--mk-cream);text-shadow:0 6px 28px rgba(0,0,0,.35)}.mkCondition{font-family:Georgia,"Times New Roman",serif;font-size:29px;font-weight:700;color:var(--mk-cream);margin-top:12px}.mkFacts{font-size:13px;color:#e6dfd1;margin-top:7px}.mkRain{font-size:11px;color:#f0b568;margin-top:4px}.mkLight{align-self:start;justify-self:end;margin-top:22px;display:grid;grid-template-columns:1fr 46px 1fr;align-items:center;gap:14px;background:rgba(3,16,22,.82);border:1px solid rgba(247,231,201,.20);border-radius:14px;padding:13px 16px;min-width:390px}.mkLight div:last-child{text-align:right}.mkLight span{display:block;font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:#9eaaa9}.mkLight b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:22px;color:var(--mk-cream);margin-top:3px}.mkLight i{text-align:center;color:var(--mk-gold);font-style:normal}.mkForecast{display:grid;grid-template-columns:1.35fr .95fr;gap:10px}.mkForecastBlock{background:rgba(3,16,22,.88);border:1px solid rgba(247,231,201,.18);border-radius:12px;padding:10px 12px 9px;backdrop-filter:blur(4px)}.mkForecastTitle{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--mk-orange);font-weight:900;margin-bottom:6px}.timeline,.days{display:grid!important;grid-template-columns:repeat(5,1fr)!important;gap:2px!important}.hour,.day{padding:3px 2px!important;text-align:center}.hour span,.day span{font-size:8px!important;color:#c9d0cc!important}.hour strong,.day strong{font-family:Georgia,"Times New Roman",serif!important;font-size:20px!important;color:var(--mk-cream)!important;margin:2px 0!important}.hour em,.day small{font-size:7.5px!important;color:#adb8b5!important}
 
-.bus{background:#06131c!important}.mkBusScene{height:100%;position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(2,10,16,.26),rgba(2,10,16,.06),rgba(2,10,16,.25)),url('/assets/weather-rich.svg?v=1') center/cover no-repeat;overflow:hidden}.mkBusCard{width:min(540px,58vw);background:rgba(3,15,21,.90);border:1px solid rgba(247,231,201,.20);border-radius:18px;padding:18px 20px 14px;box-shadow:0 25px 60px rgba(0,0,0,.35);z-index:3;backdrop-filter:blur(5px)}.mkBusHeader{display:flex;align-items:center;justify-content:center;gap:12px;padding-bottom:11px;border-bottom:1px solid rgba(247,231,201,.14)}.mkBusIcon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--mk-orange);color:#08131a;font-size:19px}.mkBusHeader h1{font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1;color:var(--mk-cream);margin:0}.mkBusHeader p{font-size:9px;color:#b8c0bc;margin:4px 0 0;text-align:center}.mkBusRows{display:grid}.mkBusRow{display:grid;grid-template-columns:44px 1fr 118px;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(247,231,201,.12)}.mkRoute{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#07131a;font-weight:950;font-size:13px}.mkRoute.orange{background:#ef8b45}.mkRoute.blue{background:#6bc0df}.mkRoute.gold{background:#e7b85f}.mkBusDest b{display:block;font-family:Georgia,"Times New Roman",serif;color:var(--mk-cream);font-size:17px}.mkBusDest span{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:#98a7a6}.mkBusRow>div:last-child{text-align:right}.mkBusRow strong{display:block;font-family:Georgia,"Times New Roman",serif;color:var(--mk-gold);font-size:21px}.mkBusRow small{display:block;font-size:7.5px;color:#c6ceca}.mkBusRow em{display:block;font-style:normal;font-size:6.5px;color:#73817f;margin-top:2px}.mkRealtime{text-align:right;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:#70c88e;padding-top:9px}.frogRide{width:250px!important;height:95px!important;bottom:40px!important;z-index:2!important;opacity:1!important;filter:drop-shadow(0 10px 10px rgba(0,0,0,.55))!important}
+.bus{background:#06131c!important}.mkBusScene{height:100%;position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(2,10,16,.26),rgba(2,10,16,.06),rgba(2,10,16,.25)),url('/assets/weather-exact.jpg?v=3') center/cover no-repeat;overflow:hidden}.mkBusCard{width:min(540px,58vw);background:rgba(3,15,21,.90);border:1px solid rgba(247,231,201,.20);border-radius:18px;padding:18px 20px 14px;box-shadow:0 25px 60px rgba(0,0,0,.35);z-index:3;backdrop-filter:blur(5px)}.mkBusHeader{display:flex;align-items:center;justify-content:center;gap:12px;padding-bottom:11px;border-bottom:1px solid rgba(247,231,201,.14)}.mkBusIcon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--mk-orange);color:#08131a;font-size:19px}.mkBusHeader h1{font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1;color:var(--mk-cream);margin:0}.mkBusHeader p{font-size:9px;color:#b8c0bc;margin:4px 0 0;text-align:center}.mkBusRows{display:grid}.mkBusRow{display:grid;grid-template-columns:44px 1fr 118px;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(247,231,201,.12)}.mkRoute{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#07131a;font-weight:950;font-size:13px}.mkRoute.orange{background:#ef8b45}.mkRoute.blue{background:#6bc0df}.mkRoute.gold{background:#e7b85f}.mkBusDest b{display:block;font-family:Georgia,"Times New Roman",serif;color:var(--mk-cream);font-size:17px}.mkBusDest span{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:#98a7a6}.mkBusRow>div:last-child{text-align:right}.mkBusRow strong{display:block;font-family:Georgia,"Times New Roman",serif;color:var(--mk-gold);font-size:21px}.mkBusRow small{display:block;font-size:7.5px;color:#c6ceca}.mkBusRow em{display:block;font-style:normal;font-size:6.5px;color:#73817f;margin-top:2px}.mkRealtime{text-align:right;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:#70c88e;padding-top:9px}.frogRide{width:250px!important;height:95px!important;bottom:40px!important;z-index:2!important;opacity:1!important;filter:drop-shadow(0 10px 10px rgba(0,0,0,.55))!important}
 
 .acc{background:#06131c!important}.acc:before{display:none!important}.mkEvents{height:100%;padding:24px 26px 18px;background:linear-gradient(90deg,rgba(3,12,18,.82),rgba(3,12,18,.30) 54%,rgba(3,12,18,.12)),url('/assets/mockup-events.svg?v=5') center/cover no-repeat;display:grid;grid-template-rows:1fr 150px 72px;gap:12px}.mkEventsTop{display:grid;grid-template-columns:.43fr .57fr;gap:22px;min-height:0}.mkEventsCopy{align-self:center;max-width:430px}.mkEventsCopy h1{font-family:Georgia,"Times New Roman",serif;font-size:55px;line-height:.83;letter-spacing:-.045em;color:var(--mk-cream);margin:10px 0 12px}.mkEventsCopy h1 b{color:var(--mk-orange)}.mkEventsCopy>p{font-size:13px;line-height:1.42;color:#dedbd0;max-width:340px}.mkCampusBlurb{margin-top:15px;border-left:3px solid var(--mk-orange);padding-left:11px}.mkCampusBlurb span{display:block;font-size:7px;letter-spacing:.16em;color:var(--mk-orange)}.mkCampusBlurb b{display:block;color:var(--mk-cream);font-family:Georgia,"Times New Roman",serif;font-size:16px;margin-top:3px}.mkCampusBlurb small{font-size:9px;color:#adb7b3}.mkEventsHero{position:relative;min-height:0;border:1px solid rgba(247,231,201,.18);border-radius:14px;overflow:hidden;box-shadow:0 20px 45px rgba(0,0,0,.30)}.mkEventsHero img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.04) brightness(.72)}.mkEventsHeroShade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,12,18,.18),rgba(3,12,18,.06) 55%,rgba(3,12,18,.32)),linear-gradient(0deg,rgba(3,12,18,.55),transparent 48%)}.mkEventsHeroLabel{position:absolute;left:14px;bottom:11px;font-size:8px;letter-spacing:.15em;color:var(--mk-cream)}.mkEventCards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.mkEventCard{position:relative;background:rgba(3,16,22,.90);border:1px solid rgba(247,231,201,.16);border-radius:12px;padding:62px 12px 10px;overflow:hidden}.mkEventArt{position:absolute;inset:0 0 auto;height:52px;background:url('/assets/mockup-events.svg?v=5') center 70%/cover no-repeat;filter:saturate(.95) brightness(.78)}.mkEventCard:nth-child(2) .mkEventArt{background-position:center 52%}.mkEventCard:nth-child(3) .mkEventArt{background-position:center 35%}.mkEventDate{font-size:7px;letter-spacing:.14em;color:var(--mk-orange);font-weight:900}.mkEventCard h3{font-family:Georgia,"Times New Roman",serif;color:var(--mk-cream);font-size:15px;line-height:1;margin:4px 0 4px}.mkEventCard p{font-size:8px;color:#bbc4c0;margin:0}.mkEventCard small{display:block;font-size:7.5px;line-height:1.2;color:#d6c7b6;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mkDaysOff{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:center;background:rgba(3,16,22,.82);border-top:1px solid rgba(247,231,201,.15);padding:8px 11px}.mkDaysTitle{font-family:Georgia,"Times New Roman",serif;color:var(--mk-cream);font-size:16px}.holidayList{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:10px!important}.holiday{padding:0!important;border:0!important}.hicon{font-size:16px!important}.hname{font-size:10px!important}.hoff{font-size:7px!important}.hcount b{font-size:13px!important}.hcount span{font-size:6px!important}
 
 .history{background:#06131c!important}.history:before{display:none!important}.mkHistory{height:100%;display:grid;grid-template-columns:.46fr .54fr;grid-template-rows:1fr 118px;background:linear-gradient(90deg,rgba(3,12,18,.94),rgba(3,12,18,.70) 42%,rgba(3,12,18,.06) 71%),url('/assets/mockup-history.svg?v=4') center/cover no-repeat}.mkHistoryCopy{padding:32px 24px 20px 30px;align-self:center}.mkHistoryCopy h1{font-family:Georgia,"Times New Roman",serif;font-size:67px;line-height:.82;color:var(--mk-cream);margin:10px 0 0;letter-spacing:-.05em}.mkHistoryCopy h2{font-family:Georgia,"Times New Roman",serif;font-size:31px;line-height:1;color:var(--mk-orange);margin:8px 0 20px}.mkHistoryCopy h2 b{color:var(--mk-cream)}.mkHistoryCopy h3{font-family:Georgia,"Times New Roman",serif;font-size:24px;line-height:1.04;color:var(--mk-cream);margin:0 0 9px;max-width:470px}.mkHistoryCopy>p{font-size:13px;line-height:1.42;color:#d8d9d2;max-width:480px;margin:0}.mkHistoryDetail{font-size:11px;line-height:1.38;color:#f2ddbf;max-width:460px;margin-top:9px}.mkHistorySource{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:#889591;margin-top:10px}.mkHistoryArt{min-height:0;position:relative;overflow:hidden}.mkHistoryArt img{width:100%;height:100%;object-fit:cover;opacity:.04}.mkTimeline{grid-column:1/3;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:start;padding:19px 28px 14px;background:rgba(3,16,22,.88);border-top:1px solid rgba(247,231,201,.16);position:relative}.mkTimeline:before{content:"";position:absolute;left:50px;right:50px;top:14px;height:2px;background:linear-gradient(90deg,var(--mk-orange),var(--mk-gold),var(--mk-orange));opacity:.7}.mkTimeline div{padding-top:8px}.mkTimeline b{font-family:Georgia,"Times New Roman",serif;color:var(--mk-gold);font-size:17px}.mkTimeline span{display:block;font-size:8px;line-height:1.25;color:#c7ceca;margin-top:4px;max-width:180px}
 
-.fc{background:#04110b!important}.fc:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,11,7,.12),rgba(2,11,7,.38)),url('/assets/weather-rich.svg?v=1') center/cover no-repeat!important}.mkFc{height:100%;position:relative;z-index:2;padding:18px 20px 18px;display:grid;grid-template-rows:76px 1fr;gap:9px}.mkFcMast{display:flex;justify-content:space-between;align-items:center;padding:0 5px}.mkFcMast span{font-size:7px;letter-spacing:.17em;color:var(--mk-green);font-weight:900}.mkFcMast h1{font-family:Georgia,"Times New Roman",serif;font-size:46px;line-height:.88;color:var(--mk-cream);margin:2px 0 0}.mkFcMast h1 b{color:var(--mk-green)}.mkFcMast p{font-size:7px;letter-spacing:.20em;color:#d5d6cf;margin:5px 0 0}.mkFcMoon{font-size:8px;letter-spacing:.15em;color:var(--mk-green);border:1px solid rgba(39,216,100,.35);border-radius:999px;padding:7px 10px;background:rgba(2,18,10,.65)}.mkFcGrid{display:grid;grid-template-columns:1.25fr .9fr;grid-template-rows:1fr 120px;gap:9px;min-height:0}.mkFcHero{position:relative;overflow:hidden;border:1px solid rgba(247,231,201,.18);border-radius:13px;background:#03110b}.mkFcHero img{width:100%;height:100%;object-fit:cover;filter:saturate(1.06) contrast(1.05) brightness(.88)}.mkFcHero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,11,7,.60),transparent 45%)}.mkFcPhotoTag{position:absolute;left:13px;bottom:10px;z-index:2;color:var(--mk-cream);font-size:8px;letter-spacing:.16em}.mkFcMatches{display:grid;grid-template-rows:1fr 102px;gap:9px}.mkMatchCard,.mkLastCard,.mkFcLens,.mkFcStory{background:rgba(2,17,10,.91);border:1px solid rgba(247,231,201,.18);border-radius:13px}.mkMatchCard{padding:15px 16px}.mkMatchLabel{font-size:7.5px;letter-spacing:.13em;color:var(--mk-green);font-weight:900}.mkOpponent{font-family:Georgia,"Times New Roman",serif;font-size:29px;line-height:.98;color:var(--mk-cream);margin:9px 0}.mkOpponent span{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:10px;color:#b3beb6;font-weight:700}.mkMatchMeta{font-size:8px;color:#c8d1ca}.mkLastCard{display:flex;align-items:center;justify-content:space-between;padding:12px 15px}.mkLastCard small{display:block;font-size:10px;color:#d5ddd7;margin-top:6px}.mkLastCard strong{font-family:Georgia,"Times New Roman",serif;font-size:49px;line-height:.8;color:var(--mk-cream)}.mkFcLens{display:grid;grid-template-columns:145px 1fr;align-items:center;gap:12px;padding:8px}.mkLensImage{height:100%;border-radius:9px;overflow:hidden}.mkLensImage img{width:100%;height:100%;object-fit:cover}.mkFcLens b{display:block;font-family:Georgia,"Times New Roman",serif;color:var(--mk-cream);font-size:16px}.mkFcLens span{display:block;font-size:7.5px;color:#a4b0a8;margin-top:4px}.mkFcStory{padding:9px 11px}.mkStoryBody{display:grid;grid-template-columns:115px 1fr;gap:10px;align-items:center;margin-top:7px}.mkStoryThumb{height:75px;overflow:hidden;border-radius:8px}.mkStoryThumb img{width:100%;height:100%;object-fit:cover}.mkFcStory h2{font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.02;color:var(--mk-cream);margin:0 0 4px}.mkFcStory p{font-size:10.5px;line-height:1.34;color:#d6ded8;margin:0}.mkFcStory span{display:block;font-size:7px;color:#7f9385;margin-top:5px}
+.fc{background:#04110b!important}.fc:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,11,7,.12),rgba(2,11,7,.38)),url('/assets/weather-exact.jpg?v=3') center/cover no-repeat!important}.mkFc{height:100%;position:relative;z-index:2;padding:18px 20px 18px;display:grid;grid-template-rows:76px 1fr;gap:9px}.mkFcMast{display:flex;justify-content:space-between;align-items:center;padding:0 5px}.mkFcMast span{font-size:7px;letter-spacing:.17em;color:var(--mk-green);font-weight:900}.mkFcMast h1{font-family:Georgia,"Times New Roman",serif;font-size:46px;line-height:.88;color:var(--mk-cream);margin:2px 0 0}.mkFcMast h1 b{color:var(--mk-green)}.mkFcMast p{font-size:7px;letter-spacing:.20em;color:#d5d6cf;margin:5px 0 0}.mkFcMoon{font-size:8px;letter-spacing:.15em;color:var(--mk-green);border:1px solid rgba(39,216,100,.35);border-radius:999px;padding:7px 10px;background:rgba(2,18,10,.65)}.mkFcGrid{display:grid;grid-template-columns:1.25fr .9fr;grid-template-rows:1fr 120px;gap:9px;min-height:0}.mkFcHero{position:relative;overflow:hidden;border:1px solid rgba(247,231,201,.18);border-radius:13px;background:#03110b}.mkFcHero img{width:100%;height:100%;object-fit:cover;filter:saturate(1.06) contrast(1.05) brightness(.88)}.mkFcHero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,11,7,.60),transparent 45%)}.mkFcPhotoTag{position:absolute;left:13px;bottom:10px;z-index:2;color:var(--mk-cream);font-size:8px;letter-spacing:.16em}.mkFcMatches{display:grid;grid-template-rows:1fr 102px;gap:9px}.mkMatchCard,.mkLastCard,.mkFcLens,.mkFcStory{background:rgba(2,17,10,.91);border:1px solid rgba(247,231,201,.18);border-radius:13px}.mkMatchCard{padding:15px 16px}.mkMatchLabel{font-size:7.5px;letter-spacing:.13em;color:var(--mk-green);font-weight:900}.mkOpponent{font-family:Georgia,"Times New Roman",serif;font-size:29px;line-height:.98;color:var(--mk-cream);margin:9px 0}.mkOpponent span{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:10px;color:#b3beb6;font-weight:700}.mkMatchMeta{font-size:8px;color:#c8d1ca}.mkLastCard{display:flex;align-items:center;justify-content:space-between;padding:12px 15px}.mkLastCard small{display:block;font-size:10px;color:#d5ddd7;margin-top:6px}.mkLastCard strong{font-family:Georgia,"Times New Roman",serif;font-size:49px;line-height:.8;color:var(--mk-cream)}.mkFcLens{display:grid;grid-template-columns:145px 1fr;align-items:center;gap:12px;padding:8px}.mkLensImage{height:100%;border-radius:9px;overflow:hidden}.mkLensImage img{width:100%;height:100%;object-fit:cover}.mkFcLens b{display:block;font-family:Georgia,"Times New Roman",serif;color:var(--mk-cream);font-size:16px}.mkFcLens span{display:block;font-size:7.5px;color:#a4b0a8;margin-top:4px}.mkFcStory{padding:9px 11px}.mkStoryBody{display:grid;grid-template-columns:115px 1fr;gap:10px;align-items:center;margin-top:7px}.mkStoryThumb{height:75px;overflow:hidden;border-radius:8px}.mkStoryThumb img{width:100%;height:100%;object-fit:cover}.mkFcStory h2{font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.02;color:var(--mk-cream);margin:0 0 4px}.mkFcStory p{font-size:10.5px;line-height:1.34;color:#d6ded8;margin:0}.mkFcStory span{display:block;font-size:7px;color:#7f9385;margin-top:5px}
 
 @media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
  .app{grid-template-rows:40px 1fr!important}.nav{padding:0 16px!important}.navItems{gap:17px}.navItems span{font-size:8px!important}.mkWeather{padding:22px 23px 18px}.mkTemp{font-size:111px}.mkWeatherMain{grid-template-columns:.50fr 1.50fr}.mkLight{min-width:340px}.mkBusCard{width:min(500px,56vw)}.frogRide{width:220px!important;height:84px!important}.mkEvents{padding:20px 22px 15px;grid-template-rows:1fr 138px 66px}.mkEventsCopy h1{font-size:50px}.mkHistoryCopy h1{font-size:61px}.mkHistoryCopy h3{font-size:22px}.mkHistoryCopy>p{font-size:12px}.mkFc{padding:14px 18px 15px;grid-template-rows:68px 1fr}.mkFcMast h1{font-size:42px}.mkOpponent{font-size:26px}.mkLastCard strong{font-size:44px}.mkFcGrid{grid-template-rows:1fr 108px}.mkStoryBody{grid-template-columns:100px 1fr}.mkFcStory h2{font-size:15px}.mkFcStory p{font-size:9.5px}
 }
-</style><style id="mockup-final-lock">
-:root{--canvas-w:min(100vw,calc((100vh - 46px)*1.333333));}
-html,body{background:#02070b!important}
-.app{height:100%!important;display:grid!important;grid-template-rows:46px 1fr!important;background:#02070b!important;padding-top:env(safe-area-inset-top)!important}
-.stage{grid-row:2!important;position:relative!important;display:block!important;overflow:hidden!important;background:#02070b!important;border-top:0!important}
-.nav{grid-row:1!important;width:var(--canvas-w)!important;justify-self:center!important;display:flex!important;align-items:center!important;padding:0 18px!important;background:#031018!important;border:0!important;border-bottom:1px solid rgba(246,226,191,.16)!important}
-.navItems{display:flex!important;align-items:center!important;gap:19px!important}
-.navItems span{font-size:8px!important;letter-spacing:.035em!important;color:#819093!important}
-.navItems span.on{color:#f7e9c9!important}
-.navClock{margin-left:auto!important}
-.screen{top:0!important;bottom:0!important;left:50%!important;right:auto!important;width:var(--canvas-w)!important;height:100%!important;opacity:0!important;pointer-events:none!important;transform:translateX(calc(-50% + 18px))!important;transition:.35s ease!important}
-.screen.active{opacity:1!important;pointer-events:auto!important;transform:translateX(-50%)!important}
 
-/* WEATHER — match approved 4:3 mockup */
-.weather{background:#06131e url('/assets/weather-rich.svg?v=1') center/cover no-repeat!important}
-.weather:before{content:""!important;position:absolute!important;inset:0!important;background:
- linear-gradient(90deg,rgba(2,10,16,.30) 0%,rgba(2,10,16,.10) 38%,rgba(2,10,16,.02) 68%,rgba(2,10,16,.08) 100%),
- linear-gradient(180deg,rgba(2,10,16,.04),rgba(2,10,16,.04) 60%,rgba(2,10,16,.32))!important;z-index:0!important}
-.mkWeather{position:relative!important;z-index:2!important;height:100%!important;padding:26px 28px 22px!important;display:grid!important;grid-template-rows:auto 1fr 126px!important;gap:12px!important}
-.mkKicker{font-size:9px!important;letter-spacing:.18em!important;font-weight:900!important;color:#ef8246!important}
-.mkWeatherMain{display:grid!important;grid-template-columns:42% 58%!important;align-items:center!important;min-height:0!important}
-.mkWeatherNow{align-self:center!important;padding-left:12px!important;margin-top:-24px!important;max-width:330px!important}
-.mkEyebrow{font-family:Georgia,"Times New Roman",serif!important;font-size:24px!important;line-height:1!important;color:#f7e9c9!important;margin-bottom:10px!important}
-.mkTemp{font-family:Georgia,"Times New Roman",serif!important;font-size:122px!important;font-weight:900!important;line-height:.72!important;letter-spacing:-.065em!important;color:#f7e9c9!important}
-.mkCondition{font-family:Georgia,"Times New Roman",serif!important;font-size:28px!important;line-height:1!important;color:#f7e9c9!important;margin-top:12px!important}
-.mkFacts{font-size:11px!important;line-height:1.45!important;color:#e5ddd0!important;margin-top:7px!important}
-.mkRain{font-size:10px!important;color:#efb262!important;margin-top:5px!important}
-.mkLight{align-self:start!important;justify-self:end!important;margin-top:20px!important;min-width:310px!important;max-width:360px!important;display:grid!important;grid-template-columns:1fr 42px 1fr!important;align-items:center!important;gap:10px!important;background:rgba(3,15,21,.90)!important;border:1px solid rgba(247,231,201,.22)!important;border-radius:13px!important;padding:12px 14px!important;box-shadow:0 18px 35px rgba(0,0,0,.22)!important}
-.mkLight span{font-size:7px!important}.mkLight b{font-size:20px!important}.mkLight i{font-size:15px!important}
-.mkForecast{display:block!important}
-.mkForecastBlock:first-child{display:none!important}
-.mkForecastBlock:last-child{display:block!important;height:126px!important;background:rgba(3,15,21,.90)!important;border:1px solid rgba(247,231,201,.19)!important;border-radius:14px!important;padding:12px 16px 10px!important;box-shadow:0 16px 32px rgba(0,0,0,.22)!important}
-.mkForecastTitle{font-size:8px!important;margin-bottom:7px!important;color:#ef8246!important}
-.days{height:82px!important;display:grid!important;grid-template-columns:repeat(5,1fr)!important;align-items:center!important}
-.day{padding:0 8px!important;border-right:1px solid rgba(247,231,201,.08)!important}
-.day:last-child{border-right:0!important}
-.day span{font-size:8px!important;color:#c9d0cc!important}
-.day strong{font-family:Georgia,"Times New Roman",serif!important;font-size:26px!important;line-height:1!important;color:#f7e9c9!important;margin:6px 0 4px!important}
-.day small{font-size:8px!important;line-height:1.2!important;color:#aeb7b4!important}
 
-/* BUS — full illustrated scene + centered departure card */
-.bus{background:#06131c!important}
-.mkBusScene{height:100%!important;background:
- linear-gradient(180deg,rgba(2,10,16,.08),rgba(2,10,16,.16)),
- url('/assets/bus-rich.svg?v=1') center/cover no-repeat!important;position:relative!important}
-.mkBusCard{width:480px!important;max-width:52%!important;background:rgba(3,15,21,.93)!important;border:1px solid rgba(247,231,201,.23)!important;border-radius:18px!important;padding:17px 19px 13px!important;box-shadow:0 25px 60px rgba(0,0,0,.4)!important}
-.mkBusHeader h1{font-size:29px!important}
-.mkBusHeader p{font-size:8px!important}
-.mkBusRow{grid-template-columns:42px 1fr 106px!important;padding:11px 0!important}
-.mkBusDest b{font-size:17px!important}.mkBusRow strong{font-size:20px!important}
-.frogRide{width:225px!important;height:86px!important;bottom:46px!important;opacity:1!important}
-
-/* WHAT'S HAPPENING — editorial poster from reference */
-.mkEvents{height:100%!important;padding:23px 24px 16px!important;background:
- linear-gradient(90deg,rgba(3,12,18,.92) 0%,rgba(3,12,18,.72) 37%,rgba(3,12,18,.12) 68%),
- url('/assets/mockup-events.svg?v=5') center/cover no-repeat!important;display:grid!important;grid-template-rows:1fr 156px 72px!important;gap:10px!important}
-.mkEventsTop{display:grid!important;grid-template-columns:39% 61%!important;gap:17px!important}
-.mkEventsCopy{align-self:center!important;padding-left:5px!important}
-.mkEventsCopy h1{font-family:Georgia,"Times New Roman",serif!important;font-size:52px!important;line-height:.84!important;letter-spacing:-.05em!important;margin:10px 0 12px!important}
-.mkEventsCopy h1 b{color:#ef8246!important}
-.mkEventsCopy>p{font-size:11px!important;line-height:1.42!important;max-width:285px!important}
-.mkCampusBlurb{margin-top:13px!important}.mkCampusBlurb b{font-size:14px!important}.mkCampusBlurb small{font-size:8px!important}
-.mkEventsHero.illustrated{background:url('/assets/mockup-events.svg?v=5') 72% 45%/cover no-repeat!important;border:1px solid rgba(247,231,201,.20)!important;border-radius:14px!important}
-.mkEventsHero.illustrated img{opacity:0!important}
-.mkEventsHeroShade{background:linear-gradient(90deg,rgba(3,12,18,.10),rgba(3,12,18,.03) 60%,rgba(3,12,18,.24)),linear-gradient(0deg,rgba(3,12,18,.48),transparent 48%)!important}
-.mkEventCards{grid-template-columns:repeat(3,1fr)!important;gap:9px!important}
-.mkEventCard{padding:65px 11px 9px!important;border-radius:12px!important}
-.mkEventArt{height:55px!important}
-.mkEventCard h3{font-size:15px!important}.mkEventCard p{font-size:8px!important}.mkEventCard small{font-size:7px!important}
-.mkDaysOff{padding:8px 10px!important;grid-template-columns:102px 1fr!important}
-
-/* HISTORY — dark left article + warm illustrated 'Then & Now' panel */
-.history{background:#06131c!important}
-.mkHistory{height:100%!important;display:grid!important;grid-template-columns:52% 48%!important;grid-template-rows:1fr 120px!important;background:#06131c!important}
-.mkHistoryCopy{align-self:stretch!important;padding:30px 28px 20px 31px!important;background:
- radial-gradient(circle at 0 100%,rgba(239,130,70,.09),transparent 34%),
- linear-gradient(135deg,#06131c,#0a2029)!important}
-.mkHistoryCopy h1{font-size:61px!important;margin-top:12px!important}
-.mkHistoryCopy h2{font-size:30px!important;margin:7px 0 18px!important}
-.mkHistoryCopy h3{font-size:23px!important;line-height:1.05!important;margin-bottom:10px!important;max-width:430px!important}
-.mkHistoryCopy>p{font-size:12px!important;line-height:1.44!important;max-width:430px!important}
-.mkHistoryDetail{font-size:10.5px!important;line-height:1.4!important;max-width:420px!important}
-.mkHistorySource{font-size:7px!important}
-.mkHistoryArt{background:#efe5d0!important;border-left:1px solid rgba(239,130,70,.28)!important;overflow:hidden!important}
-.mkHistoryArt img{opacity:1!important;width:100%!important;height:100%!important;object-fit:cover!important;filter:saturate(.82) sepia(.08) contrast(.98)!important}
-.mkTimeline{grid-column:1/3!important;height:120px!important;padding:22px 27px 12px!important;background:#07151c!important}
-
-/* AUSTIN FC — same dense card layout as approved mockup */
-.fc{background:#031008!important}
-.fc:before{background:
- linear-gradient(90deg,rgba(2,11,7,.08),rgba(2,11,7,.30) 52%,rgba(2,11,7,.64)),
- url('/assets/weather-rich.svg?v=1') center/cover no-repeat!important}
-.mkFc{height:100%!important;padding:15px 17px 15px!important;display:grid!important;grid-template-rows:76px 1fr!important;gap:8px!important}
-.mkFcMast{padding:0 4px!important}.mkFcMast h1{font-size:45px!important}
-.mkFcGrid{display:grid!important;grid-template-columns:1.22fr .88fr!important;grid-template-rows:1fr 116px!important;gap:8px!important}
-.mkFcHero,.mkMatchCard,.mkLastCard,.mkFcLens,.mkFcStory{border-radius:12px!important}
-.mkFcMatches{grid-template-rows:1fr 100px!important;gap:8px!important}
-.mkOpponent{font-size:28px!important}.mkLastCard strong{font-size:48px!important}
-.mkFcLens{grid-template-columns:132px 1fr!important}
-.mkStoryBody{grid-template-columns:106px 1fr!important;gap:9px!important}
-.mkFcStory h2{font-size:16px!important}.mkFcStory p{font-size:10px!important;line-height:1.32!important}
-
-/* iPad landscape tuning */
-@media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
- :root{--canvas-w:100vw}
- .nav{width:100vw!important}
- .screen{width:100vw!important}
- .mkTemp{font-size:116px!important}
- .mkEventsCopy h1{font-size:50px!important}
- .mkHistoryCopy h1{font-size:58px!important}
- .mkFcMast h1{font-size:43px!important}
-}
-</style><style id="reference-layout-correction">
 .refEvents{height:100%;display:grid;grid-template-columns:40% 60%;grid-template-rows:1fr 72px;background:#07131b;padding:18px 18px 14px;gap:10px 12px}
 .refEventsLeft{position:relative;overflow:hidden;padding:24px 20px 10px 22px;border:1px solid rgba(246,228,195,.14);border-radius:13px;background:linear-gradient(180deg,rgba(4,15,21,.98),rgba(5,22,28,.97))}
 .refEventsLeft h1{font-family:Georgia,"Times New Roman",serif;font-size:56px;line-height:.82;letter-spacing:-.055em;color:#f7e8c9;margin:14px 0 13px;position:relative;z-index:2}
 .refEventsLeft h1 b{color:#ef8246}.refEventsLeft>p{font-size:11px;line-height:1.45;color:#d9d8d0;max-width:280px;position:relative;z-index:2}
-.refAustinScene{position:absolute;left:0;right:0;bottom:0;height:47%;background:url('/assets/weather-rich.svg?v=1') center 70%/cover no-repeat;border-top:1px solid rgba(246,228,195,.12)}
+.refAustinScene{position:absolute;left:0;right:0;bottom:0;height:47%;background:url('/assets/mockup-events.svg?v=8') center 70%/cover no-repeat;border-top:1px solid rgba(246,228,195,.12)}
 .refCampusNote{position:absolute;left:23px;right:22px;bottom:15px;z-index:3;background:rgba(3,15,21,.74);border-left:3px solid #ef8246;padding:7px 10px;backdrop-filter:blur(3px)}
 .refCampusNote span{display:block;font-size:6.5px;letter-spacing:.16em;color:#ef8246}.refCampusNote b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:13px;color:#f7e8c9;margin-top:2px}.refCampusNote small{font-size:7px;color:#bac4c0}
 .refEventGrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:9px;min-height:0}
 .refEventCard{position:relative;overflow:hidden;background:#07161d;border:1px solid rgba(246,228,195,.17);border-radius:12px;padding:94px 12px 11px}
-.refEventImage{position:absolute;left:0;right:0;top:0;height:87px;background:url('/assets/weather-rich.svg?v=1') center 43%/cover no-repeat;filter:saturate(.95) contrast(1.03) brightness(.85)}
-.refEventCard.c1 .refEventImage{background:url('/assets/bus-rich.svg?v=1') center 34%/cover no-repeat}.refEventCard.c2 .refEventImage{background:url('/assets/weather-rich.svg?v=1') center 68%/cover no-repeat}.refEventCard.c3 .refEventImage{background:url('/assets/weather-rich.svg?v=1') right 50%/cover no-repeat}
+.refEventImage{position:absolute;left:0;right:0;top:0;height:87px;background:url('/assets/mockup-events.svg?v=8') center 43%/cover no-repeat;filter:saturate(.95) contrast(1.03) brightness(.85)}
+.refEventCard.c1 .refEventImage{background:url('/assets/mockup-events.svg?v=8') center 34%/cover no-repeat}.refEventCard.c2 .refEventImage{background:url('/assets/mockup-events.svg?v=8') center 68%/cover no-repeat}.refEventCard.c3 .refEventImage{background:url('/assets/mockup-events.svg?v=8') right 50%/cover no-repeat}
 .refEventBadge{position:absolute;left:10px;top:72px;padding:3px 7px;border-radius:999px;background:#ef8246;color:#07131b;font-size:6px;font-weight:900;letter-spacing:.08em}
 .refEventCard.c2 .refEventBadge{background:#5ccb6a}.refEventCard.c3 .refEventBadge{background:#ae7ade}
 .refEventDate{font-size:6.5px;letter-spacing:.12em;color:#ef9a5c;font-weight:900}.refEventCard h3{font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1;color:#f7e8c9;margin:5px 0}.refEventCard p{font-size:8px;color:#bcc6c2;margin:0}.refEventCard small{display:block;font-size:7px;line-height:1.22;color:#d7c8b7;margin-top:5px;max-height:17px;overflow:hidden}.refEventArrow{position:absolute;right:9px;bottom:8px;width:22px;height:22px;border-radius:50%;border:1px solid rgba(246,228,195,.28);display:grid;place-items:center;color:#f2b15f;font-size:12px}
@@ -573,300 +188,112 @@ html,body{background:#02070b!important}
 .refHistoryDetail{font-size:8.5px;line-height:1.35;margin-top:8px;color:#4a433b}.refHistorySource{font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:#9b6e55;margin-top:8px}.refHistoryArrow{position:absolute;right:24px;bottom:23px;width:32px;height:32px;border-radius:50%;background:#df6d3f;color:#f5e6ca;display:grid;place-items:center;font-size:17px}
 .refHistory .mkTimeline{height:122px!important;border-radius:10px!important;background:#07151b!important}
 .mkMatchCard{display:grid!important;grid-template-rows:auto 1fr auto!important;padding:14px 14px 12px!important}.mkVersus{display:grid;grid-template-columns:1fr 28px 1fr;gap:8px;align-items:center;margin:10px 0 8px}.mkVersus>span{text-align:center;color:#9eb0a3;font-size:9px;font-weight:900}.mkClub{display:grid;grid-template-columns:42px 1fr;gap:8px;align-items:center}.mkClub.away{text-align:right;grid-template-columns:1fr 42px}.mkClub.away i{grid-column:2}.mkClub.away b{grid-row:1;grid-column:1}.mkClub i{width:42px;height:50px;border-radius:10px;background:#0b4220;border:1px solid rgba(39,216,100,.35);display:grid;place-items:center;color:#48e676;font-style:normal;font-weight:950;font-size:9px}.mkClub.away i{background:#d8b91d;color:#171913;border-color:#f0d94c}.mkClub b{font-family:Georgia,"Times New Roman",serif;color:#f7e8c9;font-size:17px;line-height:1.02}.mkMatchMeta{font-size:8px!important;color:#d5ded6!important}
-</style><style id="rich-art-live-lock">
-.weather{background-image:url('/assets/weather-rich.svg?v=1')!important;background-size:cover!important;background-position:center!important}
-.mkBusScene{background-image:linear-gradient(90deg,rgba(2,10,16,.06),rgba(2,10,16,.03)),url('/assets/bus-rich.svg?v=1')!important;background-position:center!important;background-size:cover!important}
-.mkBusCard{background:rgba(3,15,21,.88)!important;backdrop-filter:blur(4px)!important}
-.refEventsLeft{background:linear-gradient(180deg,rgba(4,15,21,.94),rgba(5,22,28,.91))!important}
-.refAustinScene{filter:saturate(1.08) contrast(1.04)!important}
-.refEventImage{filter:saturate(1.06) contrast(1.05) brightness(.92)!important}
-.fc:before{background:linear-gradient(90deg,rgba(2,11,7,.18),rgba(2,11,7,.38) 55%,rgba(2,11,7,.62)),url('/assets/weather-rich.svg?v=1') center/cover no-repeat!important}
-</style><style id="rich-art-final-pass">
-.weather{background:#06131e url('/assets/mockup-austin-night.svg?v=6') center/cover no-repeat!important}
-.mkBusScene{background:linear-gradient(180deg,rgba(2,10,16,.08),rgba(2,10,16,.16)),url('/assets/mockup-austin-night.svg?v=6') center/cover no-repeat!important}
-.refAustinScene{background:url('/assets/mockup-events.svg?v=5') center 58%/cover no-repeat!important}
-.refEventImage{background:url('/assets/mockup-events.svg?v=5') center 53%/cover no-repeat!important;filter:saturate(1.02) contrast(1.06) brightness(.88)!important}
-.refEventCard.c1 .refEventImage{background-position:center 44%!important}.refEventCard.c2 .refEventImage{background-position:center 68%!important}.refEventCard.c3 .refEventImage{background-position:center 32%!important}
-.frogRide{width:300px!important;height:112px!important;bottom:34px!important;opacity:1!important;z-index:2!important;filter:drop-shadow(0 12px 14px rgba(0,0,0,.55))!important}
-.mkBusCard{z-index:4!important}
-@media (min-width:900px) and (max-width:1400px) and (orientation:landscape){.frogRide{width:270px!important;height:103px!important;bottom:30px!important}}
-</style><style id="approved-reference-art-lock">
-/* Final visual target: approved five-panel mockup. These rules intentionally override all older art passes. */
-.weather{background:#06131e url('/assets/weather-rich.svg?v=6') center/cover no-repeat!important}
-.weather:before{background:linear-gradient(90deg,rgba(2,10,16,.28) 0%,rgba(2,10,16,.10) 38%,rgba(2,10,16,.01) 72%,rgba(2,10,16,.06) 100%),linear-gradient(180deg,rgba(2,10,16,.03),rgba(2,10,16,.02) 62%,rgba(2,10,16,.22))!important}
-.mkBusScene{background:linear-gradient(180deg,rgba(2,10,16,.02),rgba(2,10,16,.10)),url('/assets/bus-rich.svg?v=4') center/cover no-repeat!important}
-.mkBusCard{background:rgba(3,15,21,.90)!important;border-color:rgba(247,231,201,.24)!important}
-.refAustinScene{background:url('/assets/weather-rich.svg?v=6') center 58%/cover no-repeat!important;filter:saturate(1.10) contrast(1.05)!important}
-.refEventImage{background:url('/assets/weather-rich.svg?v=6') center 52%/cover no-repeat!important;filter:saturate(1.08) contrast(1.06) brightness(.92)!important}
-.refEventCard.c1 .refEventImage{background:url('/assets/bus-rich.svg?v=4') center 46%/cover no-repeat!important}
-.refEventCard.c2 .refEventImage{background:url('/assets/weather-rich.svg?v=6') center 72%/cover no-repeat!important}
-.refEventCard.c3 .refEventImage{background:url('/assets/weather-rich.svg?v=6') right 48%/cover no-repeat!important}
-.fc:before{background:linear-gradient(90deg,rgba(2,11,7,.14),rgba(2,11,7,.32) 55%,rgba(2,11,7,.58)),url('/assets/weather-rich.svg?v=6') center/cover no-repeat!important}
-.frogRide{display:none!important}
-</style><style id="exact-reference-weather-lock">
-/* Exact approved five-panel mockup crop; final weather override. */
-.weather{background:#06131b url('/assets/weather-rich.svg?v=6') center center/cover no-repeat!important}
-.weather:before{background:linear-gradient(180deg,rgba(2,9,14,.02),rgba(2,9,14,.03) 64%,rgba(2,9,14,.17))!important;z-index:0!important}
-.weather:after{content:""!important;position:absolute!important;inset:0!important;width:auto!important;height:auto!important;z-index:1!important;background:linear-gradient(90deg,rgba(3,12,18,.82) 0%,rgba(3,12,18,.68) 17%,rgba(3,12,18,.28) 31%,rgba(3,12,18,0) 43%)!important;pointer-events:none!important}
-.mkWeather{z-index:2!important}
-.mkWeatherNow{position:relative!important;z-index:3!important}
-.mkForecastBlock:last-child{background:rgba(3,15,21,.95)!important}
-</style><style id="exact-binary-art-lock">
-/* Use the real approved raster artwork uploaded from the reference mockup. */
-.weather{
-  background:#06131b url('/assets/weather-exact.jpg?v=1') center center/cover no-repeat!important;
-  image-rendering:auto!important;
-}
+</style><style id="kiosk-production-v6">
+:root{--cream:#f6e7c5;--orange:#ff8a43;--gold:#ffc25d;--ink:#06131b;--green:#39e66a}
+
+/* Shared shell */
+html,body{background:#02070b!important}
+.app{height:100%;display:grid!important;grid-template-rows:46px 1fr!important}
+.stage{grid-row:2!important;background:#06131b!important;overflow:hidden!important}
+.nav{grid-row:1!important;height:46px!important;padding:0 18px!important;background:#031019!important;border-bottom:1px solid rgba(246,231,197,.20)!important}
+.navItems{gap:24px!important}.navItems span{font-size:9px!important;letter-spacing:.045em!important;color:#aab6b9!important}
+.navItems span.on{color:var(--orange)!important}.navClock b{font:700 15px/1 Georgia,"Times New Roman",serif!important;color:var(--cream)!important}.navClock span{font-size:7px!important}
+.screen{overflow:hidden!important}
+
+/* Weather — use only the scenic portion of the approved painting.
+   Zoom/right-align removes all sample text and the baked sample forecast from the source image. */
+.weather{background:#06131b!important}
 .weather:before{
-  background:
-    linear-gradient(180deg,rgba(2,9,14,.02),rgba(2,9,14,.03) 64%,rgba(2,9,14,.18))!important;
+ content:""!important;display:block!important;position:absolute!important;inset:0!important;z-index:0!important;
+ background-image:url('/assets/weather-exact.jpg?v=3')!important;
+ background-repeat:no-repeat!important;background-size:150% auto!important;background-position:right top!important;
+ filter:saturate(1.04) contrast(1.02) brightness(.94)!important;
 }
 .weather:after{
-  content:""!important;
-  position:absolute!important;
-  inset:0!important;
-  width:auto!important;height:auto!important;
-  z-index:1!important;
-  background:
-    linear-gradient(90deg,
-      rgba(3,12,18,.96) 0%,
-      rgba(3,12,18,.90) 16%,
-      rgba(3,12,18,.70) 23%,
-      rgba(3,12,18,.30) 32%,
-      rgba(3,12,18,0) 43%)!important;
-  pointer-events:none!important;
+ content:""!important;display:block!important;position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important;
+ background:
+ linear-gradient(90deg,rgba(3,13,19,.76) 0%,rgba(3,13,19,.45) 22%,rgba(3,13,19,.12) 39%,rgba(3,13,19,0) 55%),
+ linear-gradient(0deg,rgba(3,13,19,.84) 0%,rgba(3,13,19,.10) 24%,rgba(3,13,19,0) 40%)!important;
 }
-.mkWeather{position:relative!important;z-index:2!important}
-.mkWeatherNow{position:relative!important;z-index:3!important}
-.mkForecast{position:relative!important;z-index:3!important}
-</style><style id="exact-binary-bus-lock">
-.bus .mkBusScene{
-  position:relative!important;
-  background:#06131b url('/assets/bus-exact.jpg?v=1') center center/cover no-repeat!important;
-  image-rendering:auto!important;
-  overflow:hidden!important;
-}
-.bus .frogRide{display:none!important}
-.bus .mkBusCard{
-  position:absolute!important;
-  left:50%!important;
-  top:19%!important;
-  transform:translateX(-50%)!important;
-  width:min(540px,48vw)!important;
-  min-width:430px!important;
-  height:248px!important;
-  padding:10px 14px!important;
-  background:rgba(4,15,22,.97)!important;
-  border:1px solid rgba(236,173,91,.55)!important;
-  border-radius:18px!important;
-  box-shadow:0 16px 34px rgba(0,0,0,.34)!important;
-  backdrop-filter:none!important;
-}
-.bus .mkBusHeader{display:none!important}
-.bus .mkBusRows{height:205px!important;display:grid!important;grid-template-rows:repeat(3,1fr)!important}
-.bus .mkBusRow{padding:10px 0!important}
-.bus .mkBusDest b{font-size:21px!important}
-.bus .mkBusDest span{font-size:10px!important;letter-spacing:.08em!important}
-.bus .mkBusRow strong{font-size:25px!important}
-.bus .mkBusRow small,.bus .mkBusRow em{font-size:9px!important}
-.bus .mkRealtime{font-size:9px!important;margin-top:4px!important}
-@media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
-  .bus .mkBusCard{width:500px!important;min-width:0!important;height:236px!important;top:18%!important}
-  .bus .mkBusDest b{font-size:19px!important}
-  .bus .mkBusRow strong{font-size:23px!important}
-}
-</style><style id="five-panel-target-lock">
-/* Acceptance target: the five rendered kiosk panels approved in chat. This block is intentionally last. */
-:root{--target-cream:#f6e7c5;--target-orange:#ff8a43;--target-blue:#071722;--target-line:rgba(246,231,197,.24)}
-.nav{height:46px!important;background:#03111a!important;border-bottom:1px solid rgba(246,231,197,.22)!important;padding:0 18px!important}
-.navItems{gap:25px!important}
-.navItems span{font-size:10px!important;letter-spacing:.045em!important;color:#aab6bb!important}
-.navItems span.on{color:#ff9b4a!important}
-.navItems span:before{width:7px!important;height:7px!important;margin-right:6px!important}
-.navClock b{font-family:Georgia,"Times New Roman",serif!important;font-size:15px!important;color:var(--target-cream)!important}
-.navClock span{font-size:7px!important;color:#b7c1c3!important;letter-spacing:.09em!important}
-
-/* WEATHER: keep the approved painting, cover its baked UI completely, then render only live data above it. */
-.weather{background:#06131b url('/assets/weather-exact.jpg?v=2') center/cover no-repeat!important}
-.weather:before{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:linear-gradient(180deg,rgba(2,10,16,.03),rgba(2,10,16,.02) 66%,rgba(2,10,16,.10))!important}
-.weather:after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important;background:
- linear-gradient(90deg,rgba(3,12,18,.99) 0%,rgba(3,12,18,.97) 23%,rgba(3,12,18,.83) 31%,rgba(3,12,18,.22) 42%,rgba(3,12,18,0) 49%),
- linear-gradient(0deg,rgba(3,12,18,.99) 0%,rgba(3,12,18,.98) 17%,rgba(3,12,18,.70) 21%,rgba(3,12,18,0) 28%)!important}
-.mkWeather{z-index:2!important;height:100%!important;padding:24px 26px 18px!important;display:grid!important;grid-template-rows:auto 1fr 128px!important;gap:10px!important}
+.mkWeather{position:relative!important;z-index:2!important;height:100%!important;padding:22px 25px 16px!important;display:grid!important;grid-template-rows:auto 1fr 126px!important;gap:10px!important}
 .mkWeatherMain{grid-template-columns:43% 57%!important;align-items:center!important}
-.mkWeatherNow{align-self:center!important;margin:5px 0 30px 2px!important;padding-left:0!important;max-width:345px!important}
-.mkEyebrow{font-family:Georgia,"Times New Roman",serif!important;font-size:28px!important;color:var(--target-cream)!important;margin-bottom:12px!important}
-.mkTemp{font-family:Georgia,"Times New Roman",serif!important;font-size:132px!important;font-weight:900!important;line-height:.70!important;color:var(--target-cream)!important;letter-spacing:-.065em!important}
-.mkCondition{font-family:Georgia,"Times New Roman",serif!important;font-size:30px!important;color:var(--target-cream)!important;margin-top:13px!important}
-.mkFacts{font-size:12px!important;color:#e7dfd0!important;margin-top:9px!important;line-height:1.45!important}
-.mkRain{font-size:10px!important;color:#ffb761!important}
-.mkLight{align-self:start!important;justify-self:end!important;margin-top:14px!important;min-width:330px!important;background:rgba(3,15,21,.94)!important;border:1px solid rgba(246,231,197,.25)!important;border-radius:16px!important;padding:13px 15px!important;box-shadow:0 18px 36px rgba(0,0,0,.32)!important}
-.mkLight b{font-family:Georgia,"Times New Roman",serif!important;font-size:22px!important;color:var(--target-cream)!important}
-.mkForecast{display:block!important;position:relative!important;z-index:3!important}
-.mkForecastBlock:first-child{display:none!important}
-.mkForecastBlock:last-child{height:128px!important;background:rgba(3,15,21,.97)!important;border:1px solid rgba(246,231,197,.23)!important;border-radius:16px!important;padding:12px 18px!important;box-shadow:0 16px 34px rgba(0,0,0,.30)!important}
-.mkForecastTitle{font-size:8px!important;color:#ff9149!important;letter-spacing:.16em!important}
-.days{height:84px!important}
-.day{border-right:1px solid rgba(246,231,197,.10)!important}
-.day:last-child{border-right:0!important}
-.day strong{font-family:Georgia,"Times New Roman",serif!important;font-size:27px!important;color:var(--target-cream)!important}
+.mkWeatherNow{align-self:center!important;margin:-6px 0 28px 2px!important;max-width:340px!important}
+.mkEyebrow{font:700 27px/1 Georgia,"Times New Roman",serif!important;color:var(--cream)!important;margin-bottom:10px!important}
+.mkTemp{font:900 126px/.72 Georgia,"Times New Roman",serif!important;letter-spacing:-.065em!important;color:var(--cream)!important;text-shadow:0 5px 22px rgba(0,0,0,.38)!important}
+.mkCondition{font:700 29px/1 Georgia,"Times New Roman",serif!important;color:var(--cream)!important;margin-top:12px!important}
+.mkFacts{font-size:12px!important;line-height:1.4!important;color:#eee5d6!important;margin-top:8px!important}.mkRain{font-size:9px!important;color:#ffc078!important}
+.mkLight{align-self:start!important;justify-self:end!important;margin-top:12px!important;min-width:335px!important;background:rgba(3,15,21,.94)!important;border:1px solid rgba(246,231,197,.24)!important;border-radius:15px!important;padding:12px 15px!important;box-shadow:0 14px 32px rgba(0,0,0,.28)!important}
+.mkLight b{font:700 22px/1 Georgia,"Times New Roman",serif!important;color:var(--cream)!important}
+.mkForecast{display:block!important;position:relative!important;z-index:3!important}.mkForecastBlock:first-child{display:none!important}
+.mkForecastBlock:last-child{height:126px!important;background:rgba(3,15,21,.97)!important;border:1px solid rgba(246,231,197,.22)!important;border-radius:15px!important;padding:11px 16px!important;box-shadow:0 12px 30px rgba(0,0,0,.28)!important}
+.mkForecastTitle{font-size:8px!important;color:var(--orange)!important;letter-spacing:.17em!important}.days{height:84px!important}
+.day{border-right:1px solid rgba(246,231,197,.10)!important}.day:last-child{border-right:0!important}.day strong{font:700 27px/1 Georgia,"Times New Roman",serif!important;color:var(--cream)!important}
 
-/* BUS: the reference already contains a board, so the live board must cover the entire baked board/header, not float on top of it. */
-.bus .mkBusScene{background:#06131b url('/assets/bus-exact.jpg?v=2') center/cover no-repeat!important;position:relative!important;overflow:hidden!important}
-.bus .frogRide{display:none!important}
-.bus .mkBusCard{position:absolute!important;left:50%!important;top:5.5%!important;transform:translateX(-50%)!important;width:min(610px,53vw)!important;min-width:520px!important;height:54%!important;min-height:365px!important;padding:14px 22px 13px!important;background:rgba(3,15,22,.985)!important;border:1px solid rgba(238,166,77,.62)!important;border-radius:20px!important;box-shadow:0 20px 50px rgba(0,0,0,.42)!important}
-.bus .mkBusHeader{display:flex!important;align-items:center!important;justify-content:center!important;gap:14px!important;height:78px!important;border-bottom:1px solid rgba(246,231,197,.23)!important}
-.bus .mkBusIcon{width:52px!important;height:52px!important;border-radius:50%!important;background:#ff8a43!important;color:#071722!important;display:grid!important;place-items:center!important;font-size:22px!important}
-.bus .mkBusHeader h1{font-family:Georgia,"Times New Roman",serif!important;font-size:42px!important;line-height:.88!important;color:var(--target-cream)!important;margin:0!important}
-.bus .mkBusHeader p{font-size:10px!important;color:#c7cfcb!important;margin:5px 0 0!important;text-align:center!important}
-.bus .mkBusRows{height:calc(100% - 102px)!important;display:grid!important;grid-template-rows:repeat(3,1fr)!important}
-.bus .mkBusRow{grid-template-columns:56px 1fr 145px!important;padding:13px 0!important;border-bottom:1px solid rgba(246,231,197,.15)!important}
-.bus .mkRoute{width:42px!important;height:42px!important;font-size:16px!important}
-.bus .mkBusDest b{font-family:Georgia,"Times New Roman",serif!important;font-size:23px!important;color:var(--target-cream)!important}
-.bus .mkBusDest span{font-size:9px!important;color:#aeb9b6!important}
-.bus .mkBusRow strong{font-family:Georgia,"Times New Roman",serif!important;font-size:28px!important;color:#ffc25d!important}
-.bus .mkBusRow small,.bus .mkBusRow em{font-size:8px!important;color:#9ca9a7!important}
-.bus .mkRealtime{font-size:8px!important;color:#69d58f!important;margin-top:5px!important}
+/* Bus — approved painted background with one single live board.
+   The opaque underlay fully erases the sample board baked into the reference. */
+.bus{background:#06131b!important}.mkBusScene{height:100%!important;position:relative!important;background:#06131b url('/assets/bus-exact.jpg?v=3') center/cover no-repeat!important;overflow:hidden!important}
+.mkBusScene:after{content:""!important;position:absolute!important;left:22.5%!important;top:12.5%!important;width:56%!important;height:51%!important;background:#031018!important;border:1px solid rgba(255,178,83,.50)!important;border-radius:24px!important;box-shadow:0 22px 50px rgba(0,0,0,.42)!important;z-index:1!important}
+.frogRide{display:none!important}
+.mkBusCard{position:absolute!important;left:22.5%!important;top:12.5%!important;transform:none!important;width:56%!important;height:51%!important;min-width:0!important;min-height:0!important;padding:14px 22px 13px!important;background:#031018!important;border:1px solid rgba(255,178,83,.50)!important;border-radius:24px!important;box-shadow:none!important;backdrop-filter:none!important;z-index:2!important}
+.mkBusHeader{height:78px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:14px!important;padding-bottom:10px!important;border-bottom:1px solid rgba(246,231,197,.20)!important}
+.mkBusIcon{width:48px!important;height:48px!important;border-radius:50%!important;background:var(--orange)!important;color:#07131b!important;font-size:21px!important}
+.mkBusHeader h1{font:700 40px/.9 Georgia,"Times New Roman",serif!important;color:var(--cream)!important}.mkBusHeader p{font-size:9px!important;color:#c5ceca!important}
+.mkBusRows{height:calc(100% - 102px)!important;display:grid!important;grid-template-rows:repeat(3,1fr)!important}
+.mkBusRow{grid-template-columns:54px 1fr 145px!important;gap:12px!important;padding:11px 0!important;border-bottom:1px solid rgba(246,231,197,.14)!important}
+.mkRoute{width:42px!important;height:42px!important;font-size:15px!important}.mkBusDest b{font:700 22px/1 Georgia,"Times New Roman",serif!important;color:var(--cream)!important}.mkBusDest span{font-size:8px!important}
+.mkBusRow strong{font:700 27px/1 Georgia,"Times New Roman",serif!important;color:var(--gold)!important}.mkBusRow small{font-size:7px!important}.mkBusRow em{font-size:6.5px!important}.mkRealtime{font-size:7px!important;color:#68d88e!important;padding-top:5px!important}
 
-/* WHAT'S HAPPENING: poster left, four image-led cards right, full illustrated nightscape underneath. */
+/* What's Happening — all imagery comes from clean illustration assets; no screenshots/sample cards. */
 .acc{background:#07131b!important}
-.refEvents{height:100%!important;display:grid!important;grid-template-columns:42% 58%!important;grid-template-rows:1fr 82px!important;gap:10px!important;padding:14px 16px 12px!important;background:
- linear-gradient(90deg,rgba(3,12,18,.96) 0%,rgba(3,12,18,.72) 39%,rgba(3,12,18,.20) 62%,rgba(3,12,18,.10)),
- url('/assets/mockup-events.svg?v=7') center/cover no-repeat!important}
-.refEventsLeft{border:0!important;border-radius:0!important;background:transparent!important;padding:32px 22px 14px 28px!important}
-.refEventsLeft:after{content:"";position:absolute;left:0;right:0;bottom:0;height:51%;background:linear-gradient(0deg,rgba(3,12,18,.10),transparent 40%),url('/assets/austin-skyline-night-illustrated.svg?v=2') center 58%/cover no-repeat;z-index:0}
-.refEventsLeft>*{position:relative;z-index:2}
-.refEventsLeft .mkKicker{font-size:10px!important;color:#ff9048!important;line-height:1.35!important}
-.refEventsLeft h1{font-family:Georgia,"Times New Roman",serif!important;font-size:61px!important;line-height:.78!important;letter-spacing:-.055em!important;color:var(--target-cream)!important;margin:16px 0 15px!important}
-.refEventsLeft h1 b{color:#ff8a43!important}
-.refEventsLeft>p{font-size:12px!important;line-height:1.45!important;max-width:310px!important;color:#e6e1d4!important}
-.refAustinScene{display:none!important}
-.refCampusNote{left:27px!important;right:28px!important;bottom:15px!important;padding:9px 12px!important;background:rgba(3,15,21,.88)!important;border-left:4px solid #ff8a43!important}
-.refCampusNote b{font-size:15px!important}.refCampusNote small{font-size:8px!important}
+.refEvents{height:100%!important;display:grid!important;grid-template-columns:41% 59%!important;grid-template-rows:1fr 82px!important;gap:10px!important;padding:14px 16px 12px!important;background:
+ linear-gradient(90deg,rgba(3,12,18,.96) 0%,rgba(3,12,18,.78) 34%,rgba(3,12,18,.16) 66%,rgba(3,12,18,.08)),
+ url('/assets/mockup-events.svg?v=8') center/cover no-repeat!important}
+.refEventsLeft{position:relative!important;overflow:hidden!important;border:1px solid rgba(246,231,197,.18)!important;border-radius:15px!important;background:rgba(3,15,21,.72)!important;padding:30px 24px 15px 27px!important}
+.refEventsLeft:after{content:""!important;position:absolute!important;left:0!important;right:0!important;bottom:0!important;height:48%!important;background:linear-gradient(0deg,rgba(3,12,18,.10),transparent 45%),url('/assets/mockup-events.svg?v=8') 31% 74%/170% auto no-repeat!important;z-index:0!important}
+.refEventsLeft>*{position:relative!important;z-index:2!important}.refEventsLeft .mkKicker{font-size:9px!important;color:var(--orange)!important;line-height:1.35!important}
+.refEventsLeft h1{font:700 58px/.80 Georgia,"Times New Roman",serif!important;letter-spacing:-.052em!important;color:var(--cream)!important;margin:15px 0 14px!important}.refEventsLeft h1 b{color:var(--orange)!important}
+.refEventsLeft>p{font-size:11px!important;line-height:1.45!important;max-width:320px!important;color:#e6e1d5!important}
+.refAustinScene{display:none!important}.refCampusNote{left:27px!important;right:27px!important;bottom:14px!important;padding:8px 11px!important;background:rgba(3,15,21,.91)!important;border-left:4px solid var(--orange)!important}
+.refCampusNote b{font-size:14px!important}.refCampusNote small{font-size:7px!important}
 .refEventGrid{display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:1fr 1fr!important;gap:10px!important;min-height:0!important}
-.refEventCard{position:relative!important;overflow:hidden!important;padding:58% 14px 13px!important;background:#06151d!important;border:1px solid rgba(246,231,197,.20)!important;border-radius:15px!important;box-shadow:0 14px 28px rgba(0,0,0,.18)!important}
-.refEventImage{height:56%!important;filter:saturate(1.12) contrast(1.08) brightness(.95)!important;background:url('/assets/mockup-events.svg?v=7') center 42%/cover no-repeat!important}
-.refEventCard.c1 .refEventImage{background-position:73% 43%!important}
-.refEventCard.c2 .refEventImage{background-position:35% 73%!important}
-.refEventCard.c3 .refEventImage{background-position:88% 61%!important}
-.refEventBadge{top:52%!important;left:12px!important;font-size:7px!important;padding:4px 8px!important}
-.refEventDate{font-size:7px!important}.refEventCard h3{font-size:19px!important;margin:6px 0 5px!important}.refEventCard p{font-size:9px!important}.refEventCard small{font-size:7.5px!important;line-height:1.25!important;max-height:30px!important}
-.refEventArrow{width:28px!important;height:28px!important;font-size:15px!important}
-.refDaysOff{grid-column:1/3!important;padding:8px 14px!important;background:rgba(3,15,21,.96)!important;border:1px solid rgba(246,231,197,.20)!important;border-radius:13px!important}
-.refDaysOff .mkDaysTitle{font-family:Georgia,"Times New Roman",serif!important;font-size:18px!important;color:var(--target-cream)!important}
-.refDaysOff .holidayList{grid-template-columns:repeat(3,1fr)!important}
-.refDaysOff .hname{font-size:13px!important}.refDaysOff .hoff{font-size:8px!important}.refDaysOff .hcount b{font-size:18px!important;color:#ffbf58!important}
+.refEventCard{position:relative!important;overflow:hidden!important;padding:47% 13px 12px!important;background:rgba(3,15,21,.95)!important;border:1px solid rgba(246,231,197,.20)!important;border-radius:14px!important;box-shadow:0 13px 27px rgba(0,0,0,.18)!important}
+.refEventImage{position:absolute!important;left:0!important;right:0!important;top:0!important;height:45%!important;background-image:url('/assets/mockup-events.svg?v=8')!important;background-repeat:no-repeat!important;background-size:155% auto!important;filter:saturate(1.08) contrast(1.04) brightness(.92)!important}
+.refEventCard.c0 .refEventImage{background-position:70% 42%!important}.refEventCard.c1 .refEventImage{background-position:30% 57%!important}.refEventCard.c2 .refEventImage{background-position:76% 72%!important}.refEventCard.c3 .refEventImage{background-position:43% 36%!important}
+.refEventImage:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,15,21,.62),transparent 54%)}
+.refEventBadge{top:41%!important;left:11px!important;font-size:6.5px!important;padding:4px 8px!important}.refEventDate{font-size:7px!important}.refEventCard h3{font-size:19px!important;margin:6px 0 5px!important}.refEventCard p{font-size:8.5px!important}.refEventCard small{font-size:7.5px!important;line-height:1.3!important;max-height:32px!important}.refEventArrow{width:28px!important;height:28px!important}
+.refDaysOff{grid-column:1/3!important;padding:8px 13px!important;background:rgba(3,15,21,.97)!important;border:1px solid rgba(246,231,197,.20)!important;border-radius:13px!important}.refDaysOff .mkDaysTitle{font:700 18px/1 Georgia,"Times New Roman",serif!important;color:var(--cream)!important}.refDaysOff .holidayList{grid-template-columns:repeat(3,1fr)!important}.refDaysOff .hname{font-size:12px!important}.refDaysOff .hoff{font-size:7px!important}.refDaysOff .hcount b{font-size:17px!important;color:var(--gold)!important}
 
-/* HISTORY: illustrated nightscape around a compact editorial paper collage; readable daily story. */
-.history{background:#07131b url('/assets/mockup-history.svg?v=4') center/cover no-repeat!important}
-.refHistory{height:100%!important;display:grid!important;grid-template-rows:1fr 128px!important;padding:14px 16px 12px!important;gap:10px!important;background:linear-gradient(90deg,rgba(3,12,18,.08),rgba(3,12,18,.02))!important}
-.refHistoryPaper{width:91%!important;height:100%!important;justify-self:center!important;display:grid!important;grid-template-columns:54% 46%!important;background:rgba(244,234,211,.97)!important;border:1px solid rgba(223,108,63,.55)!important;border-radius:14px!important;box-shadow:0 22px 50px rgba(0,0,0,.34)!important}
-.refArchive{padding:32px 20px 18px 27px!important;background:linear-gradient(90deg,#f3ead7,#e8dcc3)!important}
-.refSunDisc{width:72px!important;height:72px!important;left:25px!important;top:22px!important;background:#e97649!important}
-.refArchiveFrame{margin:18px 38px 0 72px!important;height:69%!important;padding:9px!important;background:#d7cab0!important;box-shadow:0 10px 20px rgba(63,43,24,.26)!important;transform:rotate(-1deg)!important;z-index:2!important}
-.refArchiveFrame:after{content:"";position:absolute;right:-58px;bottom:-34px;width:46%;height:42%;background:url('/assets/austin-skyline-night-illustrated.svg?v=2') center/cover no-repeat;border:8px solid #eee1c5;box-shadow:0 8px 18px rgba(53,39,23,.28);transform:rotate(-4deg)}
-.refArchiveCaption{bottom:23px!important;font-size:7px!important}
-.refHistoryStory{padding:28px 28px 20px 26px!important}
-.refHistoryStory .mkKicker{font-size:8px!important;color:#df6e3f!important}
-.refHistoryStory h1{font-size:66px!important;line-height:.80!important;margin:13px 0 0!important;color:#0b1720!important}
-.refHistoryStory h2{font-size:35px!important;margin:7px 0 17px!important;color:#e6663c!important}
-.refHistoryStory h3{font-family:Georgia,"Times New Roman",serif!important;font-size:24px!important;line-height:1.03!important;margin:0 0 10px!important;color:#171715!important}
-.refHistoryStory>p{font-size:12px!important;line-height:1.42!important;color:#33302b!important}
-.refHistoryDetail{font-size:11px!important;line-height:1.38!important;margin-top:9px!important;color:#4b433a!important}
-.refHistorySource{font-size:7px!important;margin-top:8px!important}
-.refHistoryArrow{width:40px!important;height:40px!important;font-size:22px!important}
-.refHistory .mkTimeline{height:128px!important;background:rgba(3,15,21,.96)!important;border:1px solid rgba(246,231,197,.20)!important;border-radius:14px!important;padding:22px 20px!important}
-.refHistory .mkTimeline div{padding:0 16px!important}.refHistory .mkTimeline b{font-size:24px!important;color:#ff9b45!important}.refHistory .mkTimeline span{font-size:10px!important;line-height:1.30!important}
+/* History — only the archival photo is photographic; everything else is clean illustration/layout. */
+.history{background:#07131b url('/assets/mockup-history.svg?v=5') center/cover no-repeat!important}
+.history:before{content:""!important;display:block!important;position:absolute!important;inset:0!important;background:linear-gradient(90deg,rgba(3,12,18,.14),rgba(3,12,18,.02))!important}
+.refHistory{position:relative!important;z-index:2!important;height:100%!important;display:grid!important;grid-template-rows:1fr 126px!important;padding:14px 16px 12px!important;gap:10px!important;background:transparent!important}
+.refHistoryPaper{width:92%!important;height:100%!important;justify-self:center!important;display:grid!important;grid-template-columns:53% 47%!important;background:rgba(244,234,211,.98)!important;border:1px solid rgba(223,108,63,.54)!important;border-radius:14px!important;box-shadow:0 22px 50px rgba(0,0,0,.33)!important}
+.refArchive{padding:30px 18px 16px 25px!important;background:linear-gradient(90deg,#f3ead7,#e7dac0)!important}.refSunDisc{width:70px!important;height:70px!important;left:24px!important;top:21px!important}
+.refArchiveFrame{margin:17px 26px 0 67px!important;height:72%!important;padding:8px!important;background:#d7cab0!important;box-shadow:0 9px 19px rgba(63,43,24,.25)!important;transform:rotate(-.8deg)!important}.refArchiveFrame img{object-fit:cover!important}
+.refArchiveFrame:after{content:""!important;position:absolute!important;right:-42px!important;bottom:-26px!important;width:40%!important;height:34%!important;background:url('/assets/austin-skyline-night-illustrated.svg?v=3') center/cover no-repeat!important;border:7px solid #eee1c5!important;box-shadow:0 8px 18px rgba(53,39,23,.26)!important;transform:rotate(-4deg)!important}
+.refArchiveCaption{bottom:21px!important;font-size:6.5px!important}.refHistoryStory{padding:26px 27px 18px 24px!important}.refHistoryStory .mkKicker{font-size:7px!important;color:#df6e3f!important}
+.refHistoryStory h1{font-size:62px!important;line-height:.80!important;margin:12px 0 0!important}.refHistoryStory h2{font-size:33px!important;margin:6px 0 16px!important}.refHistoryStory h3{font:700 23px/1.04 Georgia,"Times New Roman",serif!important;margin:0 0 9px!important}.refHistoryStory>p{font-size:11.5px!important;line-height:1.42!important}.refHistoryDetail{font-size:10.5px!important;line-height:1.38!important;margin-top:8px!important}.refHistorySource{font-size:6.5px!important}.refHistoryArrow{width:38px!important;height:38px!important}
+.refHistory .mkTimeline{height:126px!important;background:rgba(3,15,21,.97)!important;border:1px solid rgba(246,231,197,.20)!important;border-radius:13px!important;padding:20px!important}.refHistory .mkTimeline div{padding:0 15px!important}.refHistory .mkTimeline b{font-size:23px!important;color:var(--orange)!important}.refHistory .mkTimeline span{font-size:9px!important;line-height:1.3!important}
 
-/* AUSTIN FC: preserve real match photo, add the rich illustrated nightscape and make match/story data visually dominant. */
-.fc{background:#04120c url('/assets/fc-austin-night.svg?v=4') center/cover no-repeat!important}
-.fc:before{content:""!important;position:absolute!important;inset:0!important;background:linear-gradient(90deg,rgba(2,10,7,.18),rgba(2,10,7,.16) 54%,rgba(2,10,7,.34))!important}
-.mkFc{position:relative!important;z-index:2!important;height:100%!important;padding:12px 16px 13px!important;display:grid!important;grid-template-rows:126px 1fr!important;gap:9px!important}
-.mkFcMast{position:relative!important;overflow:hidden!important;padding:16px 22px!important;border-radius:14px!important;background:linear-gradient(90deg,rgba(2,13,9,.97) 0%,rgba(2,13,9,.88) 39%,rgba(2,13,9,.26) 66%,rgba(2,13,9,.12)),url('/assets/austin-skyline-night-illustrated.svg?v=2') right 50%/62% auto no-repeat!important;border:1px solid rgba(51,226,106,.24)!important}
-.mkFcMast span{font-size:8px!important;color:#43ec74!important}.mkFcMast h1{font-family:Georgia,"Times New Roman",serif!important;font-size:64px!important;line-height:.82!important;color:var(--target-cream)!important;margin:5px 0 7px!important}.mkFcMast h1 b{color:#32e766!important}.mkFcMast p{font-size:9px!important;letter-spacing:.22em!important;color:#e9e6d8!important}
-.mkFcMoon{position:absolute!important;right:18px!important;top:15px!important;background:#0b421f!important;border:1px solid rgba(50,231,102,.34)!important;color:#42e875!important;padding:7px 12px!important;border-radius:999px!important;font-size:7px!important;letter-spacing:.16em!important}
-.mkFcGrid{display:grid!important;grid-template-columns:61% 39%!important;grid-template-rows:1fr 150px!important;gap:9px!important;min-height:0!important}
-.mkFcHero{position:relative!important;border:1px solid rgba(48,231,101,.38)!important;border-radius:15px!important;box-shadow:0 18px 38px rgba(0,0,0,.26)!important}
-.mkFcHero img{filter:saturate(1.10) contrast(1.06) brightness(.90)!important}
-.mkFcMatches{display:grid!important;grid-template-rows:1fr 126px!important;gap:9px!important}
-.mkMatchCard,.mkLastCard,.mkFcLens,.mkFcStory{background:rgba(2,17,10,.95)!important;border:1px solid rgba(50,231,102,.34)!important;border-radius:15px!important}
-.mkMatchCard{padding:18px 19px 15px!important;display:grid!important;grid-template-rows:auto 1fr auto!important}
-.mkMatchLabel{font-size:9px!important;color:#41ea73!important}
-.mkVersus{grid-template-columns:1fr 34px 1fr!important;gap:10px!important;margin:18px 0 12px!important}
-.mkClub{grid-template-columns:58px 1fr!important;gap:11px!important}.mkClub.away{grid-template-columns:1fr 58px!important}
-.mkClub i{width:58px!important;height:68px!important;border-radius:11px!important;font-size:10px!important}
-.mkClub b{font-family:Georgia,"Times New Roman",serif!important;font-size:24px!important;line-height:.96!important;color:var(--target-cream)!important}
-.mkVersus>span{font-size:12px!important;color:#b2bdb5!important}
-.mkMatchMeta{font-size:10px!important;color:#d8dfda!important}
-.mkLastCard{padding:15px 18px!important}.mkLastCard small{font-size:11px!important}.mkLastCard strong{font-size:58px!important;color:var(--target-cream)!important}
-.mkFcLens{display:grid!important;grid-template-columns:34% 1fr!important;gap:12px!important;padding:8px!important;overflow:hidden!important}
-.mkFcLens b{font-size:22px!important}.mkFcLens span{font-size:9px!important}
-.mkFcStory{padding:10px 12px!important}.mkStoryBody{grid-template-columns:34% 1fr!important;gap:12px!important;margin-top:7px!important}.mkStoryThumb{height:104px!important}.mkFcStory h2{font-size:22px!important;line-height:1.02!important}.mkFcStory p{font-size:12px!important;line-height:1.32!important}.mkFcStory span{font-size:7px!important}
+/* Austin FC — no mockup text is baked into this art; use real team photos with clean illustrated framing. */
+.fc{background:#04120c url('/assets/fc-austin-night.svg?v=5') center/cover no-repeat!important}
+.fc:before{content:""!important;display:block!important;position:absolute!important;inset:0!important;background:linear-gradient(90deg,rgba(2,10,7,.10),rgba(2,10,7,.16) 54%,rgba(2,10,7,.32))!important}
+.mkFc{position:relative!important;z-index:2!important;height:100%!important;padding:12px 16px 13px!important;display:grid!important;grid-template-rows:120px 1fr!important;gap:9px!important}
+.mkFcMast{position:relative!important;overflow:hidden!important;padding:14px 21px!important;border-radius:14px!important;background:linear-gradient(90deg,rgba(2,13,9,.97) 0%,rgba(2,13,9,.88) 40%,rgba(2,13,9,.25) 68%,rgba(2,13,9,.10)),url('/assets/austin-skyline-night-illustrated.svg?v=3') right 50%/62% auto no-repeat!important;border:1px solid rgba(51,226,106,.25)!important}.mkFcMast span{font-size:8px!important;color:#43ec74!important}.mkFcMast h1{font:700 61px/.82 Georgia,"Times New Roman",serif!important;color:var(--cream)!important;margin:5px 0 6px!important}.mkFcMast h1 b{color:#32e766!important}.mkFcMast p{font-size:8px!important;letter-spacing:.20em!important;color:#e9e6d8!important}.mkFcMoon{right:16px!important;top:14px!important;background:#0b421f!important;border:1px solid rgba(50,231,102,.34)!important;color:#42e875!important;padding:7px 11px!important;border-radius:999px!important;font-size:7px!important}
+.mkFcGrid{display:grid!important;grid-template-columns:60% 40%!important;grid-template-rows:1fr 145px!important;gap:9px!important;min-height:0!important}.mkFcHero{border:1px solid rgba(48,231,101,.38)!important;border-radius:14px!important;box-shadow:0 18px 38px rgba(0,0,0,.26)!important}.mkFcHero img{filter:saturate(1.08) contrast(1.05) brightness(.91)!important}
+.mkFcMatches{display:grid!important;grid-template-rows:1fr 120px!important;gap:9px!important}.mkMatchCard,.mkLastCard,.mkFcLens,.mkFcStory{background:rgba(2,17,10,.96)!important;border:1px solid rgba(50,231,102,.34)!important;border-radius:14px!important}
+.mkMatchCard{padding:17px 18px 14px!important;display:grid!important;grid-template-rows:auto 1fr auto!important}.mkMatchLabel{font-size:8px!important;color:#41ea73!important}
+.mkVersus{display:grid!important;grid-template-columns:1fr 30px 1fr!important;gap:9px!important;align-items:center!important;margin:16px 0 11px!important}.mkVersus>span{text-align:center!important;font-size:10px!important;color:#a8b7ae!important;font-weight:900!important}
+.mkClub{display:grid!important;grid-template-columns:54px 1fr!important;gap:10px!important;align-items:center!important}.mkClub.away{grid-template-columns:1fr 54px!important;text-align:right!important}.mkClub.away i{grid-column:2!important}.mkClub i{width:54px!important;height:62px!important;border-radius:10px!important;display:grid!important;place-items:center!important;background:#0b4a25!important;border:1px solid #28d95e!important;color:#dff5e5!important;font-style:normal!important;font-size:9px!important;font-weight:900!important}.mkClub.away i{background:#d5b824!important;border-color:#f2d44d!important;color:#17180c!important}.mkClub b{font:700 22px/.96 Georgia,"Times New Roman",serif!important;color:var(--cream)!important}.mkMatchMeta{font-size:8.5px!important;color:#d8dfda!important}
+.mkLastCard{padding:13px 17px!important}.mkLastCard small{font-size:10px!important}.mkLastCard strong{font-size:54px!important;color:var(--cream)!important}.mkFcLens{display:grid!important;grid-template-columns:34% 1fr!important;gap:11px!important;padding:8px!important}.mkFcLens b{font-size:20px!important}.mkFcLens span{font-size:8px!important}.mkFcStory{padding:9px 11px!important}.mkStoryBody{grid-template-columns:33% 1fr!important;gap:11px!important;margin-top:6px!important}.mkStoryThumb{height:98px!important}.mkFcStory h2{font-size:20px!important;line-height:1.03!important}.mkFcStory p{font-size:11px!important;line-height:1.3!important}.mkFcStory span{font-size:6.5px!important}
 
 @media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
- .navItems{gap:18px!important}.navItems span{font-size:8.5px!important}
- .mkTemp{font-size:118px!important}.mkEyebrow{font-size:24px!important}.mkCondition{font-size:26px!important}
- .bus .mkBusCard{width:54vw!important;min-width:0!important;height:55%!important;min-height:330px!important}
- .bus .mkBusHeader h1{font-size:35px!important}
- .refEventsLeft h1{font-size:51px!important}
- .refEventCard{padding-top:57%!important}
- .refHistoryPaper{width:94%!important}.refHistoryStory h1{font-size:58px!important}.refHistoryStory h3{font-size:20px!important}
- .mkFcMast h1{font-size:54px!important}.mkClub b{font-size:20px!important}.mkFcStory h2{font-size:18px!important}
-}
-</style><style id="weather-baked-ui-removal">
-/* The approved weather raster contains sample UI baked into the artwork.
-   Mask those sample regions completely so only live kiosk data is visible. */
-.weather .mkWeather{isolation:isolate!important}
-.weather .mkWeather:before{
-  content:""!important;
-  position:absolute!important;
-  left:0!important;
-  top:21%!important;
-  width:35%!important;
-  height:57%!important;
-  z-index:0!important;
-  pointer-events:none!important;
-  background:
-    radial-gradient(circle at 4% 88%,#172f24 0 15%,transparent 16%),
-    radial-gradient(circle at 17% 72%,#18372a 0 18%,transparent 19%),
-    radial-gradient(circle at 30% 62%,#10281f 0 17%,transparent 18%),
-    radial-gradient(circle at 8% 43%,#10271f 0 16%,transparent 17%),
-    radial-gradient(circle at 28% 28%,#0c211b 0 21%,transparent 22%),
-    linear-gradient(90deg,#07151e 0%,#071721 70%,rgba(7,23,33,.98) 86%,rgba(7,23,33,0) 100%)!important;
-  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 84%,rgba(0,0,0,.78) 91%,transparent 100%)!important;
-  mask-image:linear-gradient(90deg,#000 0%,#000 84%,rgba(0,0,0,.78) 91%,transparent 100%)!important;
-}
-.weather .mkWeather:after{
-  content:""!important;
-  position:absolute!important;
-  left:0!important;
-  right:0!important;
-  bottom:0!important;
-  height:19%!important;
-  z-index:0!important;
-  pointer-events:none!important;
-  background:linear-gradient(180deg,rgba(3,15,21,0) 0%,rgba(3,15,21,.94) 17%,#031018 34%,#031018 100%)!important;
-}
-.weather .mkWeather>*{position:relative!important;z-index:2!important}
-.weather .mkWeatherNow{
-  margin-top:-8px!important;
-  padding-left:4px!important;
-  max-width:335px!important;
-}
-.weather .mkEyebrow{font-size:25px!important;margin-bottom:10px!important}
-.weather .mkTemp{font-size:126px!important}
-.weather .mkCondition{font-size:28px!important;margin-top:11px!important}
-.weather .mkFacts{font-size:12px!important;line-height:1.35!important;max-width:320px!important}
-.weather .mkForecastBlock:last-child{
-  position:relative!important;
-  z-index:3!important;
-  background:#031018!important;
-  border-color:rgba(246,231,197,.24)!important;
-  box-shadow:0 12px 28px rgba(0,0,0,.32)!important;
-}
-@media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
-  .weather .mkWeather:before{width:38%!important;top:20%!important;height:59%!important}
-  .weather .mkWeather:after{height:20%!important}
+ .navItems{gap:17px!important}.navItems span{font-size:8px!important}
+ .weather:before{background-size:155% auto!important}.mkTemp{font-size:112px!important}.mkEyebrow{font-size:23px!important}.mkCondition{font-size:25px!important}.mkLight{min-width:300px!important}
+ .mkBusCard,.mkBusScene:after{left:21%!important;width:58%!important;height:52%!important}.mkBusHeader h1{font-size:34px!important}.mkBusDest b{font-size:18px!important}.mkBusRow strong{font-size:23px!important}
+ .refEventsLeft h1{font-size:49px!important}.refEventCard{padding-top:46%!important}.refEventCard h3{font-size:16px!important}
+ .refHistoryPaper{width:94%!important}.refHistoryStory h1{font-size:54px!important}.refHistoryStory h3{font-size:19px!important}.refHistoryStory>p{font-size:10px!important}.refHistoryDetail{font-size:9px!important}
+ .mkFcMast h1{font-size:51px!important}.mkClub b{font-size:18px!important}.mkFcStory h2{font-size:17px!important}.mkFcStory p{font-size:9.5px!important}
 }
 </style></head><body><main class="app"><section class="stage">
 <section class="screen weather active" data-name="WEATHER">
@@ -895,19 +322,6 @@ html,body{background:#02070b!important}
 </section>
 <section class="screen bus" data-name="BUS">
   <div class="mkBusScene">
-    <div class="frogRide" aria-hidden="true">
-      <svg viewBox="0 0 220 82">
-        <g class="frogBusBob">
-          <rect x="18" y="18" width="174" height="45" rx="8" fill="#d9e1df" stroke="#f3cf8a" stroke-width="2.2"/>
-          <path d="M18 29h174v25H18z" fill="#1b5370"/>
-          <rect x="27" y="25" width="28" height="18" rx="2" fill="#9dd0de"/><rect x="59" y="25" width="28" height="18" rx="2" fill="#9dd0de"/><rect x="91" y="25" width="28" height="18" rx="2" fill="#9dd0de"/><rect x="123" y="25" width="27" height="18" rx="2" fill="#9dd0de"/><rect x="154" y="24" width="30" height="20" rx="3" fill="#b8dce3"/>
-          <rect x="27" y="49" width="102" height="7" rx="3" fill="#f19a3f"/><rect x="132" y="49" width="52" height="7" rx="3" fill="#2a2032"/>
-          <g transform="translate(158 25)"><circle cx="10" cy="9" r="8" fill="#72a945" stroke="#243620" stroke-width="1"/><circle cx="5" cy="3" r="3.2" fill="#86bc54" stroke="#243620"/><circle cx="15" cy="3" r="3.2" fill="#86bc54" stroke="#243620"/><circle cx="5" cy="3" r="1"/><circle cx="15" cy="3" r="1"/><path d="M6 10c2 2 6 2 8 0" fill="none" stroke="#243620" stroke-width="1.2"/></g>
-          <path d="M192 31h12l8 10v22h-20z" fill="#d9e1df" stroke="#f3cf8a" stroke-width="2"/><rect x="195" y="35" width="11" height="12" rx="2" fill="#9dd0de"/>
-          <circle class="wheel" cx="54" cy="65" r="11" fill="#111820" stroke="#8b9798" stroke-width="3"/><circle class="wheel" cx="166" cy="65" r="11" fill="#111820" stroke="#8b9798" stroke-width="3"/>
-        </g>
-      </svg>
-    </div>
     <div class="mkBusCard">
       <div class="mkBusHeader"><div class="mkBusIcon">▰</div><div><h1>Next Buses</h1><p>Departing from your stops</p></div></div>
       <div class="mkBusRows">
