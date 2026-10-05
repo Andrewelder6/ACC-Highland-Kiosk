@@ -592,17 +592,25 @@ html,body{background:#02070b!important}
 @media (min-width:900px) and (max-width:1400px) and (orientation:landscape){.frogRide{width:270px!important;height:103px!important;bottom:30px!important}}
 </style><style id="approved-reference-art-lock">
 /* Final visual target: approved five-panel mockup. These rules intentionally override all older art passes. */
-.weather{background:#06131e url('/assets/weather-rich.svg?v=4') center/cover no-repeat!important}
+.weather{background:#06131e url('/assets/weather-rich.svg?v=6') center/cover no-repeat!important}
 .weather:before{background:linear-gradient(90deg,rgba(2,10,16,.28) 0%,rgba(2,10,16,.10) 38%,rgba(2,10,16,.01) 72%,rgba(2,10,16,.06) 100%),linear-gradient(180deg,rgba(2,10,16,.03),rgba(2,10,16,.02) 62%,rgba(2,10,16,.22))!important}
 .mkBusScene{background:linear-gradient(180deg,rgba(2,10,16,.02),rgba(2,10,16,.10)),url('/assets/bus-rich.svg?v=4') center/cover no-repeat!important}
 .mkBusCard{background:rgba(3,15,21,.90)!important;border-color:rgba(247,231,201,.24)!important}
-.refAustinScene{background:url('/assets/weather-rich.svg?v=4') center 58%/cover no-repeat!important;filter:saturate(1.10) contrast(1.05)!important}
-.refEventImage{background:url('/assets/weather-rich.svg?v=4') center 52%/cover no-repeat!important;filter:saturate(1.08) contrast(1.06) brightness(.92)!important}
+.refAustinScene{background:url('/assets/weather-rich.svg?v=6') center 58%/cover no-repeat!important;filter:saturate(1.10) contrast(1.05)!important}
+.refEventImage{background:url('/assets/weather-rich.svg?v=6') center 52%/cover no-repeat!important;filter:saturate(1.08) contrast(1.06) brightness(.92)!important}
 .refEventCard.c1 .refEventImage{background:url('/assets/bus-rich.svg?v=4') center 46%/cover no-repeat!important}
-.refEventCard.c2 .refEventImage{background:url('/assets/weather-rich.svg?v=4') center 72%/cover no-repeat!important}
-.refEventCard.c3 .refEventImage{background:url('/assets/weather-rich.svg?v=4') right 48%/cover no-repeat!important}
-.fc:before{background:linear-gradient(90deg,rgba(2,11,7,.14),rgba(2,11,7,.32) 55%,rgba(2,11,7,.58)),url('/assets/weather-rich.svg?v=4') center/cover no-repeat!important}
+.refEventCard.c2 .refEventImage{background:url('/assets/weather-rich.svg?v=6') center 72%/cover no-repeat!important}
+.refEventCard.c3 .refEventImage{background:url('/assets/weather-rich.svg?v=6') right 48%/cover no-repeat!important}
+.fc:before{background:linear-gradient(90deg,rgba(2,11,7,.14),rgba(2,11,7,.32) 55%,rgba(2,11,7,.58)),url('/assets/weather-rich.svg?v=6') center/cover no-repeat!important}
 .frogRide{display:none!important}
+</style><style id="exact-reference-weather-lock">
+/* Exact approved five-panel mockup crop; final weather override. */
+.weather{background:#06131b url('/assets/weather-rich.svg?v=6') center center/cover no-repeat!important}
+.weather:before{background:linear-gradient(180deg,rgba(2,9,14,.02),rgba(2,9,14,.03) 64%,rgba(2,9,14,.17))!important;z-index:0!important}
+.weather:after{content:""!important;position:absolute!important;inset:0!important;width:auto!important;height:auto!important;z-index:1!important;background:linear-gradient(90deg,rgba(3,12,18,.82) 0%,rgba(3,12,18,.68) 17%,rgba(3,12,18,.28) 31%,rgba(3,12,18,0) 43%)!important;pointer-events:none!important}
+.mkWeather{z-index:2!important}
+.mkWeatherNow{position:relative!important;z-index:3!important}
+.mkForecastBlock:last-child{background:rgba(3,15,21,.95)!important}
 </style></head><body><main class="app"><section class="stage">
 <section class="screen weather active" data-name="WEATHER">
   <div class="mkWeather">
