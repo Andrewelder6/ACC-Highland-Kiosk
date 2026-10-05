@@ -680,7 +680,7 @@ html,body{background:#02070b!important}
     </div>
   </div>
 </section>
-<footer class="nav" id="nav"></footer></main>
+</section><footer class="nav" id="nav"></footer></main>
 <script>
 const TZ='America/Chicago', screens=[...document.querySelectorAll('.screen')],nav=document.getElementById('nav');let idx=0;
 function tickHeroClock(){let d=new Date(),t=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d),dt=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'short',month:'short',day:'numeric'}).format(d);heroClock.textContent=t;heroClockDate.textContent=dt;let n=document.getElementById('navClock');if(n)n.innerHTML='<b>'+t+'</b><span>'+dt+'</span>'}tickHeroClock();setInterval(tickHeroClock,1000);function refreshDailyPhotos(){let d=Math.floor(Date.now()/86400000);let fc=document.getElementById('fcDailyPhoto');if(fc)fc.src='/api/official-image?kind=fcDaily&d='+d+'&v=5';let ac=document.getElementById('accCampusPhoto');if(ac)ac.src='/api/official-image?kind=accCampusDaily&d='+d+'&v=3';let at=document.getElementById('austinTownPhoto');if(at)at.src='/api/official-image?kind=austinCityDaily&d='+d+'&v=3'}refreshDailyPhotos();setInterval(refreshDailyPhotos,3600000);
