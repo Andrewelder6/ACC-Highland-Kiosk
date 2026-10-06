@@ -34,18 +34,18 @@ button{font:inherit}
 
 /* WEATHER */
 .weather{background:#06131b}
-.weather-art{position:absolute;inset:0;overflow:hidden;background:url('/assets/weather-scene.svg?v=12') center/cover no-repeat}
+.weather-art{position:absolute;inset:0;overflow:hidden;background:url('/assets/weather-scene.svg?v=13') center/cover no-repeat}
 .weather-art:after{content:"";position:absolute;inset:0;background:
- linear-gradient(90deg,rgba(3,14,20,.76) 0%,rgba(3,14,20,.48) 24%,rgba(3,14,20,.06) 43%,transparent 58%),
- linear-gradient(0deg,rgba(3,13,19,.58),transparent 22%)}
+ linear-gradient(90deg,rgba(3,14,20,.64) 0%,rgba(3,14,20,.34) 24%,rgba(3,14,20,.05) 43%,transparent 57%),
+ linear-gradient(0deg,rgba(3,13,19,.48),transparent 24%)}
 .weather-shell{position:relative;z-index:2;height:100%;display:grid;grid-template-rows:42px 1fr 122px;padding:15px 18px 14px}
 .weather-head{display:flex;align-items:start;justify-content:space-between}
 .weather-light{margin-top:2px;display:flex;align-items:center;gap:20px;background:rgba(3,15,21,.93);border:1px solid rgba(246,232,200,.22);border-radius:13px;padding:9px 13px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
 .weather-light .suncol{min-width:94px}.weather-light small{display:block;font-size:6px;letter-spacing:.15em;color:#89a2aa;text-transform:uppercase}.weather-light b{font:700 18px Georgia,"Times New Roman",serif}.weather-light i{font-style:normal;color:var(--gold)}
-.weather-now{align-self:center;width:34%;padding-left:16px;margin-top:-8px}
-.weather-now .eyebrow{font:700 22px Georgia,"Times New Roman",serif;margin-bottom:4px}
+.weather-now{align-self:center;width:35%;padding-left:18px;margin-top:-2px;text-shadow:0 4px 22px rgba(0,0,0,.48)}
+.weather-now .eyebrow{font:700 24px Georgia,"Times New Roman",serif;margin-bottom:4px}
 .weather-now .temp{font:900 116px/.73 Georgia,"Times New Roman",serif;letter-spacing:-.06em;text-shadow:0 4px 22px rgba(0,0,0,.35)}
-.weather-now .condition{font:700 24px/1 Georgia,"Times New Roman",serif;margin-top:9px}
+.weather-now .condition{font:700 26px/1 Georgia,"Times New Roman",serif;margin-top:9px}
 .weather-now .facts{margin-top:8px;font-size:9px;color:#e3ddd0}
 .weather-now .rain{margin-top:7px;font-size:8px;color:#ffc078}
 .forecast-dock{align-self:end;background:rgba(3,15,21,.96);border:1px solid rgba(246,232,200,.21);border-radius:13px;padding:10px 14px 8px;box-shadow:0 12px 30px rgba(0,0,0,.27)}
@@ -75,10 +75,10 @@ button{font:inherit}
 .events{background:#06131b}
 .events-bg{position:absolute;inset:0;background:
  radial-gradient(circle at 88% 10%,rgba(255,142,75,.16),transparent 20%),
- url('/assets/austin-skyline-night-illustrated.svg?v=12') center/cover no-repeat;filter:saturate(.92) brightness(.58)}
+ url('/assets/austin-skyline-night-illustrated.svg?v=13') center/cover no-repeat;filter:saturate(.92) brightness(.58)}
 .events-shell{position:relative;z-index:2;height:100%;display:grid;grid-template-columns:40% 60%;grid-template-rows:1fr 78px;gap:10px;padding:14px 16px 12px}
 .events-poster{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(3,15,21,.90),rgba(3,15,21,.72));padding:24px 22px}
-.events-poster:after{content:"";position:absolute;left:0;right:0;bottom:0;height:52%;background:url('/assets/weather-scene.svg?v=12') 48% 73%/170% auto no-repeat;opacity:.98}
+.events-poster:after{content:"";position:absolute;left:0;right:0;bottom:0;height:52%;background:url('/assets/weather-scene.svg?v=13') 48% 73%/170% auto no-repeat;opacity:.98}
 .events-poster>*{position:relative;z-index:2}
 .events-poster h1{margin:12px 0 10px;font:700 50px/.81 Georgia,"Times New Roman",serif;letter-spacing:-.045em}.events-poster h1 b{color:var(--orange)}
 .events-poster p{max-width:300px;font-size:10px;line-height:1.4;color:#e5dfd1}
@@ -88,10 +88,10 @@ button{font:inherit}
 .event-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:rgba(3,15,21,.95);padding:47% 13px 12px}
 .event-art{position:absolute;left:0;right:0;top:0;height:45%;filter:saturate(1.08) contrast(1.04) brightness(.94)}
 .event-card:nth-child(1) .event-art{background:
- radial-gradient(circle at 22% 18%,#ffd889 0 2%,transparent 2.5%),radial-gradient(circle at 42% 14%,#ff9961 0 2%,transparent 2.5%),radial-gradient(circle at 65% 17%,#ffd889 0 2%,transparent 2.5%),linear-gradient(0deg,rgba(3,15,21,.08),rgba(3,15,21,.18)),url('/assets/weather-scene.svg?v=12') 58% 55%/155% auto no-repeat}
+ radial-gradient(circle at 22% 18%,#ffd889 0 2%,transparent 2.5%),radial-gradient(circle at 42% 14%,#ff9961 0 2%,transparent 2.5%),radial-gradient(circle at 65% 17%,#ffd889 0 2%,transparent 2.5%),linear-gradient(0deg,rgba(3,15,21,.08),rgba(3,15,21,.18)),url('/assets/weather-scene.svg?v=13') 58% 55%/155% auto no-repeat}
 .event-card:nth-child(2) .event-art{background:
- radial-gradient(circle at 18% 16%,#ffd889 0 1.6%,transparent 2.1%),radial-gradient(circle at 34% 20%,#ffd889 0 1.6%,transparent 2.1%),radial-gradient(circle at 52% 15%,#ffd889 0 1.6%,transparent 2.1%),radial-gradient(circle at 70% 20%,#ffd889 0 1.6%,transparent 2.1%),url('/assets/austin-skyline-night-illustrated.svg?v=12') 35% 42%/150% auto no-repeat}
-.event-card:nth-child(3) .event-art{background:linear-gradient(0deg,rgba(25,92,76,.18),transparent),url('/assets/weather-scene.svg?v=12') 18% 78%/175% auto no-repeat}
+ radial-gradient(circle at 18% 16%,#ffd889 0 1.6%,transparent 2.1%),radial-gradient(circle at 34% 20%,#ffd889 0 1.6%,transparent 2.1%),radial-gradient(circle at 52% 15%,#ffd889 0 1.6%,transparent 2.1%),radial-gradient(circle at 70% 20%,#ffd889 0 1.6%,transparent 2.1%),url('/assets/austin-skyline-night-illustrated.svg?v=13') 35% 42%/150% auto no-repeat}
+.event-card:nth-child(3) .event-art{background:linear-gradient(0deg,rgba(25,92,76,.18),transparent),url('/assets/weather-scene.svg?v=13') 18% 78%/175% auto no-repeat}
 .event-card:nth-child(4) .event-art{background:repeating-linear-gradient(125deg,#f27c4f 0 28px,#d65f79 28px 56px,#6a508e 56px 84px,#143849 84px 112px)}
 .event-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,15,21,.66),transparent 54%)}
 .event-badge{position:absolute;top:39%;left:10px;padding:3px 7px;border-radius:999px;background:var(--orange);color:#06131b;font-size:6px;font-weight:900;text-transform:uppercase}.event-card:nth-child(3) .event-badge{background:#62d98b}.event-card:nth-child(4) .event-badge{background:#bd70da}
@@ -100,22 +100,44 @@ button{font:inherit}
 
 /* FC */
 .fc{background:#04120c}
-.fc-bg{position:absolute;inset:0;background:url('/assets/fc-austin-night.svg?v=12') center/cover no-repeat;filter:saturate(.96) brightness(.55)}
+.fc-bg{position:absolute;inset:0;background:url('/assets/fc-austin-night.svg?v=13') center/cover no-repeat;filter:saturate(.96) brightness(.55)}
 .fc-shell{position:relative;z-index:2;height:100%;display:grid;grid-template-rows:104px 1fr;gap:8px;padding:11px 14px 12px}
 .fc-mast{position:relative;overflow:hidden;border:1px solid rgba(55,228,109,.25);border-radius:13px;background:
  linear-gradient(90deg,rgba(2,13,9,.98) 0%,rgba(2,13,9,.90) 42%,rgba(2,13,9,.20) 70%,rgba(2,13,9,.08)),
- url('/assets/austin-skyline-night-illustrated.svg?v=12') right 48%/60% auto no-repeat;padding:13px 18px}.fc-mast .mini{font-size:7px;color:#45e978;text-transform:uppercase;letter-spacing:.16em}.fc-mast h1{margin:3px 0 5px;font:700 48px/.82 Georgia,"Times New Roman",serif}.fc-mast h1 b{color:#35e56a}.fc-mast p{margin:0;font-size:7px;letter-spacing:.18em;text-transform:uppercase}.verde{position:absolute;right:14px;top:13px;padding:6px 10px;border-radius:999px;background:#0a3d1d;border:1px solid rgba(55,228,109,.28);font-size:6px;letter-spacing:.15em;color:#49e87a}
+ url('/assets/austin-skyline-night-illustrated.svg?v=13') right 48%/60% auto no-repeat;padding:13px 18px}.fc-mast .mini{font-size:7px;color:#45e978;text-transform:uppercase;letter-spacing:.16em}.fc-mast h1{margin:3px 0 5px;font:700 48px/.82 Georgia,"Times New Roman",serif}.fc-mast h1 b{color:#35e56a}.fc-mast p{margin:0;font-size:7px;letter-spacing:.18em;text-transform:uppercase}.verde{position:absolute;right:14px;top:13px;padding:6px 10px;border-radius:999px;background:#0a3d1d;border:1px solid rgba(55,228,109,.28);font-size:6px;letter-spacing:.15em;color:#49e87a}
 .fc-grid{display:grid;grid-template-columns:59% 41%;grid-template-rows:1fr 138px;gap:8px;min-height:0}.fc-hero,.match-card,.last-card,.lens,.story{background:rgba(2,17,10,.96);border:1px solid rgba(55,228,109,.30);border-radius:13px;overflow:hidden}.fc-hero{grid-row:1;position:relative}.fc-hero img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.05) brightness(.91)}.hero-cap{position:absolute;left:10px;bottom:8px;font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:#edf1e6}
-.fc-side{display:grid;grid-template-rows:1fr 92px;gap:8px}.match-card{position:relative;padding:15px 16px 13px;display:grid;grid-template-rows:auto 1fr auto;background:
- linear-gradient(180deg,rgba(2,17,10,.92),rgba(2,17,10,.97)),
- url('/assets/austin-skyline-night-illustrated.svg?v=12') center 72%/125% auto no-repeat!important}.match-label{font-size:7px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#41e974}.versus{display:grid;grid-template-columns:1fr 26px 1fr;align-items:center;gap:8px}.club{display:grid;grid-template-columns:46px 1fr;gap:8px;align-items:center}.club.away{grid-template-columns:1fr 46px;text-align:right}.club.away .badge{grid-column:2}.badge{width:46px;height:54px;border-radius:9px;display:grid;place-items:center;background:#0d4a27;border:1px solid #28d95e;font-size:7px;font-weight:900}.club.away .badge{background:#d3b723;border-color:#f0d34a;color:#15170c}.club b{font:700 20px/.95 Georgia,"Times New Roman",serif}.versus>span{text-align:center;font-size:9px;color:#a7b4ae;font-weight:900}.match-meta{font-size:7px;color:#cbd6cf}.last-card{display:flex;align-items:center;justify-content:space-between;padding:12px 14px}.last-card small{font-size:8px;color:#d8dfd9}.last-card strong{font:700 50px Georgia,"Times New Roman",serif}
-.lens{display:grid;grid-template-columns:34% 1fr;gap:9px;padding:7px}.lens img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}.lens-copy{align-self:center}.lens-copy b{display:block;font:700 20px Georgia,"Times New Roman",serif}.lens-copy span{font-size:7px;color:#aeb9b3}
-.story{display:grid;grid-template-columns:34% 1fr;gap:9px;padding:7px}.story img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}.story-copy{align-self:center}.story-copy .match-label{margin-bottom:5px}.story-copy h2{margin:0 0 4px;font:700 18px/1.03 Georgia,"Times New Roman",serif}.story-copy p{margin:0;font-size:9px;line-height:1.3;color:#d5ddd8}.story-copy span{display:block;margin-top:4px;font-size:6px;color:#77a486}
+.fc-side{display:grid;grid-template-rows:1fr 94px;gap:8px}
+.match-card{position:relative;overflow:hidden;padding:15px 17px 14px;display:grid;grid-template-rows:auto 1fr auto;background:
+ linear-gradient(180deg,rgba(2,15,9,.76) 0%,rgba(2,15,9,.88) 47%,rgba(2,15,9,.98) 100%),
+ url('/assets/austin-skyline-night-illustrated.svg?v=13') center 52%/145% auto no-repeat!important}
+.match-card:after{content:"";position:absolute;left:-8%;right:-8%;bottom:-6%;height:48%;background:
+ radial-gradient(circle at 78% 22%,rgba(47,226,102,.18),transparent 24%),
+ linear-gradient(180deg,transparent,rgba(2,15,9,.42));pointer-events:none}
+.match-card>*{position:relative;z-index:2}
+.match-label{font-size:7px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#41e974}
+.match-main{align-self:center;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin-top:8px}
+.match-team{display:grid;grid-template-rows:auto auto;gap:8px}
+.match-team.away{text-align:right}
+.match-team-name{font:800 31px/.88 Georgia,"Times New Roman",serif;letter-spacing:-.035em;color:#f4efdd}
+.match-team.away .match-team-name{color:#efe8c8}
+.match-badge{width:54px;height:60px;border-radius:10px;display:grid;place-items:center;background:#0d4a27;border:1px solid #2ce064;font-size:8px;font-weight:950;color:#eaffef}
+.match-team.away .match-badge{justify-self:end;background:#d2b721;border-color:#f1d34c;color:#17180c}
+.match-vs{text-align:center;font-size:10px;font-weight:900;color:#9ca9a3;letter-spacing:.12em}
+.match-sub{display:flex;justify-content:space-between;align-items:end;gap:10px;padding-top:11px;border-top:1px solid rgba(79,226,118,.18)}
+.match-when b{display:block;font:800 21px Georgia,"Times New Roman",serif;color:#f5efdd}
+.match-when span,.match-place{display:block;margin-top:3px;font-size:7px;color:#a8b5ad;letter-spacing:.04em}
+.match-home{padding:5px 8px;border-radius:999px;background:#0a3d1d;border:1px solid rgba(55,228,109,.28);font-size:6px;font-weight:900;letter-spacing:.13em;color:#45e978}
+.last-card{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;background:
+ linear-gradient(90deg,rgba(2,17,10,.98),rgba(7,41,20,.82)),
+ url('/assets/fc-austin-night.svg?v=13') 78% 74%/90% auto no-repeat!important}
+.last-card small{font-size:8px;color:#d8dfd9}.last-card strong{font:700 50px Georgia,"Times New Roman",serif}
+.lens{display:grid;grid-template-columns:37% 1fr;gap:10px;padding:8px}.lens img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}.lens-copy{align-self:center}.lens-copy b{display:block;font:700 20px Georgia,"Times New Roman",serif}.lens-copy span{font-size:7px;color:#aeb9b3}
+.story{display:grid;grid-template-columns:32% 1fr;gap:10px;padding:8px}.story img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}.story-copy{align-self:center}.story-copy .match-label{margin-bottom:5px}.story-copy h2{margin:0 0 5px;font:700 20px/1.02 Georgia,"Times New Roman",serif}.story-copy p{margin:0;font-size:9.5px;line-height:1.32;color:#d5ddd8}.story-copy span{display:block;margin-top:4px;font-size:6px;color:#77a486}
 
 @media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
   .tabs{gap:16px}.tab{font-size:8px}.weather-now .temp{font-size:90px}.weather-now .eyebrow{font-size:20px}.weather-now .condition{font-size:21px}
   .weather-light{gap:14px}.weather-light b{font-size:16px}.bus-board{width:55vw}.events-poster h1{font-size:45px}.event-card h3{font-size:14px}
-.fc-mast h1{font-size:43px}.club b{font-size:15px}.story-copy h2{font-size:14px}
+.fc-mast h1{font-size:43px}.match-team-name{font-size:26px}.story-copy h2{font-size:16px}
 }
 @media (prefers-reduced-motion:reduce){.screen{transition:none}}
 </style>
@@ -213,23 +235,32 @@ button{font:inherit}
         </header>
         <div class="fc-grid">
           <div class="fc-hero">
-            <img id="fcDailyPhoto" src="/api/official-image?kind=fcDaily&slot=0&v=12" alt="Austin FC match">
+            <img id="fcDailyPhoto" src="/api/official-image?kind=fcDaily&slot=0&v=13" alt="Austin FC match">
             <div class="hero-cap">Q2 Stadium · Austin</div>
           </div>
           <div class="fc-side">
             <div class="match-card">
               <div class="match-label">▣ Next match</div>
-              <div class="versus">
-                <div class="club"><div class="badge">ATX</div><b>AUSTIN FC</b></div>
-                <span>VS</span>
-                <div class="club away"><b>NASHVILLE SC</b><div class="badge">NSH</div></div>
+              <div class="match-main">
+                <div class="match-team">
+                  <div class="match-badge">ATX</div>
+                  <div class="match-team-name">AUSTIN<br>FC</div>
+                </div>
+                <div class="match-vs">VS</div>
+                <div class="match-team away">
+                  <div class="match-badge">NSH</div>
+                  <div class="match-team-name">NASHVILLE<br>SC</div>
+                </div>
               </div>
-              <div class="match-meta">SAT · OCT 10 · 7:30 PM &nbsp; ● &nbsp; HOME · Q2 STADIUM</div>
+              <div class="match-sub">
+                <div class="match-when"><b>Sat · Oct 10 · 7:30 PM</b><span>Q2 Stadium · Austin, Texas</span></div>
+                <div class="match-home">HOME</div>
+              </div>
             </div>
             <div class="last-card"><small><span class="match-label">● Last match</span><br>vs San Diego FC</small><strong>3–3</strong></div>
           </div>
-          <div class="lens"><img id="fcLensPhoto" src="/api/official-image?kind=fcDaily&slot=1&v=12" alt="Austin FC photography"><div class="lens-copy"><b>Through the Lens</b><span>Official match photography</span></div></div>
-          <div class="story"><img id="fcStoryPhoto" src="/api/official-image?kind=fcDaily&slot=2&v=12" alt="Austin FC story"><div class="story-copy"><div class="match-label">● Top team story this week</div><h2>Historic three-goal comeback at Q2</h2><p>Austin FC rallied from 3–0 down to draw San Diego 3–3 — the club’s first comeback from three goals down to earn a result.</p><span>Austin FC · Sept. 27, 2026</span></div></div>
+          <div class="lens"><img id="fcLensPhoto" src="/api/official-image?kind=fcDaily&slot=1&v=13" alt="Austin FC photography"><div class="lens-copy"><b>Through the Lens</b><span>Official match photography</span></div></div>
+          <div class="story"><img id="fcStoryPhoto" src="/api/official-image?kind=fcDaily&slot=2&v=13" alt="Austin FC story"><div class="story-copy"><div class="match-label">● Top team story this week</div><h2>Historic three-goal comeback at Q2</h2><p>Austin FC rallied from 3–0 down to draw San Diego 3–3 — the club’s first comeback from three goals down to earn a result.</p><span>Austin FC · Sept. 27, 2026</span></div></div>
         </div>
       </div>
     </section>
@@ -332,7 +363,7 @@ renderHolidays();setInterval(renderHolidays,3600000);
 
 function refreshPhotos(){
   const d=new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-  [['fcDailyPhoto',0],['fcLensPhoto',1],['fcStoryPhoto',2]].forEach(([id,slot])=>$(id).src='/api/official-image?kind=fcDaily&slot='+slot+'&d='+encodeURIComponent(d)+'&v=12');
+  [['fcDailyPhoto',0],['fcLensPhoto',1],['fcStoryPhoto',2]].forEach(([id,slot])=>$(id).src='/api/official-image?kind=fcDaily&slot='+slot+'&d='+encodeURIComponent(d)+'&v=13');
 }
 refreshPhotos();setInterval(refreshPhotos,3600000);
 </script>
