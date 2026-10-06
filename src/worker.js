@@ -1,4 +1,4 @@
-const BUILD='2026-10-05.2002';
+const BUILD='2026-10-05.2012';
 const FEED='https://data.texas.gov/download/rmk2-acnw/application%2Foctet-stream';
 const targets=[{key:'7n',stop:'1264',route:'7'},{key:'10s',stop:'3532',route:'10'},{key:'7s',stop:'5603',route:'7'}];
 function varint(b,p){let n=0,s=0;while(p.i<b.length){let x=b[p.i++];n+=(x&127)*2**s;if(!(x&128))return n;s+=7}return n}
@@ -7,17 +7,6 @@ const str=b=>new TextDecoder().decode(b);const sub=(f,n)=>f.filter(x=>x[0]===n&&
 function decode(buf){let b=new Uint8Array(buf),root=fields(b),out={};for(let t of targets)out[t.key]=[];for(let eb of sub(root,2)){let ef=fields(eb),tu=sub(ef,3)[0];if(!tu)continue;let tf=fields(tu),trip=sub(tf,1)[0];if(!trip)continue;let trf=fields(trip),route=(sub(trf,5)[0]&&str(sub(trf,5)[0]))||'';for(let sb of sub(tf,2)){let sf=fields(sb),stop=(sub(sf,4)[0]&&str(sub(sf,4)[0]))||'';for(let t of targets){if(stop!==t.stop||!(route===t.route||route.endsWith('-'+t.route)||route.endsWith('_'+t.route)))continue;let ev=sub(sf,2)[0]||sub(sf,3)[0];if(ev){let tm=val(fields(ev),2);if(tm&&tm*1000>Date.now()-60000)out[t.key].push(tm)}}}}for(let k in out)out[k]=[...new Set(out[k])].sort((a,b)=>a-b).slice(0,3);return out}
 
 const FC_PHOTOS_PAGE='https://www.austinfc.com/photos/';
-const AUSTIN_HISTORY_ARKS=[
-  'metapth125125', // Congress Avenue, c. 1868
-  'metapth124043', // Driskill Hotel, 1888
-  'metapth124420', // Barton Springs, 1937
-  'metapth125219', // Moonlight Tower, 1930s
-  'metapth19409',  // Moonlight tower / UT view, 1954
-  'metapth856999', // Driskill front desk, 1952
-  'metapth124427', // Barton Springs bathhouse, 1947
-  'metapth124687'  // Barton Springs, 1939
-];
-
 function dayIndex(){
   const parts=new Intl.DateTimeFormat('en-US',{
     timeZone:'America/Chicago',year:'numeric',month:'numeric',day:'numeric'
@@ -85,25 +74,12 @@ async function fcDailyImage(headers,slot=0){
   return og?highResMls(og):null;
 }
 
-async function historyDailyImage(headers){
-  const ark=AUSTIN_HISTORY_ARKS[dayIndex()%AUSTIN_HISTORY_ARKS.length];
-  const url='https://texashistory.unt.edu/iiif/ark:/67531/'+ark+'/m1/1/full/max/0/default.jpg';
-  const r=await fetch(url,{headers});
-  return r.ok?url:null;
-}
-
 async function officialImage(kind,slot){
   const headers={'User-Agent':'Mozilla/5.0'};
   if(kind==='fcDaily'){
     const url=await fcDailyImage(headers,slot);
     if(!url)return new Response('image unavailable',{status:404});
     return await fetchImageResponse(url,headers,'AustinFC-ThroughTheLens-retina')
-      ||new Response('image unavailable',{status:502});
-  }
-  if(kind==='historyDaily'){
-    const url=await historyDailyImage(headers);
-    if(!url)return new Response('image unavailable',{status:404});
-    return await fetchImageResponse(url,headers,'Austin-History-Center-UNT-IIIF')
       ||new Response('image unavailable',{status:502});
   }
   return new Response('unknown image',{status:404});
