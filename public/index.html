@@ -14,18 +14,18 @@
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#02070b;color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 body{padding-top:env(safe-area-inset-top);display:grid;place-items:center}
 button{font:inherit}
-.app{width:min(100vw,calc(100vh * 4 / 3));height:min(100vh,calc(100vw * 3 / 4));display:grid;grid-template-rows:44px 1fr;background:var(--bg);box-shadow:0 0 0 1px rgba(255,255,255,.06),0 24px 70px rgba(0,0,0,.45)}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 15px 0 12px;border-bottom:1px solid rgba(255,255,255,.12);background:#020d14;z-index:50}
-.tabs{display:flex;align-items:center;gap:20px;min-width:0}
-.tab{appearance:none;border:0;background:transparent;color:#9cacb1;padding:0;font-size:9px;font-weight:800;letter-spacing:.035em;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.app{width:min(100vw,calc(100vh * 4 / 3));height:min(100vh,calc(100vw * 3 / 4));display:grid;grid-template-rows:62px 1fr;background:var(--bg);box-shadow:0 0 0 1px rgba(255,255,255,.06),0 24px 70px rgba(0,0,0,.45)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 18px 0 15px;border-bottom:1px solid rgba(255,255,255,.12);background:#020d14;z-index:50}
+.tabs{display:flex;align-items:center;gap:22px;min-width:0}
+.tab{appearance:none;border:0;background:transparent;color:#9cacb1;padding:0;font-size:10px;font-weight:800;letter-spacing:.035em;text-transform:uppercase;cursor:pointer;white-space:nowrap}
 .tab:before{content:"";display:inline-block;width:6px;height:6px;border-radius:2px;background:#80a1ae;margin-right:5px;vertical-align:1px}
 .tab[data-screen="WEATHER"]:before{border-radius:50%}
 .tab[data-screen="AUSTIN FC"]:before{border-radius:50%}
 .tab.active{color:var(--orange)}
 .tab.active:before{background:var(--orange)}
-.clock{text-align:right;line-height:.9;flex:none}
-.clock strong{display:block;font:700 14px Georgia,"Times New Roman",serif;color:var(--cream)}
-.clock span{display:block;margin-top:3px;font-size:6px;letter-spacing:.12em;text-transform:uppercase;color:#92a5aa}
+.clock{text-align:right;line-height:.88;flex:none;min-width:170px}
+.clock strong{display:block;font:800 31px Georgia,"Times New Roman",serif;color:var(--cream);letter-spacing:-.025em}
+.clock span{display:block;margin-top:5px;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:#92a5aa}
 .stage{position:relative;min-height:0;overflow:hidden}
 .screen{position:absolute;inset:0;opacity:0;pointer-events:none;transform:translateX(18px);transition:opacity .28s ease,transform .28s ease;overflow:hidden;background:var(--bg)}
 .screen.active{opacity:1;pointer-events:auto;transform:none}
@@ -38,14 +38,16 @@ button{font:inherit}
 .weather-art:after{content:"";position:absolute;inset:0;background:
  linear-gradient(90deg,rgba(3,14,20,.64) 0%,rgba(3,14,20,.34) 24%,rgba(3,14,20,.05) 43%,transparent 57%),
  linear-gradient(0deg,rgba(3,13,19,.48),transparent 24%)}
-.weather-shell{position:relative;z-index:2;height:100%;display:grid;grid-template-rows:42px 1fr 122px;padding:15px 18px 14px}
-.weather-head{display:flex;align-items:start;justify-content:space-between}
+.weather-shell{position:relative;z-index:2;height:100%;display:grid;grid-template-rows:50px 1fr 126px;padding:16px 18px 14px}
+.weather-head{display:flex;align-items:start;justify-content:space-between;padding-left:2px}
 .weather-light{margin-top:2px;display:flex;align-items:center;gap:20px;background:rgba(3,15,21,.93);border:1px solid rgba(246,232,200,.22);border-radius:13px;padding:9px 13px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
 .weather-light .suncol{min-width:94px}.weather-light small{display:block;font-size:6px;letter-spacing:.15em;color:#89a2aa;text-transform:uppercase}.weather-light b{font:700 18px Georgia,"Times New Roman",serif}.weather-light i{font-style:normal;color:var(--gold)}
-.weather-now{align-self:center;width:35%;padding-left:18px;margin-top:-2px;text-shadow:0 4px 22px rgba(0,0,0,.48)}
-.weather-now .eyebrow{font:700 24px Georgia,"Times New Roman",serif;margin-bottom:4px}
-.weather-now .temp{font:900 116px/.73 Georgia,"Times New Roman",serif;letter-spacing:-.06em;text-shadow:0 4px 22px rgba(0,0,0,.35)}
-.weather-now .condition{font:700 26px/1 Georgia,"Times New Roman",serif;margin-top:9px}
+.weather-now{align-self:center;width:43%;max-width:420px;padding:18px 22px 20px;margin-top:-8px;background:linear-gradient(90deg,rgba(2,13,19,.90),rgba(2,13,19,.64) 72%,rgba(2,13,19,.10));border-left:3px solid var(--orange);text-shadow:0 4px 22px rgba(0,0,0,.48)}
+.weather-clock-label{font-size:7px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#f5a36c}
+.weather-clock{font:900 68px/.86 Georgia,"Times New Roman",serif;letter-spacing:-.055em;margin:3px 0 11px;color:#fff1cf}
+.weather-now .eyebrow{font:700 15px Georgia,"Times New Roman",serif;margin-bottom:2px;color:#d9d5ca}
+.weather-now .temp{font:900 86px/.76 Georgia,"Times New Roman",serif;letter-spacing:-.055em;text-shadow:0 4px 22px rgba(0,0,0,.35)}
+.weather-now .condition{font:700 24px/1 Georgia,"Times New Roman",serif;margin-top:7px}
 .weather-now .facts{margin-top:8px;font-size:9px;color:#e3ddd0}
 .weather-now .rain{margin-top:7px;font-size:8px;color:#ffc078}
 .forecast-dock{align-self:end;background:rgba(3,15,21,.96);border:1px solid rgba(246,232,200,.21);border-radius:13px;padding:10px 14px 8px;box-shadow:0 12px 30px rgba(0,0,0,.27)}
@@ -59,16 +61,16 @@ button{font:inherit}
 .bus{background:#07151f}
 .bus-art{position:absolute;inset:0;overflow:hidden;background:#06131b url('/assets/bus-scene.svg?v=12') center/cover no-repeat}
 .bus-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,14,20,.10) 0%,rgba(4,14,20,.02) 56%,rgba(4,14,20,.18) 100%)}
-.bus-board{position:absolute;z-index:3;left:50%;top:8%;transform:translateX(-50%);width:min(530px,54vw);background:rgba(3,15,21,.975);border:1px solid rgba(255,176,79,.55);border-radius:18px;padding:12px 17px 10px;box-shadow:0 18px 46px rgba(0,0,0,.36)}
+.bus-board{position:absolute;z-index:3;left:50%;top:7%;transform:translateX(-50%);width:min(690px,67vw);background:rgba(3,15,21,.975);border:1px solid rgba(255,176,79,.55);border-radius:18px;padding:12px 17px 10px;box-shadow:0 18px 46px rgba(0,0,0,.36)}
 .bus-title{display:flex;align-items:center;justify-content:center;gap:11px;padding-bottom:9px;border-bottom:1px solid var(--line)}
 .bus-icon{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#06131b;font-weight:900;font-size:18px}
-.bus-title h1{margin:0;font:700 31px/.9 Georgia,"Times New Roman",serif}.bus-title p{margin:4px 0 0;text-align:center;font-size:7px;color:#a8b7bb}
-.bus-rows{display:grid;grid-template-rows:repeat(3,68px)}
-.bus-row{display:grid;grid-template-columns:42px 1fr 112px;align-items:center;gap:10px;border-bottom:1px solid rgba(246,232,200,.12)}
+.bus-title h1{margin:0;font:700 36px/.9 Georgia,"Times New Roman",serif}.bus-title p{margin:4px 0 0;text-align:center;font-size:7px;color:#a8b7bb}
+.bus-rows{display:grid;grid-template-rows:repeat(3,78px)}
+.bus-row{display:grid;grid-template-columns:48px 1fr 135px;align-items:center;gap:10px;border-bottom:1px solid rgba(246,232,200,.12)}
 .bus-row:last-child{border-bottom:0}
-.route{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:13px;background:#ff934d;color:#06131b}.route.blue{background:#75c6e6}.route.gold{background:#efc05a}
-.bus-dest b{display:block;font:700 18px Georgia,"Times New Roman",serif}.bus-dest span{display:block;margin-top:3px;font-size:6px;letter-spacing:.08em;text-transform:uppercase;color:#90a4a9}
-.bus-eta{text-align:right}.bus-eta strong{display:block;font:700 22px Georgia,"Times New Roman",serif;color:var(--gold)}.bus-eta small,.bus-eta em{display:block;font-size:6px;color:#8fa2a7;font-style:normal;margin-top:2px}
+.route{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:13px;background:#ff934d;color:#06131b}.route.blue{background:#75c6e6}.route.gold{background:#efc05a}
+.bus-dest b{display:block;font:700 21px Georgia,"Times New Roman",serif}.bus-dest span{display:block;margin-top:4px;font-size:7px;letter-spacing:.08em;text-transform:uppercase;color:#90a4a9}
+.bus-eta{text-align:right}.bus-eta strong{display:block;font:700 26px Georgia,"Times New Roman",serif;color:var(--gold)}.bus-eta small,.bus-eta em{display:block;font-size:7px;color:#8fa2a7;font-style:normal;margin-top:2px}
 .bus-status{text-align:right;font-size:6px;color:#65d68a;margin-top:6px}
 
 /* WHAT'S HAPPENING */
@@ -76,17 +78,17 @@ button{font:inherit}
 .events-bg{position:absolute;inset:0;background:
  radial-gradient(circle at 88% 10%,rgba(255,142,75,.16),transparent 20%),
  url('/assets/austin-skyline-night-illustrated.svg?v=13') center/cover no-repeat;filter:saturate(.92) brightness(.58)}
-.events-shell{position:relative;z-index:2;height:100%;display:grid;grid-template-columns:40% 60%;grid-template-rows:1fr 78px;gap:10px;padding:14px 16px 12px}
-.events-poster{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(3,15,21,.90),rgba(3,15,21,.72));padding:24px 22px}
-.events-poster:after{content:"";position:absolute;left:0;right:0;bottom:0;height:52%;background:url('/assets/weather-scene.svg?v=13') 48% 73%/170% auto no-repeat;opacity:.98}
+.events-shell{position:relative;z-index:2;height:100%;display:grid;grid-template-columns:37% 63%;grid-template-rows:1fr 82px;gap:10px;padding:14px 16px 12px}
+.events-poster{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(3,15,21,.88),rgba(3,15,21,.66));padding:24px 22px}
+.events-poster:after{content:"";position:absolute;left:0;right:0;bottom:0;height:60%;background:url('/assets/weather-scene.svg?v=13') 48% 73%/170% auto no-repeat;opacity:.98}
 .events-poster>*{position:relative;z-index:2}
-.events-poster h1{margin:12px 0 10px;font:700 50px/.81 Georgia,"Times New Roman",serif;letter-spacing:-.045em}.events-poster h1 b{color:var(--orange)}
-.events-poster p{max-width:300px;font-size:10px;line-height:1.4;color:#e5dfd1}
+.events-poster h1{margin:12px 0 10px;font:700 54px/.80 Georgia,"Times New Roman",serif;letter-spacing:-.045em}.events-poster h1 b{color:var(--orange)}
+.events-poster p{max-width:310px;font-size:11px;line-height:1.4;color:#e5dfd1}
 .campus-note{position:absolute!important;left:22px;right:22px;bottom:14px;padding:9px 11px;background:rgba(3,15,21,.91);border-left:4px solid var(--orange)}
 .campus-note small{display:block;font-size:6px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}.campus-note b{display:block;font:700 13px Georgia,"Times New Roman",serif;margin-top:3px}.campus-note span{font-size:7px;color:#b6c1c2}
 .event-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;min-height:0}
-.event-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:rgba(3,15,21,.95);padding:47% 13px 12px}
-.event-art{position:absolute;left:0;right:0;top:0;height:45%;filter:saturate(1.08) contrast(1.04) brightness(.94)}
+.event-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:rgba(3,15,21,.95);padding:43% 14px 13px}
+.event-art{position:absolute;left:0;right:0;top:0;height:42%;filter:saturate(1.08) contrast(1.04) brightness(.94)}
 .event-card:nth-child(1) .event-art{background:
  radial-gradient(circle at 22% 18%,#ffd889 0 2%,transparent 2.5%),radial-gradient(circle at 42% 14%,#ff9961 0 2%,transparent 2.5%),radial-gradient(circle at 65% 17%,#ffd889 0 2%,transparent 2.5%),linear-gradient(0deg,rgba(3,15,21,.08),rgba(3,15,21,.18)),url('/assets/weather-scene.svg?v=13') 58% 55%/155% auto no-repeat}
 .event-card:nth-child(2) .event-art{background:
@@ -94,8 +96,8 @@ button{font:inherit}
 .event-card:nth-child(3) .event-art{background:linear-gradient(0deg,rgba(25,92,76,.18),transparent),url('/assets/weather-scene.svg?v=13') 18% 78%/175% auto no-repeat}
 .event-card:nth-child(4) .event-art{background:repeating-linear-gradient(125deg,#f27c4f 0 28px,#d65f79 28px 56px,#6a508e 56px 84px,#143849 84px 112px)}
 .event-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,15,21,.66),transparent 54%)}
-.event-badge{position:absolute;top:39%;left:10px;padding:3px 7px;border-radius:999px;background:var(--orange);color:#06131b;font-size:6px;font-weight:900;text-transform:uppercase}.event-card:nth-child(3) .event-badge{background:#62d98b}.event-card:nth-child(4) .event-badge{background:#bd70da}
-.event-date{font-size:6px;color:var(--orange);font-weight:900;letter-spacing:.08em}.event-card h3{margin:5px 0 4px;font:700 18px/1 Georgia,"Times New Roman",serif}.event-card p{margin:0;font-size:8px;color:#c5ceca}.event-card small{display:block;margin-top:5px;font-size:7px;line-height:1.25;color:#a8b4b6}
+.event-badge{position:absolute;top:36%;left:10px;padding:3px 7px;border-radius:999px;background:var(--orange);color:#06131b;font-size:6px;font-weight:900;text-transform:uppercase}.event-card:nth-child(3) .event-badge{background:#62d98b}.event-card:nth-child(4) .event-badge{background:#bd70da}
+.event-date{font-size:6px;color:var(--orange);font-weight:900;letter-spacing:.08em}.event-card h3{margin:5px 0 4px;font:700 20px/1 Georgia,"Times New Roman",serif}.event-card p{margin:0;font-size:9px;color:#c5ceca}.event-card small{display:block;margin-top:5px;font-size:7.5px;line-height:1.25;color:#a8b4b6}
 .days-off{grid-column:1/3;display:grid;grid-template-columns:150px 1fr;align-items:center;background:rgba(3,15,21,.96);border:1px solid var(--line);border-radius:12px;padding:7px 12px}.days-off h2{margin:0;font:700 16px Georgia,"Times New Roman",serif}.holiday-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.holiday{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:7px}.hicon{font-size:20px}.hname{font:700 11px Georgia,"Times New Roman",serif}.hoff{font-size:6px;color:#aab7ba}.hcount b{display:block;color:var(--gold);font-size:15px}.hcount span{display:block;font-size:5px;text-transform:uppercase;color:#7f969c}
 
 /* FC */
@@ -105,8 +107,8 @@ button{font:inherit}
 .fc-mast{position:relative;overflow:hidden;border:1px solid rgba(55,228,109,.25);border-radius:13px;background:
  linear-gradient(90deg,rgba(2,13,9,.98) 0%,rgba(2,13,9,.90) 42%,rgba(2,13,9,.20) 70%,rgba(2,13,9,.08)),
  url('/assets/austin-skyline-night-illustrated.svg?v=13') right 48%/60% auto no-repeat;padding:13px 18px}.fc-mast .mini{font-size:7px;color:#45e978;text-transform:uppercase;letter-spacing:.16em}.fc-mast h1{margin:3px 0 5px;font:700 48px/.82 Georgia,"Times New Roman",serif}.fc-mast h1 b{color:#35e56a}.fc-mast p{margin:0;font-size:7px;letter-spacing:.18em;text-transform:uppercase}.verde{position:absolute;right:14px;top:13px;padding:6px 10px;border-radius:999px;background:#0a3d1d;border:1px solid rgba(55,228,109,.28);font-size:6px;letter-spacing:.15em;color:#49e87a}
-.fc-grid{display:grid;grid-template-columns:59% 41%;grid-template-rows:1fr 138px;gap:8px;min-height:0}.fc-hero,.match-card,.last-card,.lens,.story{background:rgba(2,17,10,.96);border:1px solid rgba(55,228,109,.30);border-radius:13px;overflow:hidden}.fc-hero{grid-row:1;position:relative}.fc-hero img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.05) brightness(.91)}.hero-cap{position:absolute;left:10px;bottom:8px;font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:#edf1e6}
-.fc-side{display:grid;grid-template-rows:1fr 94px;gap:8px}
+.fc-grid{display:grid;grid-template-columns:57% 43%;grid-template-rows:1fr 148px;gap:8px;min-height:0}.fc-hero,.match-card,.last-card,.lens,.story{background:rgba(2,17,10,.96);border:1px solid rgba(55,228,109,.30);border-radius:13px;overflow:hidden}.fc-hero{grid-row:1;position:relative}.fc-hero img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.05) brightness(.91)}.hero-cap{position:absolute;left:10px;bottom:8px;font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:#edf1e6}
+.fc-side{display:grid;grid-template-rows:1fr 104px;gap:8px}
 .match-card{position:relative;overflow:hidden;padding:15px 17px 14px;display:grid;grid-template-rows:auto 1fr auto;background:
  linear-gradient(180deg,rgba(2,15,9,.76) 0%,rgba(2,15,9,.88) 47%,rgba(2,15,9,.98) 100%),
  url('/assets/austin-skyline-night-illustrated.svg?v=13') center 52%/145% auto no-repeat!important}
@@ -118,25 +120,25 @@ button{font:inherit}
 .match-main{align-self:center;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin-top:8px}
 .match-team{display:grid;grid-template-rows:auto auto;gap:8px}
 .match-team.away{text-align:right}
-.match-team-name{font:800 31px/.88 Georgia,"Times New Roman",serif;letter-spacing:-.035em;color:#f4efdd}
+.match-team-name{font:800 34px/.88 Georgia,"Times New Roman",serif;letter-spacing:-.035em;color:#f4efdd}
 .match-team.away .match-team-name{color:#efe8c8}
-.match-badge{width:54px;height:60px;border-radius:10px;display:grid;place-items:center;background:#0d4a27;border:1px solid #2ce064;font-size:8px;font-weight:950;color:#eaffef}
+.match-badge{width:60px;height:66px;border-radius:10px;display:grid;place-items:center;background:#0d4a27;border:1px solid #2ce064;font-size:8px;font-weight:950;color:#eaffef}
 .match-team.away .match-badge{justify-self:end;background:#d2b721;border-color:#f1d34c;color:#17180c}
 .match-vs{text-align:center;font-size:10px;font-weight:900;color:#9ca9a3;letter-spacing:.12em}
 .match-sub{display:flex;justify-content:space-between;align-items:end;gap:10px;padding-top:11px;border-top:1px solid rgba(79,226,118,.18)}
-.match-when b{display:block;font:800 21px Georgia,"Times New Roman",serif;color:#f5efdd}
+.match-when b{display:block;font:800 24px Georgia,"Times New Roman",serif;color:#f5efdd}
 .match-when span,.match-place{display:block;margin-top:3px;font-size:7px;color:#a8b5ad;letter-spacing:.04em}
 .match-home{padding:5px 8px;border-radius:999px;background:#0a3d1d;border:1px solid rgba(55,228,109,.28);font-size:6px;font-weight:900;letter-spacing:.13em;color:#45e978}
 .last-card{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;background:
  linear-gradient(90deg,rgba(2,17,10,.98),rgba(7,41,20,.82)),
  url('/assets/fc-austin-night.svg?v=13') 78% 74%/90% auto no-repeat!important}
-.last-card small{font-size:8px;color:#d8dfd9}.last-card strong{font:700 50px Georgia,"Times New Roman",serif}
+.last-card small{font-size:8px;color:#d8dfd9}.last-card strong{font:700 58px Georgia,"Times New Roman",serif}
 .lens{display:grid;grid-template-columns:37% 1fr;gap:10px;padding:8px}.lens img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}.lens-copy{align-self:center}.lens-copy b{display:block;font:700 20px Georgia,"Times New Roman",serif}.lens-copy span{font-size:7px;color:#aeb9b3}
-.story{display:grid;grid-template-columns:32% 1fr;gap:10px;padding:8px}.story img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}.story-copy{align-self:center}.story-copy .match-label{margin-bottom:5px}.story-copy h2{margin:0 0 5px;font:700 20px/1.02 Georgia,"Times New Roman",serif}.story-copy p{margin:0;font-size:9.5px;line-height:1.32;color:#d5ddd8}.story-copy span{display:block;margin-top:4px;font-size:6px;color:#77a486}
+.story{display:grid;grid-template-columns:32% 1fr;gap:10px;padding:8px}.story img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}.story-copy{align-self:center}.story-copy .match-label{margin-bottom:5px}.story-copy h2{margin:0 0 5px;font:700 22px/1.02 Georgia,"Times New Roman",serif}.story-copy p{margin:0;font-size:10.5px;line-height:1.32;color:#d5ddd8}.story-copy span{display:block;margin-top:4px;font-size:6px;color:#77a486}
 
 @media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
-  .tabs{gap:16px}.tab{font-size:8px}.weather-now .temp{font-size:90px}.weather-now .eyebrow{font-size:20px}.weather-now .condition{font-size:21px}
-  .weather-light{gap:14px}.weather-light b{font-size:16px}.bus-board{width:55vw}.events-poster h1{font-size:45px}.event-card h3{font-size:14px}
+  .tabs{gap:15px}.tab{font-size:8px}.clock strong{font-size:27px}.weather-clock{font-size:62px}.weather-now .temp{font-size:78px}.weather-now .eyebrow{font-size:14px}.weather-now .condition{font-size:20px}
+  .weather-light{gap:14px}.weather-light b{font-size:16px}.bus-board{width:64vw}.events-poster h1{font-size:45px}.event-card h3{font-size:14px}
 .fc-mast h1{font-size:43px}.match-team-name{font-size:26px}.story-copy h2{font-size:16px}
 }
 @media (prefers-reduced-motion:reduce){.screen{transition:none}}
@@ -162,6 +164,8 @@ button{font:inherit}
           </div>
         </div>
         <div class="weather-now">
+          <div class="weather-clock-label">Austin · local time</div>
+          <div class="weather-clock" id="weatherClockTime"></div>
           <div class="eyebrow">Right Now</div>
           <div class="temp" id="temp">--°</div>
           <div class="condition" id="cond">Loading</div>
@@ -270,7 +274,7 @@ button{font:inherit}
 <script>
 const TZ='America/Chicago';
 const $=id=>document.getElementById(id);
-const clockTime=$('clockTime'),clockDate=$('clockDate');
+const clockTime=$('clockTime'),clockDate=$('clockDate'),weatherClockTime=$('weatherClockTime');
 const temp=$('temp'),cond=$('cond'),facts=$('facts'),raincall=$('raincall'),sunrise=$('sunrise'),sunset=$('sunset'),days=$('days');
 const eventGrid=$('eventGrid'),holidayList=$('holidayList');
 const screens=[...document.querySelectorAll('.screen')];
@@ -296,7 +300,9 @@ document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-x0
 
 function tickClock(){
   const d=new Date();
-  clockTime.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d);
+  const timeText=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(d);
+  clockTime.textContent=timeText;
+  if(weatherClockTime) weatherClockTime.textContent=timeText;
   clockDate.textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'short',month:'short',day:'numeric'}).format(d);
 }
 tickClock();setInterval(tickClock,1000);
