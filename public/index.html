@@ -273,8 +273,13 @@ button{font:inherit}
 </div>
 <script>
 const TZ='America/Chicago';
+const $=id=>document.getElementById(id);
+const clockTime=$('clockTime'),clockDate=$('clockDate');
+const temp=$('temp'),cond=$('cond'),facts=$('facts'),raincall=$('raincall'),sunrise=$('sunrise'),sunset=$('sunset'),days=$('days');
+const historyPhoto=$('historyPhoto'),historyTitle=$('historyTitle'),historyBody=$('historyBody'),historyDetail=$('historyDetail'),historySource=$('historySource');
+const eventGrid=$('eventGrid'),holidayList=$('holidayList');
 const screens=[...document.querySelectorAll('.screen')];
-const tabs=document.getElementById('tabs');
+const tabs=$('tabs');
 let active=0,rotateTimer;
 const icons={'WEATHER':'☁','BUS':'▣',"WHAT'S HAPPENING":'▦','AUSTIN HISTORY':'▥','AUSTIN FC':'●'};
 
@@ -322,11 +327,11 @@ let busData=null;
 function mins(t){return Math.max(0,Math.ceil((t*1000-Date.now())/60000))}
 function renderBus(key,a,b,c){
   const arr=busData?.routes?.[key]||[];
-  if(!arr.length){document.getElementById(a).textContent='—';document.getElementById(b).textContent='Realtime unavailable';document.getElementById(c).textContent='No current prediction';return}
+  if(!arr.length){$(a).textContent='—';$(b).textContent='Realtime unavailable';$(c).textContent='No current prediction';return}
   const m=arr.map(mins).filter(v=>v>=0);
-  document.getElementById(a).textContent=(m[0]===0?'DUE':m[0]+' MIN');
-  document.getElementById(b).textContent=m.length>1?'Next: '+m.slice(1,3).map(v=>v===0?'Due':v+' min').join(' · '):'No later prediction';
-  document.getElementById(c).textContent='Updated '+Math.max(0,Math.round((Date.now()-busData.updatedAt)/1000))+' sec ago';
+  $(a).textContent=(m[0]===0?'DUE':m[0]+' MIN');
+  $(b).textContent=m.length>1?'Next: '+m.slice(1,3).map(v=>v===0?'Due':v+' min').join(' · '):'No later prediction';
+  $(c).textContent='Updated '+Math.max(0,Math.round((Date.now()-busData.updatedAt)/1000))+' sec ago';
 }
 async function loadBuses(){
   try{const r=await fetch('/api/buses',{cache:'no-store'});if(!r.ok)throw 0;busData=await r.json()}catch(e){busData=null}
@@ -406,7 +411,7 @@ renderHolidays();setInterval(renderHolidays,3600000);
 function refreshPhotos(){
   const d=new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   historyPhoto.src='/api/official-image?kind=historyDaily&d='+encodeURIComponent(d)+'&v=10';
-  [['fcDailyPhoto',0],['fcLensPhoto',1],['fcStoryPhoto',2]].forEach(([id,slot])=>document.getElementById(id).src='/api/official-image?kind=fcDaily&slot='+slot+'&d='+encodeURIComponent(d)+'&v=10');
+  [['fcDailyPhoto',0],['fcLensPhoto',1],['fcStoryPhoto',2]].forEach(([id,slot])=>$(id).src='/api/official-image?kind=fcDaily&slot='+slot+'&d='+encodeURIComponent(d)+'&v=10');
 }
 refreshPhotos();setInterval(refreshPhotos,3600000);
 </script>
