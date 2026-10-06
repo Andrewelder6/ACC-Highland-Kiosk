@@ -34,9 +34,9 @@ button{font:inherit}
 
 /* WEATHER */
 .weather{background:#06131b}
-.weather-art{position:absolute;inset:0;overflow:hidden;background:#06131b url('/assets/weather-exact.jpg?v=16') center/cover no-repeat}
-.weather-art:before{content:"";position:absolute;left:0;top:18%;width:38%;height:60%;background:linear-gradient(90deg,rgba(3,14,20,.98) 0%,rgba(3,14,20,.94) 64%,rgba(3,14,20,.72) 82%,transparent 100%);z-index:1}
-.weather-art:after{content:"";position:absolute;left:0;right:0;bottom:0;height:19%;background:linear-gradient(180deg,rgba(3,13,19,0) 0%,rgba(3,13,19,.78) 17%,rgba(3,13,19,.98) 35%,rgba(3,13,19,.98) 100%);z-index:1}
+.weather-art{position:absolute;inset:0;overflow:hidden;background:#06131b url('/assets/weather-exact.jpg?v=17') center/cover no-repeat}
+.weather-art:before{content:"";position:absolute;left:0;top:17%;width:39%;height:61%;background:linear-gradient(90deg,#031019 0%,#031019 74%,rgba(3,16,25,.97) 88%,rgba(3,16,25,.80) 96%,transparent 100%);z-index:1}
+.weather-art:after{content:"";position:absolute;left:0;right:0;bottom:0;height:23%;background:linear-gradient(180deg,rgba(3,13,19,.88) 0%,#030f15 14%,#030f15 100%);z-index:1}
 .weather-shell{position:relative;z-index:3;height:100%;display:grid;grid-template-rows:50px 1fr 126px;padding:16px 18px 14px}
 .weather-head{display:flex;align-items:start;justify-content:space-between;padding-left:2px}
 .weather-light{margin-top:2px;display:flex;align-items:center;gap:20px;background:rgba(3,15,21,.93);border:1px solid rgba(246,232,200,.22);border-radius:13px;padding:9px 13px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
@@ -58,8 +58,8 @@ button{font:inherit}
 
 /* BUS */
 .bus{background:#07151f}
-.bus-art{position:absolute;inset:0;overflow:hidden;background:#06131b url('/assets/bus-exact.jpg?v=16') center/cover no-repeat}
-.bus-art:before{content:"";position:absolute;left:50%;top:5.5%;transform:translateX(-50%);width:min(730px,67vw);height:315px;background:#06151d;border:1px solid rgba(238,169,84,.14);border-radius:20px;box-shadow:0 16px 40px rgba(0,0,0,.20);z-index:1}
+.bus-art{position:absolute;inset:0;overflow:hidden;background:#06131b url('/assets/bus-exact.jpg?v=17') center/cover no-repeat}
+.bus-art:before{content:"";position:absolute;left:50%;top:1.5%;transform:translateX(-50%);width:60.5%;height:60%;background:#06151d;border:1px solid rgba(238,169,84,.14);border-radius:20px;box-shadow:0 16px 40px rgba(0,0,0,.20);z-index:1}
 .bus-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,14,20,.05) 0%,rgba(4,14,20,.01) 58%,rgba(4,14,20,.14) 100%);z-index:2;pointer-events:none}
 .bus-board{position:absolute;z-index:4;left:50%;top:8%;transform:translateX(-50%);width:min(620px,59vw);background:rgba(3,15,21,.975);border:1px solid rgba(255,176,79,.55);border-radius:18px;padding:12px 17px 10px;box-shadow:0 18px 46px rgba(0,0,0,.36)}
 .bus-title{display:flex;align-items:center;justify-content:center;gap:11px;padding-bottom:9px;border-bottom:1px solid var(--line)}
@@ -73,6 +73,10 @@ button{font:inherit}
 .bus-eta{text-align:right}.bus-eta strong{display:block;font:700 26px Georgia,"Times New Roman",serif;color:var(--gold)}.bus-eta small,.bus-eta em{display:block;font-size:7px;color:#8fa2a7;font-style:normal;margin-top:2px}
 .bus-status{text-align:right;font-size:6px;color:#65d68a;margin-top:6px}
 
+/* IMPORTANT: weather-exact.jpg and bus-exact.jpg are full-screen reference renders with sample UI baked in.
+   They may only be used on their matching Weather/Bus screens, where the baked UI zones are masked.
+   Do NOT reuse those raster files in cards, FC, mastheads, or decorative panels. */
+
 /* WHAT'S HAPPENING */
 .events{background:#06131b}
 .events-bg{position:absolute;inset:0;background:
@@ -80,7 +84,7 @@ button{font:inherit}
  url('/assets/mockup-austin-night.svg?v=15') center/cover no-repeat;filter:saturate(.92) brightness(.58)}
 .events-shell{position:relative;z-index:2;height:100%;display:grid;grid-template-columns:37% 63%;grid-template-rows:1fr 82px;gap:10px;padding:14px 16px 12px}
 .events-poster{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(3,15,21,.88),rgba(3,15,21,.66));padding:24px 22px}
-.events-poster:after{content:"";position:absolute;left:0;right:0;bottom:0;height:60%;background:url('/assets/weather-exact.jpg?v=16') center 66%/cover no-repeat;opacity:.98}
+.events-poster:after{content:"";position:absolute;left:0;right:0;bottom:0;height:60%;background:url('/assets/mockup-events.svg?v=17') center 67%/cover no-repeat;opacity:.98}
 .events-poster>*{position:relative;z-index:2}
 .events-poster h1{margin:12px 0 10px;font:700 54px/.80 Georgia,"Times New Roman",serif;letter-spacing:-.045em}.events-poster h1 b{color:var(--orange)}
 .events-poster p{max-width:310px;font-size:11px;line-height:1.4;color:#e5dfd1}
@@ -89,10 +93,10 @@ button{font:inherit}
 .event-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;min-height:0}
 .event-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:rgba(3,15,21,.95);padding:43% 14px 13px}
 .event-art{position:absolute;left:0;right:0;top:0;height:42%;filter:saturate(1.08) contrast(1.04) brightness(.94)}
-.event-card:nth-child(1) .event-art{background:url('/assets/bus-exact.jpg?v=16') center 46%/cover no-repeat}
-.event-card:nth-child(2) .event-art{background:url('/assets/weather-exact.jpg?v=16') center 66%/cover no-repeat}
-.event-card:nth-child(3) .event-art{background:url('/assets/mockup-events.svg?v=16') 72% 66%/cover no-repeat}
-.event-card:nth-child(4) .event-art{background:url('/assets/mockup-austin-night.svg?v=16') 58% 46%/cover no-repeat}
+.event-card:nth-child(1) .event-art{background:url('/assets/mockup-events.svg?v=17') 62% 54%/cover no-repeat}
+.event-card:nth-child(2) .event-art{background:url('/assets/mockup-austin-night.svg?v=17') 60% 39%/cover no-repeat}
+.event-card:nth-child(3) .event-art{background:url('/assets/austin-skyline-night-illustrated.svg?v=17') center 50%/cover no-repeat}
+.event-card:nth-child(4) .event-art{background:url('/assets/bus-night.svg?v=17') center 45%/cover no-repeat}
 .event-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,15,21,.66),transparent 54%)}
 .event-badge{position:absolute;top:36%;left:10px;padding:3px 7px;border-radius:999px;background:var(--orange);color:#06131b;font-size:6px;font-weight:900;text-transform:uppercase}.event-card:nth-child(3) .event-badge{background:#62d98b}.event-card:nth-child(4) .event-badge{background:#bd70da}
 .event-date{font-size:6px;color:var(--orange);font-weight:900;letter-spacing:.08em}.event-card h3{margin:5px 0 4px;font:700 20px/1 Georgia,"Times New Roman",serif}.event-card p{margin:0;font-size:9px;color:#c5ceca}.event-card small{display:block;margin-top:5px;font-size:7.5px;line-height:1.25;color:#a8b4b6}
@@ -100,16 +104,16 @@ button{font:inherit}
 
 /* FC */
 .fc{background:#04120c}
-.fc-bg{position:absolute;inset:0;background:url('/assets/weather-rich.svg?v=15') center/cover no-repeat;filter:saturate(.96) brightness(.55)}
+.fc-bg{position:absolute;inset:0;background:url('/assets/mockup-austin-night.svg?v=17') center/cover no-repeat;filter:saturate(.92) brightness(.43)}
 .fc-shell{position:relative;z-index:2;height:100%;display:grid;grid-template-rows:104px 1fr;gap:8px;padding:11px 14px 12px}
 .fc-mast{position:relative;overflow:hidden;border:1px solid rgba(55,228,109,.25);border-radius:13px;background:
  linear-gradient(90deg,rgba(2,13,9,.98) 0%,rgba(2,13,9,.90) 42%,rgba(2,13,9,.20) 70%,rgba(2,13,9,.08)),
- url('/assets/weather-exact.jpg?v=16') right 52%/62% auto no-repeat;padding:13px 18px}.fc-mast .mini{font-size:7px;color:#45e978;text-transform:uppercase;letter-spacing:.16em}.fc-mast h1{margin:3px 0 5px;font:700 48px/.82 Georgia,"Times New Roman",serif}.fc-mast h1 b{color:#35e56a}.fc-mast p{margin:0;font-size:7px;letter-spacing:.18em;text-transform:uppercase}.verde{position:absolute;right:14px;top:13px;padding:6px 10px;border-radius:999px;background:#0a3d1d;border:1px solid rgba(55,228,109,.28);font-size:6px;letter-spacing:.15em;color:#49e87a}
+ url('/assets/mockup-austin-night.svg?v=17') right 50%/64% auto no-repeat;padding:13px 18px}.fc-mast .mini{font-size:7px;color:#45e978;text-transform:uppercase;letter-spacing:.16em}.fc-mast h1{margin:3px 0 5px;font:700 48px/.82 Georgia,"Times New Roman",serif}.fc-mast h1 b{color:#35e56a}.fc-mast p{margin:0;font-size:7px;letter-spacing:.18em;text-transform:uppercase}.verde{position:absolute;right:14px;top:13px;padding:6px 10px;border-radius:999px;background:#0a3d1d;border:1px solid rgba(55,228,109,.28);font-size:6px;letter-spacing:.15em;color:#49e87a}
 .fc-grid{display:grid;grid-template-columns:57% 43%;grid-template-rows:1fr 148px;gap:8px;min-height:0}.fc-hero,.match-card,.last-card,.lens,.story{background:rgba(2,17,10,.96);border:1px solid rgba(55,228,109,.30);border-radius:13px;overflow:hidden}.fc-hero{grid-row:1;position:relative}.fc-hero img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.05) brightness(.91)}.hero-cap{position:absolute;left:10px;bottom:8px;font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:#edf1e6}
 .fc-side{display:grid;grid-template-rows:1fr 104px;gap:8px}
 .match-card{position:relative;overflow:hidden;padding:15px 17px 14px;display:grid;grid-template-rows:auto 1fr auto;background:
- linear-gradient(180deg,rgba(2,15,9,.38) 0%,rgba(2,15,9,.58) 48%,rgba(2,15,9,.90) 100%),
- url('/assets/weather-exact.jpg?v=16') center 58%/cover no-repeat!important}
+ linear-gradient(180deg,rgba(2,15,9,.42) 0%,rgba(2,15,9,.62) 50%,rgba(2,15,9,.92) 100%),
+ url('/assets/mockup-austin-night.svg?v=17') center 48%/cover no-repeat!important}
 .match-card:after{content:"";position:absolute;left:-8%;right:-8%;bottom:-6%;height:42%;background:
  radial-gradient(circle at 78% 22%,rgba(47,226,102,.18),transparent 24%),
  linear-gradient(180deg,transparent,rgba(2,15,9,.42));pointer-events:none}
@@ -129,7 +133,7 @@ button{font:inherit}
 .match-home{padding:5px 8px;border-radius:999px;background:#0a3d1d;border:1px solid rgba(55,228,109,.28);font-size:6px;font-weight:900;letter-spacing:.13em;color:#45e978}
 .last-card{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;background:
  linear-gradient(90deg,rgba(2,17,10,.98),rgba(7,41,20,.82)),
- url('/assets/weather-rich.svg?v=15') 78% 74%/90% auto no-repeat!important}
+ url('/assets/fc-austin-night.svg?v=17') 78% 74%/90% auto no-repeat!important}
 .last-card small{font-size:8px;color:#d8dfd9}.last-card strong{font:700 58px Georgia,"Times New Roman",serif}
 .lens{display:grid;grid-template-columns:37% 1fr;gap:10px;padding:8px}.lens img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}.lens-copy{align-self:center}.lens-copy b{display:block;font:700 20px Georgia,"Times New Roman",serif}.lens-copy span{font-size:7px;color:#aeb9b3}
 .story{display:grid;grid-template-columns:32% 1fr;gap:10px;padding:8px}.story img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}.story-copy{align-self:center}.story-copy .match-label{margin-bottom:5px}.story-copy h2{margin:0 0 5px;font:700 22px/1.02 Georgia,"Times New Roman",serif}.story-copy p{margin:0;font-size:10.5px;line-height:1.32;color:#d5ddd8}.story-copy span{display:block;margin-top:4px;font-size:6px;color:#77a486}
