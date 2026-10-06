@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#071524"/><stop offset=".58" stop-color="#11344a"/><stop offset="1" stop-color="#1d5261"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1d6576"/><stop offset=".55" stop-color="#164556"/><stop offset="1" stop-color="#071922"/></linearGradient>
+ <radialGradient id="moon"><stop stop-color="#fff2b5"/><stop offset=".58" stop-color="#ffd78f"/><stop offset="1" stop-color="#e98762"/></radialGradient>
+ <linearGradient id="cloud" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5d8ae"/><stop offset=".45" stop-color="#ef9e83"/><stop offset="1" stop-color="#6b7080"/></linearGradient>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="2" seed="17"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .055"/></feComponentTransfer></filter>
+ <filter id="glow"><feGaussianBlur stdDeviation="14"/></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<g fill="#f7e7b6" opacity=".95">
+ <circle cx="120" cy="70" r="2"/><circle cx="190" cy="122" r="2.3"/><circle cx="278" cy="62" r="1.8"/><circle cx="360" cy="112" r="2.2"/><circle cx="455" cy="74" r="1.7"/><circle cx="560" cy="118" r="2.5"/><circle cx="650" cy="66" r="2.1"/><circle cx="770" cy="116" r="1.8"/><circle cx="885" cy="80" r="2.4"/><circle cx="1010" cy="121" r="2"/><circle cx="1120" cy="66" r="2.3"/><circle cx="1230" cy="112" r="2"/><circle cx="1375" cy="76" r="2.4"/><circle cx="1480" cy="130" r="1.8"/>
+</g>
+<g stroke="#f3d9a4" stroke-width="2" opacity=".75"><path d="M330 155h24M342 143v24"/><path d="M1310 176h28M1324 162v28"/><path d="M800 122h18M809 113v18"/></g>
+<circle cx="1260" cy="160" r="116" fill="#f6b477" opacity=".14" filter="url(#glow)"/><circle cx="1260" cy="160" r="72" fill="url(#moon)" stroke="#ffe0a0" stroke-width="3"/>
+<!-- painterly cloud banks -->
+<g fill="url(#cloud)" stroke="#d88f78" stroke-width="3">
+ <path d="M-80 225c60-86 160-108 245-57 49-63 132-74 196-20 44-37 111-38 161-7 64-37 136-23 208 42-150 70-405 102-730 64z"/>
+ <path d="M790 210c47-58 112-75 171-42 42-55 111-65 168-25 54-57 137-54 194 0 63-37 146-16 257 72v96c-310 18-565-23-790-101z"/>
+</g>
+<g fill="#98a7ad" opacity=".58">
+ <ellipse cx="108" cy="198" rx="78" ry="38"/><ellipse cx="245" cy="172" rx="76" ry="44"/><ellipse cx="382" cy="189" rx="90" ry="49"/><ellipse cx="900" cy="186" rx="80" ry="45"/><ellipse cx="1052" cy="160" rx="92" ry="50"/><ellipse cx="1215" cy="190" rx="110" ry="55"/><ellipse cx="1410" cy="220" rx="128" ry="61"/>
+</g>
+<!-- distant hills -->
+<path d="M0 480c210-92 379-82 535-25 136 50 286 38 447-19 183-65 356-46 618 44v140H0z" fill="#0f2d34"/>
+<path d="M0 510c245-64 442-50 615 0 157 45 336 44 496-7 164-52 319-38 489 22v120H0z" fill="#173d46"/>
+<!-- skyline -->
+<g fill="#08131b" stroke="#eea15f" stroke-width="2.2">
+ <rect x="665" y="318" width="42" height="190"/><rect x="714" y="284" width="58" height="224"/><rect x="780" y="356" width="36" height="152"/><rect x="824" y="248" width="58" height="260"/><rect x="890" y="326" width="43" height="182"/><rect x="941" y="292" width="38" height="216"/><rect x="988" y="346" width="54" height="162"/><rect x="1050" y="265" width="46" height="243"/><rect x="1105" y="326" width="59" height="182"/><rect x="1172" y="300" width="44" height="208"/><rect x="1225" y="346" width="36" height="162"/><rect x="1270" y="278" width="55" height="230"/>
+ <path d="M833 248h40l-9-31h-22z"/><path d="M1070 265h8v-50h8v50z"/>
+</g>
+<g fill="#ffc06a" opacity=".88">
+ <rect x="677" y="344" width="6" height="9"/><rect x="693" y="373" width="6" height="9"/><rect x="728" y="315" width="7" height="10"/><rect x="748" y="344" width="7" height="10"/><rect x="838" y="286" width="7" height="10"/><rect x="858" y="315" width="7" height="10"/><rect x="904" y="356" width="6" height="9"/><rect x="953" y="320" width="6" height="9"/><rect x="1062" y="302" width="6" height="9"/><rect x="1081" y="332" width="6" height="9"/><rect x="1123" y="349" width="6" height="9"/><rect x="1190" y="329" width="6" height="9"/><rect x="1286" y="309" width="6" height="9"/>
+</g>
+<!-- water and bridge -->
+<path d="M0 510c290-34 545-31 775 14 280 55 550 30 825-40v416H0z" fill="url(#water)"/>
+<g opacity=".55" stroke="#f2b35e" stroke-width="4"><path d="M820 520l-42 320"/><path d="M900 515l-20 330"/><path d="M980 515l20 330"/><path d="M1060 510l48 320"/><path d="M1140 505l80 300"/></g>
+<path d="M420 560h790" stroke="#07131a" stroke-width="22"/>
+<path d="M450 560c0-59 50-103 109-103s109 44 109 103M722 560c0-59 50-103 109-103s109 44 109 103M996 560c0-59 50-103 109-103s109 44 109 103" fill="none" stroke="#07131a" stroke-width="12"/>
+<!-- foreground foliage/rocks -->
+<g fill="#0b201b" stroke="#d98755" stroke-width="3">
+ <path d="M0 735c78-65 165-92 258-74 58 11 103 42 145 82v157H0z"/><path d="M1290 730c55-59 121-83 194-72 51 8 88 35 116 76v166h-310z"/>
+</g>
+<g fill="#253b31" stroke="#d88d59" stroke-width="3"><ellipse cx="140" cy="726" rx="92" ry="60"/><ellipse cx="245" cy="748" rx="75" ry="46"/><ellipse cx="1374" cy="746" rx="85" ry="52"/><ellipse cx="1496" cy="727" rx="70" ry="44"/></g>
+<g fill="#173e2b" stroke="#dfa15f" stroke-width="3">
+ <path d="M74 890V690c0-45 22-68 47-68 24 0 45 23 45 68v53c11-24 25-38 45-38 21 0 35 15 35 37v52c0 23-14 37-37 37h-43v59z"/>
+ <path d="M1450 900V700c0-45 22-68 47-68 24 0 45 23 45 68v53c11-24 25-38 45-38 21 0 35 15 35 37v52c0 23-14 37-37 37h-43v59z"/>
+</g>
+<rect width="1600" height="900" filter="url(#grain)"/>
+</svg>
