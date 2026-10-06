@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#07101e"/><stop offset=".56" stop-color="#15324a"/><stop offset="1" stop-color="#24495a"/></linearGradient>
+ <linearGradient id="cloud" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd1a2"/><stop offset=".55" stop-color="#eb8a76"/><stop offset="1" stop-color="#685d72"/></linearGradient>
+ <linearGradient id="road" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#242c31"/><stop offset="1" stop-color="#0b1116"/></linearGradient>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="23"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .05"/></feComponentTransfer></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<g fill="#f7e8bd" opacity=".9"><circle cx="120" cy="90" r="2"/><circle cx="225" cy="145" r="2.2"/><circle cx="350" cy="72" r="2"/><circle cx="490" cy="125" r="2.3"/><circle cx="660" cy="86" r="1.8"/><circle cx="810" cy="136" r="2.2"/><circle cx="980" cy="82" r="2"/><circle cx="1110" cy="128" r="2.5"/><circle cx="1350" cy="82" r="2"/><circle cx="1480" cy="145" r="2.2"/></g>
+<circle cx="1280" cy="145" r="76" fill="#ffd48f" stroke="#f2a870" stroke-width="4"/>
+<g fill="url(#cloud)" stroke="#de896f" stroke-width="3">
+ <path d="M-40 250c58-76 132-89 208-39 49-51 115-57 174-16 51-29 111-18 181 34-121 49-305 62-563 40z"/>
+ <path d="M900 225c61-70 139-78 214-29 55-43 124-39 196 17 62-35 139-16 250 64v84c-252 6-461-35-660-136z"/>
+</g>
+<!-- desert mesas -->
+<path d="M0 450c115-96 220-117 322-66 88 44 170 49 249 9 85-44 174-34 268 29v118H0z" fill="#5b3f42"/>
+<path d="M1050 424c110-85 217-93 327-37 74 38 148 37 223-5v168h-550z" fill="#69494c"/>
+<!-- skyline and river -->
+<g fill="#09151d" stroke="#f2a45f" stroke-width="2.3"><rect x="612" y="352" width="40" height="164"/><rect x="660" y="318" width="53" height="198"/><rect x="722" y="375" width="33" height="141"/><rect x="764" y="292" width="56" height="224"/><rect x="830" y="356" width="40" height="160"/><rect x="879" y="324" width="37" height="192"/><rect x="924" y="366" width="54" height="150"/><rect x="986" y="310" width="46" height="206"/><rect x="1042" y="354" width="54" height="162"/></g>
+<g fill="#ffbd68"><rect x="623" y="380" width="6" height="9"/><rect x="675" y="346" width="6" height="9"/><rect x="784" y="326" width="7" height="9"/><rect x="893" y="355" width="6" height="9"/><rect x="1000" y="340" width="6" height="9"/></g>
+<path d="M0 505c300-35 583-31 833 16 235 44 489 28 767-49v193H0z" fill="#123e4d"/>
+<path d="M430 540h720" stroke="#07131a" stroke-width="18"/><path d="M455 540c0-52 44-91 96-91s96 39 96 91M715 540c0-52 44-91 96-91s96 39 96 91M975 540c0-52 44-91 96-91s96 39 96 91" fill="none" stroke="#07131a" stroke-width="10"/>
+<!-- road -->
+<path d="M0 680c350-72 760-83 1600-13v233H0z" fill="url(#road)"/>
+<path d="M320 900l285-212M710 900l105-235M1160 900l-117-227M1490 900l-270-215" stroke="#e3b55d" stroke-width="6" opacity=".7"/>
+<!-- cacti -->
+<g fill="#173c2d" stroke="#e49a5b" stroke-width="4">
+ <path d="M85 760V438c0-54 26-82 55-82 28 0 53 28 53 82v86c14-30 29-45 55-45 26 0 44 18 44 45v70c0 28-17 45-46 45h-53v121z"/>
+ <path d="M1460 790V500c0-48 23-73 50-73 25 0 48 25 48 73v68c12-25 27-38 49-38 23 0 39 16 39 40v61c0 25-16 40-41 40h-47v119z"/>
+</g>
+<!-- bus -->
+<g transform="translate(1050 590)">
+ <rect x="0" y="24" width="420" height="190" rx="34" fill="#78b9d1" stroke="#f4d9a0" stroke-width="5"/>
+ <rect x="28" y="0" width="360" height="68" rx="25" fill="#0c2230" stroke="#f4d9a0" stroke-width="4"/>
+ <rect x="98" y="18" width="220" height="33" rx="6" fill="#1b0f0c"/><text x="208" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#ffc25f">DOWNTOWN</text>
+ <g fill="#16313e" stroke="#dce7df" stroke-width="3"><rect x="25" y="78" width="75" height="72" rx="8"/><rect x="110" y="78" width="75" height="72" rx="8"/><rect x="195" y="78" width="75" height="72" rx="8"/><rect x="280" y="78" width="82" height="72" rx="8"/></g>
+ <rect x="370" y="77" width="37" height="87" rx="8" fill="#0d2734"/>
+ <rect x="22" y="164" width="355" height="23" rx="7" fill="#e8edf0"/><rect x="22" y="187" width="355" height="12" rx="6" fill="#f28b52"/>
+ <circle cx="75" cy="216" r="38" fill="#0b0f13"/><circle cx="75" cy="216" r="16" fill="#71828b"/><circle cx="335" cy="216" r="38" fill="#0b0f13"/><circle cx="335" cy="216" r="16" fill="#71828b"/>
+ <circle cx="25" cy="183" r="10" fill="#ffe399"/><circle cx="397" cy="183" r="10" fill="#ffe399"/>
+ <!-- frog driver -->
+ <g transform="translate(300 87)">
+  <ellipse cx="31" cy="38" rx="34" ry="29" fill="#70ad51" stroke="#172319" stroke-width="3"/><circle cx="14" cy="17" r="12" fill="#77b958" stroke="#172319" stroke-width="3"/><circle cx="48" cy="17" r="12" fill="#77b958" stroke="#172319" stroke-width="3"/><circle cx="14" cy="17" r="4" fill="#101510"/><circle cx="48" cy="17" r="4" fill="#101510"/><path d="M15 42c10 10 22 10 32 0" fill="none" stroke="#152217" stroke-width="3" stroke-linecap="round"/><path d="M22 55l-10 18M40 55l12 18" stroke="#70ad51" stroke-width="8" stroke-linecap="round"/>
+ </g>
+</g>
+<rect width="1600" height="900" filter="url(#grain)"/>
+</svg>
