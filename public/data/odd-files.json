@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "collection": "ACC Highland Kiosk — Odd Files",
+  "updated_at": "2026-10-18",
+  "editorial_policy": "Safe-for-work, source-linked factoids. 'Documented' means a source establishes the described historical record, not that every related allegation is proven. 'Preliminary research' identifies findings that have not completed peer review. No extraordinary claims are presented as established.",
+  "factoids": [
+    {
+      "id": "2026-10-galileo-infrared-triangulation",
+      "category": "UAP / science",
+      "title": "A UFO study that measured the ordinary",
+      "fact": "A three-site infrared camera experiment near Las Vegas reconstructed 365 well-tracked aerial objects from one week in May 2026. Researchers matched 284 to aircraft, found 17 more with aircraft-like motion but no aircraft ID, and identified 64 as small clouds. None showed anomalous motion in this sample.",
+      "evidence_status": "preliminary research",
+      "caveat": "The October 2026 manuscript is a preprint, not yet peer-reviewed. Its detection limits and one-week sample do not settle the wider UAP question; the 17 unidentified tracks are not evidence of extraordinary technology.",
+      "event_date": "2026-05-24/2026-05-30",
+      "source_date": "2026-10-02",
+      "added_at": "2026-10-18",
+      "sources": [
+        {
+          "title": "Loeb et al., An Assessment of the Triangulation Capabilities of a Multi-Site All-Sky Infrared Camera Array",
+          "type": "primary research preprint",
+          "url": "https://arxiv.org/abs/2610.06922"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-cia-mexico-lienvoy-recorders",
+      "category": "Declassified history / surveillance",
+      "title": "The Cold War wiretap room with 40 tape recorders",
+      "fact": "Declassified CIA records describe LIENVOY, a joint U.S.–Mexican telephone-surveillance operation that targeted diplomatic lines and Mexican political figures. The CIA station history lists 40 Ampex voice recorders among the equipment installed for the listening post.",
+      "evidence_status": "documented",
+      "caveat": "This establishes a historical surveillance program, not any theory about who assassinated President Kennedy. Major portions of the CIA's Mexico City station history remain redacted.",
+      "event_date": "1950s–1960s",
+      "source_date": "2026-10-01",
+      "added_at": "2026-10-18",
+      "sources": [
+        {
+          "title": "CIA Mexico City Station History [Extracts], JFK Records document 104-10414-10124",
+          "type": "declassified primary source",
+          "url": "https://nsarchive.gwu.edu/document/34399-document-1-mexico-city-station-history-extracts-central-intelligence-agency-secret"
+        },
+        {
+          "title": "National Security Archive, The CIA Station in Mexico: The Last JFK Assassination Records Secrets",
+          "type": "document-based historical analysis",
+          "url": "https://nsarchive.gwu.edu/briefing-book/intelligence-mexico/2026-10-01/cia-station-mexico-last-jfk-assassination-records"
+        }
+      ]
+    }
+  ]
+}
